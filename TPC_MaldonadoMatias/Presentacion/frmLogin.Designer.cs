@@ -1,0 +1,108 @@
+﻿namespace Presentacion
+{
+    partial class frmLogin
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.btnIngresar = new System.Windows.Forms.Button();
+            this.tbUsuario = new System.Windows.Forms.TextBox();
+            this.tbClave = new System.Windows.Forms.TextBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblClave = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // btnIngresar
+            // 
+            this.btnIngresar.Location = new System.Drawing.Point(165, 125);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(75, 23);
+            this.btnIngresar.TabIndex = 0;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.UseVisualStyleBackColor = true;
+            // 
+            // tbUsuario
+            // 
+            this.tbUsuario.Location = new System.Drawing.Point(193, 37);
+            this.tbUsuario.Name = "tbUsuario";
+            this.tbUsuario.Size = new System.Drawing.Size(100, 20);
+            this.tbUsuario.TabIndex = 1;
+            // 
+            // tbClave
+            // 
+            this.tbClave.Location = new System.Drawing.Point(193, 73);
+            this.tbClave.Name = "tbClave";
+            this.tbClave.Size = new System.Drawing.Size(100, 20);
+            this.tbClave.TabIndex = 2;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(96, 43);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(49, 13);
+            this.lblUsuario.TabIndex = 3;
+            this.lblUsuario.Text = "Usuario :";
+            // 
+            // lblClave
+            // 
+            this.lblClave.AutoSize = true;
+            this.lblClave.Location = new System.Drawing.Point(96, 76);
+            this.lblClave.Name = "lblClave";
+            this.lblClave.Size = new System.Drawing.Size(40, 13);
+            this.lblClave.TabIndex = 4;
+            this.lblClave.Text = "Clave :";
+            // 
+            // FrmLogin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(391, 172);
+            this.Controls.Add(this.lblClave);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.tbClave);
+            this.Controls.Add(this.tbUsuario);
+            this.Controls.Add(this.btnIngresar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FrmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Login";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.TextBox tbUsuario;
+        private System.Windows.Forms.TextBox tbClave;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblClave;
+    }
+}
