@@ -78,11 +78,6 @@ namespace Presentacion
             cboHastaHora.SelectedIndex = 0;
         }
 
-        private void btnCerrrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void cboHastaHora_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboHastaMinuto.Items.Clear();
@@ -135,7 +130,6 @@ namespace Presentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
 
             int dh = Convert.ToInt32(cboDesdeHora.SelectedItem);
             int dm = Convert.ToInt32(cboDesdeMinuto.SelectedItem);
@@ -164,12 +158,17 @@ namespace Presentacion
             catch (SqlException ex)
             {
                 if (ex.Number == 547)
-                    MessageBox.Show("No se puede eliminar porque tiene Cursos Asignados!");
+                    MessageBox.Show("No se puede eliminar porque esta siendo utilizado!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnCerrrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
