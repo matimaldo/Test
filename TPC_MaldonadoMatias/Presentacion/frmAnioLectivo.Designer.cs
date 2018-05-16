@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbAnio = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtAnio = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCerrrar = new System.Windows.Forms.Button();
+            this.cboAnio = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // listBox1
+            // lbAnio
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(28, 100);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(169, 121);
-            this.listBox1.TabIndex = 0;
+            this.lbAnio.FormattingEnabled = true;
+            this.lbAnio.Location = new System.Drawing.Point(28, 100);
+            this.lbAnio.Name = "lbAnio";
+            this.lbAnio.Size = new System.Drawing.Size(169, 121);
+            this.lbAnio.TabIndex = 0;
             // 
             // label1
             // 
@@ -53,13 +53,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Año :";
             // 
-            // txtAnio
-            // 
-            this.txtAnio.Location = new System.Drawing.Point(85, 23);
-            this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(100, 20);
-            this.txtAnio.TabIndex = 2;
-            // 
             // btnAgregar
             // 
             this.btnAgregar.Location = new System.Drawing.Point(26, 62);
@@ -68,6 +61,7 @@
             this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
@@ -77,6 +71,7 @@
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCerrrar
             // 
@@ -85,21 +80,34 @@
             this.btnCerrrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrrar.TabIndex = 5;
             this.btnCerrrar.Text = "Cerrar";
+            this.btnCerrrar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCerrrar.UseVisualStyleBackColor = true;
+            this.btnCerrrar.Click += new System.EventHandler(this.btnCerrrar_Click);
+            // 
+            // cboAnio
+            // 
+            this.cboAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAnio.FormattingEnabled = true;
+            this.cboAnio.Location = new System.Drawing.Point(76, 23);
+            this.cboAnio.Name = "cboAnio";
+            this.cboAnio.Size = new System.Drawing.Size(121, 21);
+            this.cboAnio.TabIndex = 6;
             // 
             // frmAnioLectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(233, 277);
+            this.Controls.Add(this.cboAnio);
             this.Controls.Add(this.btnCerrrar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.txtAnio);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lbAnio);
             this.Name = "frmAnioLectivo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Año Lectivo";
+            this.Load += new System.EventHandler(this.frmAnioLectivo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,11 +115,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbAnio;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtAnio;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCerrrar;
+        private System.Windows.Forms.ComboBox cboAnio;
     }
 }

@@ -10,5 +10,10 @@ namespace Dominio
     {
         public int IdAnio { get; set; }
         public int Anio { get; set; }
+
+        public override string ToString()
+        {
+            return Anio.ToString();
+        }
     }
 }

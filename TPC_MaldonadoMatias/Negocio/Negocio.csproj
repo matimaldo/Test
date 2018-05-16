@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="AnioLectivoBusiness.cs" />
     <Compile Include="CursoBusiness.cs" />
+    <Compile Include="HorarioBusiness.cs" />
     <Compile Include="PersonasBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelefonoBusiness.cs" />

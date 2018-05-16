@@ -30,53 +30,41 @@
         {
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblDesde = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.lblHasta = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbHorarios = new System.Windows.Forms.ListBox();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.cboDesdeHora = new System.Windows.Forms.ComboBox();
+            this.cboDesdeMinuto = new System.Windows.Forms.ComboBox();
+            this.cboHastaMinuto = new System.Windows.Forms.ComboBox();
+            this.cboHastaHora = new System.Windows.Forms.ComboBox();
+            this.btnCerrrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(198, 176);
+            this.btnEliminar.Location = new System.Drawing.Point(113, 88);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblDesde
             // 
             this.lblDesde.AutoSize = true;
-            this.lblDesde.Location = new System.Drawing.Point(24, 35);
+            this.lblDesde.Location = new System.Drawing.Point(26, 27);
             this.lblDesde.Name = "lblDesde";
             this.lblDesde.Size = new System.Drawing.Size(44, 13);
             this.lblDesde.TabIndex = 8;
             this.lblDesde.Text = "Desde :";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(74, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(20, 20);
-            this.textBox1.TabIndex = 10;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(104, 31);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(20, 20);
-            this.textBox2.TabIndex = 11;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(94, 35);
+            this.label3.Location = new System.Drawing.Point(120, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(10, 13);
             this.label3.TabIndex = 12;
@@ -85,70 +73,110 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(218, 36);
+            this.label1.Location = new System.Drawing.Point(120, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(10, 13);
             this.label1.TabIndex = 16;
             this.label1.Text = ":";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(228, 31);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(20, 20);
-            this.textBox3.TabIndex = 15;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(198, 31);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(20, 20);
-            this.textBox4.TabIndex = 14;
-            // 
             // lblHasta
             // 
             this.lblHasta.AutoSize = true;
-            this.lblHasta.Location = new System.Drawing.Point(151, 34);
+            this.lblHasta.Location = new System.Drawing.Point(28, 54);
             this.lblHasta.Name = "lblHasta";
             this.lblHasta.Size = new System.Drawing.Size(41, 13);
             this.lblHasta.TabIndex = 13;
             this.lblHasta.Text = "Hasta :";
             // 
-            // listBox1
+            // lbHorarios
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(27, 97);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(161, 212);
-            this.listBox1.TabIndex = 17;
+            this.lbHorarios.FormattingEnabled = true;
+            this.lbHorarios.Location = new System.Drawing.Point(31, 127);
+            this.lbHorarios.Name = "lbHorarios";
+            this.lbHorarios.Size = new System.Drawing.Size(157, 160);
+            this.lbHorarios.TabIndex = 17;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(104, 68);
+            this.btnAgregar.Location = new System.Drawing.Point(29, 88);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 18;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // cboDesdeHora
+            // 
+            this.cboDesdeHora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDesdeHora.FormattingEnabled = true;
+            this.cboDesdeHora.Location = new System.Drawing.Point(76, 24);
+            this.cboDesdeHora.Name = "cboDesdeHora";
+            this.cboDesdeHora.Size = new System.Drawing.Size(40, 21);
+            this.cboDesdeHora.TabIndex = 19;
+            this.cboDesdeHora.SelectedIndexChanged += new System.EventHandler(this.cboDesdeHora_SelectedIndexChanged);
+            // 
+            // cboDesdeMinuto
+            // 
+            this.cboDesdeMinuto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDesdeMinuto.FormattingEnabled = true;
+            this.cboDesdeMinuto.Location = new System.Drawing.Point(133, 24);
+            this.cboDesdeMinuto.Name = "cboDesdeMinuto";
+            this.cboDesdeMinuto.Size = new System.Drawing.Size(40, 21);
+            this.cboDesdeMinuto.TabIndex = 20;
+            this.cboDesdeMinuto.SelectedIndexChanged += new System.EventHandler(this.cboDesdeMinuto_SelectedIndexChanged);
+            // 
+            // cboHastaMinuto
+            // 
+            this.cboHastaMinuto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHastaMinuto.FormattingEnabled = true;
+            this.cboHastaMinuto.Location = new System.Drawing.Point(133, 51);
+            this.cboHastaMinuto.Name = "cboHastaMinuto";
+            this.cboHastaMinuto.Size = new System.Drawing.Size(40, 21);
+            this.cboHastaMinuto.TabIndex = 22;
+            // 
+            // cboHastaHora
+            // 
+            this.cboHastaHora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHastaHora.FormattingEnabled = true;
+            this.cboHastaHora.Location = new System.Drawing.Point(76, 51);
+            this.cboHastaHora.Name = "cboHastaHora";
+            this.cboHastaHora.Size = new System.Drawing.Size(40, 21);
+            this.cboHastaHora.TabIndex = 21;
+            this.cboHastaHora.SelectedIndexChanged += new System.EventHandler(this.cboHastaHora_SelectedIndexChanged);
+            // 
+            // btnCerrrar
+            // 
+            this.btnCerrrar.Location = new System.Drawing.Point(65, 297);
+            this.btnCerrrar.Name = "btnCerrrar";
+            this.btnCerrrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrrar.TabIndex = 23;
+            this.btnCerrrar.Text = "Cerrar";
+            this.btnCerrrar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCerrrar.UseVisualStyleBackColor = true;
+            this.btnCerrrar.Click += new System.EventHandler(this.btnCerrrar_Click);
             // 
             // frmHorarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 321);
+            this.ClientSize = new System.Drawing.Size(215, 337);
+            this.Controls.Add(this.btnCerrrar);
+            this.Controls.Add(this.cboHastaMinuto);
+            this.Controls.Add(this.cboHastaHora);
+            this.Controls.Add(this.cboDesdeMinuto);
+            this.Controls.Add(this.cboDesdeHora);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lbHorarios);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.lblHasta);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblDesde);
             this.Controls.Add(this.btnEliminar);
             this.Name = "frmHorarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Horarios";
+            this.Load += new System.EventHandler(this.frmHorarios_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,14 +185,15 @@
         #endregion
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label lblDesde;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label lblHasta;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbHorarios;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ComboBox cboDesdeHora;
+        private System.Windows.Forms.ComboBox cboDesdeMinuto;
+        private System.Windows.Forms.ComboBox cboHastaMinuto;
+        private System.Windows.Forms.ComboBox cboHastaHora;
+        private System.Windows.Forms.Button btnCerrrar;
     }
 }
