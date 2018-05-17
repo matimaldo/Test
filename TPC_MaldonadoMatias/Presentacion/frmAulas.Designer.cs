@@ -49,6 +49,10 @@
             this.lbMartes = new System.Windows.Forms.ListBox();
             this.lbLunes = new System.Windows.Forms.ListBox();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnPrimero = new System.Windows.Forms.Button();
+            this.btnUltimo = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.gdDisponibilidad.SuspendLayout();
             this.SuspendLayout();
@@ -318,11 +322,55 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // btnPrimero
+            // 
+            this.btnPrimero.Enabled = false;
+            this.btnPrimero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrimero.Location = new System.Drawing.Point(711, 320);
+            this.btnPrimero.Name = "btnPrimero";
+            this.btnPrimero.Size = new System.Drawing.Size(27, 23);
+            this.btnPrimero.TabIndex = 30;
+            this.btnPrimero.Text = "<<";
+            this.btnPrimero.UseVisualStyleBackColor = true;
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUltimo.Location = new System.Drawing.Point(783, 320);
+            this.btnUltimo.Name = "btnUltimo";
+            this.btnUltimo.Size = new System.Drawing.Size(27, 23);
+            this.btnUltimo.TabIndex = 29;
+            this.btnUltimo.Text = ">>";
+            this.btnUltimo.UseVisualStyleBackColor = true;
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Enabled = false;
+            this.btnAnterior.Location = new System.Drawing.Point(737, 320);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(24, 23);
+            this.btnAnterior.TabIndex = 27;
+            this.btnAnterior.Text = "<";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Location = new System.Drawing.Point(760, 320);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(24, 23);
+            this.btnSiguiente.TabIndex = 28;
+            this.btnSiguiente.Text = ">";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            // 
+            // frmAulas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 355);
+            this.ClientSize = new System.Drawing.Size(814, 345);
+            this.Controls.Add(this.btnPrimero);
+            this.Controls.Add(this.btnUltimo);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.gdDisponibilidad);
             this.Controls.Add(this.textBox1);
@@ -331,7 +379,7 @@
             this.Controls.Add(this.lblAula);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "frmAulas";
             this.Text = "Aulas";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -365,5 +413,9 @@
         private System.Windows.Forms.ListBox lbMartes;
         private System.Windows.Forms.ListBox lbLunes;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnPrimero;
+        private System.Windows.Forms.Button btnUltimo;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnSiguiente;
     }
 }

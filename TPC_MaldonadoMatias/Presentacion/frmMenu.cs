@@ -160,5 +160,12 @@ namespace Presentacion
             frm.ShowDialog();
 
         }
+
+        private void comisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmComision frm = new frmComision();
+            frm.Owner = this;
+            frm.ShowDialog();
+        }
     }
 }

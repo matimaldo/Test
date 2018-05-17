@@ -51,6 +51,12 @@
     <Compile Include="frmAulas.Designer.cs">
       <DependentUpon>frmAulas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmComision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComision.Designer.cs">
+      <DependentUpon>frmComision.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCargarNotas.resx">
       <DependentUpon>frmCargarNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComision.resx">
+      <DependentUpon>frmComision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCopiarCursada.resx">
       <DependentUpon>frmCopiarCursada.cs</DependentUpon>

@@ -124,6 +124,7 @@
             // 
             // cboCurso
             // 
+            this.cboCurso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCurso.FormattingEnabled = true;
             this.cboCurso.Location = new System.Drawing.Point(273, 48);
             this.cboCurso.Name = "cboCurso";
@@ -132,6 +133,7 @@
             // 
             // cboAnio
             // 
+            this.cboAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAnio.FormattingEnabled = true;
             this.cboAnio.Location = new System.Drawing.Point(273, 75);
             this.cboAnio.Name = "cboAnio";
@@ -140,6 +142,7 @@
             // 
             // cboProfesor
             // 
+            this.cboProfesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfesor.FormattingEnabled = true;
             this.cboProfesor.Location = new System.Drawing.Point(273, 102);
             this.cboProfesor.Name = "cboProfesor";
@@ -148,6 +151,7 @@
             // 
             // cboComision
             // 
+            this.cboComision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboComision.FormattingEnabled = true;
             this.cboComision.Location = new System.Drawing.Point(512, 48);
             this.cboComision.Name = "cboComision";
@@ -388,6 +392,7 @@
             // 
             // cboAula
             // 
+            this.cboAula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAula.FormattingEnabled = true;
             this.cboAula.Location = new System.Drawing.Point(512, 75);
             this.cboAula.Name = "cboAula";
@@ -453,6 +458,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmCursada";
             this.Text = "Cursada";
+            this.Load += new System.EventHandler(this.frmCursada_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gbDia.ResumeLayout(false);

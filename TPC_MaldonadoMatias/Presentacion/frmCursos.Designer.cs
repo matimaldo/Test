@@ -180,7 +180,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(313, 0);
+            this.btnCancelar.Location = new System.Drawing.Point(313, 1);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(20, 20);
             this.btnCancelar.TabIndex = 27;

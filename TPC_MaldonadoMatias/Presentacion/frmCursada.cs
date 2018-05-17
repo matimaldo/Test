@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace Presentacion
 {
@@ -94,6 +96,15 @@ namespace Presentacion
             frmCopiarCursada frm = new frmCopiarCursada();
             frm.Owner = this;
             frm.ShowDialog();
+        }
+
+
+        CursoBusiness cursoBusiness = new CursoBusiness();
+        AnioLectivoBusiness anioLectivoBusiness = new AnioLectivoBusiness();
+        private void frmCursada_Load(object sender, EventArgs e)
+        {
+            cboCurso.DataSource = cursoBusiness.listar();
+            cboAnio.DataSource = anioLectivoBusiness.listar();
         }
     }
 }

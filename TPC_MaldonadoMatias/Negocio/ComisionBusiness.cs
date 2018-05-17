@@ -4,30 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
-using System.Data.SqlClient;
 
 namespace Negocio
 {
-    public class CursoBusiness
+    public class ComisionBusiness
     {
-        public IList<Curso> listar(int tipo, string buscar)
+        public IList<Comision> listar(int tipo, string buscar)
         {
 
-            IList<Curso> lista = new List<Curso>();
+            IList<Comision> lista = new List<Comision>();
             AccesoDatos conexion = new AccesoDatos();
 
             String where = "";
             switch (tipo)
             {
                 case 0:
-                    where = "NM_Curso like '%" + buscar + "%'";
+                    where = "NM_Comision like '%" + buscar + "%'";
                     break;
                 case 1:
-                    where = "Id_Curso = '" + buscar + "'";
+                    where = "Id_Comision = '" + buscar + "'";
                     break;
             }
 
-            string consulta = "SELECT Id_Curso, NM_Curso FROM Cursos WHERE " + where + " ORDER BY 1";
+            string consulta = "SELECT Id_Comision, NM_Comision FROM Comisiones WHERE " + where + " ORDER BY 1";
             try
             {
                 conexion.setearConsulta(consulta);
@@ -35,10 +34,10 @@ namespace Negocio
 
                 while (conexion.Lector.Read())
                 {
-                    Curso aux = new Curso();
+                    Comision aux = new Comision();
 
-                    aux.IdCurso = conexion.Lector.GetInt32(0);
-                    aux.NombreCurso = conexion.Lector.GetString(1);
+                    aux.IdComision = conexion.Lector.GetInt32(0);
+                    aux.NombreComision = conexion.Lector.GetString(1);
 
                     lista.Add(aux);
                 }
@@ -54,13 +53,13 @@ namespace Negocio
             }
         }
 
-        public IList<Curso> listar()
+        public IList<Comision> listar()
         {
 
-            IList<Curso> lista = new List<Curso>();
+            IList<Comision> lista = new List<Comision>();
             AccesoDatos conexion = new AccesoDatos();
 
-            string consulta = "SELECT Id_Curso, NM_Curso FROM Cursos ORDER BY 1";
+            string consulta = "SELECT Id_Comision, NM_Comision FROM Comisiones ORDER BY 1";
             try
             {
                 conexion.setearConsulta(consulta);
@@ -68,10 +67,10 @@ namespace Negocio
 
                 while (conexion.Lector.Read())
                 {
-                    Curso aux = new Curso();
+                    Comision aux = new Comision();
 
-                    aux.IdCurso = conexion.Lector.GetInt32(0);
-                    aux.NombreCurso = conexion.Lector.GetString(1);
+                    aux.IdComision = conexion.Lector.GetInt32(0);
+                    aux.NombreComision = conexion.Lector.GetString(1);
 
                     lista.Add(aux);
                 }
@@ -87,16 +86,16 @@ namespace Negocio
             }
         }
 
-        public void agregar(Curso curso)
+        public void agregar(Comision comision)
         {
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "INSERT INTO CURSOS VALUES (@Nombre)";
+            string consulta = "INSERT INTO Comisiones VALUES (@Nombre)";
 
             try
             {
                 conexion.borrarParametros();
-                conexion.agregarParametro("@Nombre", curso.NombreCurso);
-                
+                conexion.agregarParametro("@Nombre", comision.NombreComision);
+
                 conexion.setearConsulta(consulta);
                 conexion.accionEjecutar();
             }
@@ -110,16 +109,16 @@ namespace Negocio
             }
         }
 
-        public void modificar(Curso curso)
+        public void modificar(Comision comision)
         {
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "UPDATE Cursos SET NM_Curso = @Nombre WHERE Id_Curso = @IdCurso";
+            string consulta = "UPDATE Comisiones SET NM_Comision = @Nombre WHERE Id_Comision = @IdCurso";
 
             try
             {
                 conexion.borrarParametros();
-                conexion.agregarParametro("@Nombre", curso.NombreCurso);
-                conexion.agregarParametro("@IdCurso", curso.IdCurso);
+                conexion.agregarParametro("@Nombre", comision.NombreComision);
+                conexion.agregarParametro("@IdCurso", comision.IdComision);
 
                 conexion.setearConsulta(consulta);
                 conexion.accionEjecutar();
@@ -141,7 +140,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MAX(Id_Curso) FROM Cursos");
+                conexion.setearConsulta("SELECT MAX(Id_Comision) FROM Comisiones");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -167,7 +166,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MIN(Id_Curso) FROM Cursos");
+                conexion.setearConsulta("SELECT MIN(Id_Comision) FROM Comisiones");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -187,10 +186,10 @@ namespace Negocio
             }
         }
 
-        public Curso IrA(int tipo, int id)
+        public Comision IrA(int tipo, int id)
         {
             AccesoDatos conexion = new AccesoDatos();
-            Curso aux = new Curso();
+            Comision aux = new Comision();
             string consulta = "";
 
             try
@@ -198,16 +197,16 @@ namespace Negocio
                 switch (tipo)
                 {
                     case 0:
-                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos ORDER BY 1 ASC";
+                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones ORDER BY 1 ASC";
                         break;
                     case 1:
-                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos WHERE Id_Curso <" + id.ToString() + "ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones WHERE Id_Comision <" + id.ToString() + "ORDER BY 1 DESC";
                         break;
                     case 2:
-                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos WHERE Id_Curso >" + id.ToString() + "ORDER BY 1 ASC";
+                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones WHERE Id_Comision >" + id.ToString() + "ORDER BY 1 ASC";
                         break;
                     case 3:
-                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones ORDER BY 1 DESC";
                         break;
                 }
 
@@ -216,8 +215,8 @@ namespace Negocio
 
                 while (conexion.Lector.Read())
                 {
-                    aux.IdCurso = conexion.Lector.GetInt32(0);
-                    aux.NombreCurso = conexion.Lector.GetString(1);
+                    aux.IdComision = conexion.Lector.GetInt32(0);
+                    aux.NombreComision = conexion.Lector.GetString(1);
                 }
                 return aux;
 
@@ -232,5 +231,6 @@ namespace Negocio
             }
 
         }
+
     }
 }
