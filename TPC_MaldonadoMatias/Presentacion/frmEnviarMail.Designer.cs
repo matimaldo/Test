@@ -123,6 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(546, 304);
             this.Controls.Add(this.rbtnAcademia);
             this.Controls.Add(this.lbDe);
@@ -133,6 +134,8 @@
             this.Controls.Add(this.lbAsunto);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.lbFecha);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmEnviarMail";
             this.Text = "Enviar Mail";
             this.ResumeLayout(false);

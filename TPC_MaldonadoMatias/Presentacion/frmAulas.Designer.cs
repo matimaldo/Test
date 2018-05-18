@@ -366,6 +366,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(814, 345);
             this.Controls.Add(this.btnPrimero);
             this.Controls.Add(this.btnUltimo);
@@ -379,6 +380,8 @@
             this.Controls.Add(this.lblAula);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAulas";
             this.Text = "Aulas";
             this.menuStrip1.ResumeLayout(false);

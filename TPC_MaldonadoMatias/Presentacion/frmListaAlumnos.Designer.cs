@@ -48,8 +48,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(504, 442);
             this.Controls.Add(this.dgvListaAlumnos);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmListaAlumnos";
             this.Text = "Lista de Alumnos";
             this.Load += new System.EventHandler(this.frmListaAlumnos_Load);

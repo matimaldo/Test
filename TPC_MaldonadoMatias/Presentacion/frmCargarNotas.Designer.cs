@@ -160,6 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(622, 430);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.btnGuardarEnviar);
@@ -174,6 +175,8 @@
             this.Controls.Add(this.cboComision);
             this.Controls.Add(this.cboCurso);
             this.Controls.Add(this.cboAnio);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCargarNotas";
             this.Text = "Cargar Notas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

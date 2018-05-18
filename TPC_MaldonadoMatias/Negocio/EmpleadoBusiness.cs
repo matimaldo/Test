@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
-using System.Data.SqlClient;
 
 namespace Negocio
 {
-    public class PersonasBusiness
+    public class EmpleadoBusiness
     {
-        public IList<Alumno> listar()
+        public IList<Empleado> listar()
         {
-            IList<Alumno> lista = new List<Alumno>();
+            IList<Empleado> lista = new List<Empleado>();
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "SELECT P.Id_Persona, P.Nombre, P.Apellido, P.DNI, P.FechaNac, P.Mail, T.Numero, TT.NM_Tipo FROM dbo.PERSONAS AS P LEFT OUTER JOIN dbo.Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT OUTER JOIN dbo.TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL";
+            string consulta = "SELECT P.Id_Persona, P.Nombre, P.Apellido, P.DNI, P.FechaNac, P.Mail, T.Numero, TT.NM_Tipo,RP.Id_Rol FROM dbo.PERSONAS AS P LEFT OUTER JOIN dbo.Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT OUTER JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL";
 
             try
             {
@@ -23,7 +22,7 @@ namespace Negocio
 
                 while (conexion.Lector.Read())
                 {
-                    Alumno aux = new Alumno();
+                    Empleado aux = new Empleado();
 
                     aux.IdPersona = conexion.Lector.GetInt32(0);
                     aux.Nombre = conexion.Lector.GetString(1);
@@ -56,10 +55,10 @@ namespace Negocio
             }
         }
 
-        public IList<Alumno> listar(int tipo, string buscar)
+        public IList<Empleado> listar(int tipo, string buscar)
         {
 
-            IList<Alumno> lista = new List<Alumno>();
+            IList<Empleado> lista = new List<Empleado>();
             AccesoDatos conexion = new AccesoDatos();
 
             String where = "";
@@ -73,7 +72,7 @@ namespace Negocio
                     break;
             }
 
-            string consulta = "SELECT  P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL AND " + where;
+            string consulta = "SELECT  P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL AND " + where;
             try
             {
                 conexion.setearConsulta(consulta);
@@ -81,7 +80,7 @@ namespace Negocio
 
                 while (conexion.Lector.Read())
                 {
-                    Alumno aux = new Alumno();
+                    Empleado aux = new Empleado();
 
                     aux.IdPersona = conexion.Lector.GetInt32(0);
                     aux.Nombre = conexion.Lector.GetString(1);
@@ -121,7 +120,7 @@ namespace Negocio
 
         }
 
-        public void agregar(Alumno persona)
+        public void agregar(Empleado persona)
         {
             AccesoDatos conexion = new AccesoDatos();
             string consulta = "INSERT INTO Personas VALUES (@Nombre, @Apellido, @Dni, @FechaNac, @Sexo, @Mail, @Estado)";
@@ -150,7 +149,7 @@ namespace Negocio
             }
         }
 
-        public void modificar(Alumno persona)
+        public void modificar(Empleado persona)
         {
             AccesoDatos conexion = new AccesoDatos();
             string consulta = "UPDATE Personas SET Nombre = @Nombre , Apellido = @Apellido, Dni = @Dni, FechaNac = @FechaNac, Sexo = @Sexo, Mail = @Mail, Estado = @Estado WHERE Id_Persona = @IdPersona";
@@ -187,9 +186,9 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT Id_Persona FROM Personas WHERE DNI ="+DNI );
+                conexion.setearConsulta("SELECT Id_Persona FROM Personas WHERE DNI =" + DNI);
                 conexion.leerConsulta();
-                
+
                 while (conexion.Lector.Read())
                 {
                     id = conexion.Lector.GetInt32(0);
@@ -207,10 +206,10 @@ namespace Negocio
             }
         }
 
-        public Alumno IrA(int tipo, int id)
+        public Empleado empleadoIrA(int tipo, int id)
         {
             AccesoDatos conexion = new AccesoDatos();
-            Alumno aux = new Alumno();
+            Empleado aux = new Empleado();
             string consulta = "";
 
             try
@@ -218,16 +217,16 @@ namespace Negocio
                 switch (tipo)
                 {
                     case 0:
-                        consulta = "SELECT TOP(1) P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL ORDER BY 1 ASC";
+                        consulta = "SELECT TOP(1) P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL ORDER BY 1 ASC";
                         break;
                     case 1:
-                        consulta = "SELECT TOP(1) P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL AND P.Id_Persona <" + id.ToString() + "ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL AND P.Id_Persona <" + id.ToString() + "ORDER BY 1 DESC";
                         break;
                     case 2:
-                        consulta = "SELECT TOP(1) P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL AND P.Id_Persona >" + id.ToString() + "ORDER BY 1 ASC";
+                        consulta = "SELECT TOP(1) P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL AND P.Id_Persona >" + id.ToString() + "ORDER BY 1 ASC";
                         break;
                     case 3:
-                        consulta = "SELECT TOP(1) P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) P.Id_Persona, P.Nombre, P.Apellido, P.Dni, P.FechaNac, P.Sexo, P.Mail, P.Estado, T.Id_Telefono, T.Numero, T.Contacto, T.Id_TipoTel, TT.NM_Tipo FROM Personas AS P LEFT JOIN Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL ORDER BY 1 DESC";
                         break;
                 }
 
@@ -279,7 +278,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MAX(P.Id_Persona) FROM PersonasP LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL ");
+                conexion.setearConsulta("SELECT MAX(P.Id_Persona) FROM Personas P LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL ");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -305,7 +304,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MIN(P.Id_Persona) FROM Personas P LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL ");
+                conexion.setearConsulta("SELECT MIN(P.Id_Persona) FROM Personas P LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL ");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())

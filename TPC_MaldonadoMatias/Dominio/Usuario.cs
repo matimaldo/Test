@@ -8,10 +8,15 @@ namespace Dominio
 {
     public class Usuario
     {
+
+        public Usuario()
+        {
+            Persona = new Persona();
+        }
+
         public int IdUsuario { get; set; }
         public string NMUsuario { get; set; }
         public string Clave { get; set; }
-        public int IdRol { get; set; }
         public Persona Persona { get; set; }
     }
 }

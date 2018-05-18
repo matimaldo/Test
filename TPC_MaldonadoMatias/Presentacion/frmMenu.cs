@@ -24,6 +24,7 @@ namespace Presentacion
             //frmLogin frm = new frmLogin();
             //frm.Owner = this;
             //frm.ShowDialog();
+            academiaToolStripMenuItem.Visible = false;
 
             frmCalendario frmCalendario = new frmCalendario();
             frmCalendario.MdiParent = this;
@@ -34,7 +35,7 @@ namespace Presentacion
         {
             frmAlumnos frm = new frmAlumnos();
             frm.Owner = this;
-            frm.Show();
+            frm.ShowDialog();
 
             //alumnoToolStripMenuItem.Enabled = false;
         }
@@ -97,9 +98,24 @@ namespace Presentacion
 
         private void calendarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCalendario frmCalendario = new frmCalendario();
-            frmCalendario.MdiParent = this;
-            frmCalendario.Show();
+            bool abierto = false;
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(frmCalendario))
+                {
+                    MessageBox.Show("El Calendario esta abierto");
+                    abierto = true;
+                    break;
+                }
+            }
+
+            if(!abierto)
+            {
+                frmCalendario frmCalendario = new frmCalendario();
+                frmCalendario.MdiParent = this;
+                frmCalendario.Show();
+            }
+
         }
 
         private void diaToolStripMenuItem_Click(object sender, EventArgs e)

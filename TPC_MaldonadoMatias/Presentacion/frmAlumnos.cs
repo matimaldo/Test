@@ -263,21 +263,21 @@ namespace Presentacion
         private void btnPrimero_Click(object sender, EventArgs e)
         {
             PersonasBusiness personasBusiness = new PersonasBusiness();
-            alumno = personasBusiness.alumnoIrA(0, alumno.IdPersona);
+            alumno = personasBusiness.IrA(0, alumno.IdPersona);
             rdoBusqueda();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             PersonasBusiness personasBusiness = new PersonasBusiness();
-            alumno = personasBusiness.alumnoIrA(1, alumno.IdPersona);
+            alumno = personasBusiness.IrA(1, alumno.IdPersona);
             rdoBusqueda();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             PersonasBusiness personasBusiness = new PersonasBusiness();
-            alumno = personasBusiness.alumnoIrA(2, alumno.IdPersona);
+            alumno = personasBusiness.IrA(2, alumno.IdPersona);
             rdoBusqueda();
 
         }
@@ -285,7 +285,7 @@ namespace Presentacion
         private void btnUltimo_Click(object sender, EventArgs e)
         {
             PersonasBusiness personasBusiness = new PersonasBusiness();
-            alumno = personasBusiness.alumnoIrA(3, alumno.IdPersona);
+            alumno = personasBusiness.IrA(3, alumno.IdPersona);
             rdoBusqueda();
 
         }

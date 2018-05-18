@@ -51,6 +51,7 @@
     <Compile Include="Curso.cs" />
     <Compile Include="Dia.cs" />
     <Compile Include="Disponibilidad.cs" />
+    <Compile Include="Empleado.cs" />
     <Compile Include="Examen.cs" />
     <Compile Include="Final.cs" />
     <Compile Include="Horario.cs" />

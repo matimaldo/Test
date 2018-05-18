@@ -59,12 +59,11 @@
             // dgvBusqueda
             // 
             this.dgvBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBusqueda.ColumnHeadersVisible = false;
             this.dgvBusqueda.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvBusqueda.Location = new System.Drawing.Point(105, 67);
             this.dgvBusqueda.MultiSelect = false;
             this.dgvBusqueda.Name = "dgvBusqueda";
-            this.dgvBusqueda.ReadOnly = true;
+            this.dgvBusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBusqueda.Size = new System.Drawing.Size(338, 102);
             this.dgvBusqueda.TabIndex = 16;
             // 
@@ -101,6 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(556, 221);
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.btnSeleccionar);
@@ -108,6 +108,8 @@
             this.Controls.Add(this.cboFiltro);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnBuscar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmBuscarCurso";
             this.Text = "Buscar Curso";
             this.Load += new System.EventHandler(this.frmBuscarCurso_Load);

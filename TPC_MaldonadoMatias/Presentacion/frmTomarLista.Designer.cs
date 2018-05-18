@@ -140,6 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(666, 400);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.lbFecha);
@@ -152,6 +153,8 @@
             this.Controls.Add(this.cboComision);
             this.Controls.Add(this.cboCurso);
             this.Controls.Add(this.cboAnio);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmTomarLista";
             this.Text = "Tomar Lista";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

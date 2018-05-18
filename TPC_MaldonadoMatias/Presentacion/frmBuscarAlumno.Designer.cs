@@ -100,6 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(670, 263);
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.btnSeleccionar);
@@ -107,6 +108,8 @@
             this.Controls.Add(this.cboFiltro);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnBuscar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmBuscarAlumno";
             this.Text = "Buscar Alumno";
             this.Load += new System.EventHandler(this.frmBuscarAlumno_Load);

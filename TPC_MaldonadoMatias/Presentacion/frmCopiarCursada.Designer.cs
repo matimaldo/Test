@@ -101,6 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(340, 204);
             this.Controls.Add(this.cboComision);
             this.Controls.Add(this.lbComision);
@@ -109,6 +110,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lbAnio);
             this.Controls.Add(this.lbCurso);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCopiarCursada";
             this.Text = "Copiar Cursada";
             this.ResumeLayout(false);

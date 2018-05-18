@@ -10,5 +10,11 @@ namespace Dominio
     {
         public int IdRol { get; set; }
         public string NMRol { get; set; }
+
+
+        public override string ToString()
+        {
+            return NMRol;
+        }
     }
 }

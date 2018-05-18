@@ -179,6 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(664, 354);
             this.Controls.Add(this.lbMsj);
             this.Controls.Add(this.btnGuardar);
@@ -195,6 +196,8 @@
             this.Controls.Add(this.cboComision);
             this.Controls.Add(this.cboCurso);
             this.Controls.Add(this.cboAnio);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAsignarAlumnos";
             this.Text = "Asignacion de Alumnos";
             this.ResumeLayout(false);

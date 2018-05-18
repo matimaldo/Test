@@ -30,11 +30,11 @@
         {
             this.lblFiltro = new System.Windows.Forms.Label();
             this.btnSeleccionar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvBusqueda = new System.Windows.Forms.DataGridView();
             this.cboFiltro = new System.Windows.Forms.ComboBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBusqueda)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFiltro
@@ -54,21 +54,24 @@
             this.btnSeleccionar.TabIndex = 11;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
-            // dataGridView1
+            // dgvBusqueda
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(51, 67);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(528, 150);
-            this.dataGridView1.TabIndex = 10;
+            this.dgvBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBusqueda.Location = new System.Drawing.Point(51, 67);
+            this.dgvBusqueda.Name = "dgvBusqueda";
+            this.dgvBusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBusqueda.Size = new System.Drawing.Size(528, 150);
+            this.dgvBusqueda.TabIndex = 10;
             // 
             // cboFiltro
             // 
             this.cboFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltro.FormattingEnabled = true;
             this.cboFiltro.Items.AddRange(new object[] {
-            "por Nombre Curso"});
+            "por Nombre o Apellido",
+            "por DNI"});
             this.cboFiltro.Location = new System.Drawing.Point(97, 25);
             this.cboFiltro.Name = "cboFiltro";
             this.cboFiltro.Size = new System.Drawing.Size(137, 21);
@@ -89,21 +92,26 @@
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // frmBuscarEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(665, 276);
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.btnSeleccionar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvBusqueda);
             this.Controls.Add(this.cboFiltro);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnBuscar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmBuscarEmpleado";
             this.Text = "Buscar Empleado";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmBuscarAlumno_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBusqueda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,7 +121,7 @@
 
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.Button btnSeleccionar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvBusqueda;
         private System.Windows.Forms.ComboBox cboFiltro;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnBuscar;

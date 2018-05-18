@@ -160,6 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(215, 337);
             this.Controls.Add(this.btnCerrrar);
             this.Controls.Add(this.cboHastaMinuto);
@@ -173,6 +174,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblDesde);
             this.Controls.Add(this.btnEliminar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmHorarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Horarios";

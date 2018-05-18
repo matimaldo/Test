@@ -198,6 +198,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(630, 390);
             this.Controls.Add(this.lblDisponibilidad);
             this.Controls.Add(this.lblHorarios);
@@ -214,6 +215,8 @@
             this.Controls.Add(this.btnMiercoles);
             this.Controls.Add(this.btnMartes);
             this.Controls.Add(this.btnLunes);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dias";

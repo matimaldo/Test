@@ -218,6 +218,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(601, 210);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.cboRecuperatorio);
@@ -234,6 +235,8 @@
             this.Controls.Add(this.cboCurso);
             this.Controls.Add(this.cboAnio);
             this.Controls.Add(this.lbFecha);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmExamen";
             this.Text = "Examen";
             this.gbTipoExamen.ResumeLayout(false);

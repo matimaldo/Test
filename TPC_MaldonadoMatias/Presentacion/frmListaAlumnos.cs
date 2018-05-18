@@ -31,6 +31,8 @@ namespace Presentacion
             try
             {
                 dgvListaAlumnos.DataSource = personasBusiness.listar();
+                dgvListaAlumnos.Columns[0].Visible = false;
+
             }
             catch (Exception ex)
             {

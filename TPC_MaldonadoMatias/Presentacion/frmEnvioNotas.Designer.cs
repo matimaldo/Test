@@ -62,10 +62,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(262, 163);
             this.Controls.Add(this.cboExamen);
             this.Controls.Add(this.cboCursada);
             this.Controls.Add(this.btnEnviar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmEnvioNotas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Envio Notas";

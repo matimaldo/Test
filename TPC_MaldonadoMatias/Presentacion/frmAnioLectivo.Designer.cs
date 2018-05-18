@@ -97,6 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(233, 277);
             this.Controls.Add(this.cboAnio);
             this.Controls.Add(this.btnCerrrar);
@@ -104,6 +105,8 @@
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbAnio);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAnioLectivo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Año Lectivo";

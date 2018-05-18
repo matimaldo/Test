@@ -47,11 +47,14 @@
     <Compile Include="ComisionBusiness.cs" />
     <Compile Include="CursoBusiness.cs" />
     <Compile Include="DiasBusiness.cs" />
+    <Compile Include="EmpleadoBusiness.cs" />
     <Compile Include="HorarioBusiness.cs" />
     <Compile Include="PersonasBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolBusinness.cs" />
     <Compile Include="TelefonoBusiness.cs" />
     <Compile Include="TipoTelefonoBusiness.cs" />
+    <Compile Include="UsuarioBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dominio\Dominio.csproj">
