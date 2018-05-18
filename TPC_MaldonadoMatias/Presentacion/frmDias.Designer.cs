@@ -215,6 +215,7 @@
             this.Controls.Add(this.btnMiercoles);
             this.Controls.Add(this.btnMartes);
             this.Controls.Add(this.btnLunes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDias";

@@ -134,6 +134,7 @@
             this.Controls.Add(this.lbAsunto);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.lbFecha);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEnviarMail";

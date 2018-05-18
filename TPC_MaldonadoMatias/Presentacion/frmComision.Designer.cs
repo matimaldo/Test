@@ -269,6 +269,7 @@
             this.Controls.Add(this.txtNmComision);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmComision";

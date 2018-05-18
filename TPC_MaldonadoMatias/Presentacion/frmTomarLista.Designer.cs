@@ -153,6 +153,7 @@
             this.Controls.Add(this.cboComision);
             this.Controls.Add(this.cboCurso);
             this.Controls.Add(this.cboAnio);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTomarLista";

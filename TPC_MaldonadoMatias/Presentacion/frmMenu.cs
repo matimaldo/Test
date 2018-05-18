@@ -21,9 +21,9 @@ namespace Presentacion
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
-            //frmLogin frm = new frmLogin();
-            //frm.Owner = this;
-            //frm.ShowDialog();
+            frmLogin frm = new frmLogin();
+            frm.Owner = this;
+            frm.ShowDialog();
             academiaToolStripMenuItem.Visible = false;
 
             frmCalendario frmCalendario = new frmCalendario();

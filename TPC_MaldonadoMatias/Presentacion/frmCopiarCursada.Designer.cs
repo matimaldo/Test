@@ -110,6 +110,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lbAnio);
             this.Controls.Add(this.lbCurso);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCopiarCursada";

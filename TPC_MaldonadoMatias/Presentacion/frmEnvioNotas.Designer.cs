@@ -67,6 +67,7 @@
             this.Controls.Add(this.cboExamen);
             this.Controls.Add(this.cboCursada);
             this.Controls.Add(this.btnEnviar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEnvioNotas";

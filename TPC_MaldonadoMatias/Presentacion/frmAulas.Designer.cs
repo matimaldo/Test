@@ -379,6 +379,7 @@
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblAula);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

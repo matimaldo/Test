@@ -159,6 +159,7 @@
             this.Controls.Add(this.lbAsunto);
             this.Controls.Add(this.lbFecha);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -41,6 +41,7 @@ namespace Presentacion
             btnSiguiente.Visible = true;
             btnPrimero.Visible = true;
             btnUltimo.Visible = true;
+            buscarToolStripMenuItem.Visible = true;
 
             TipoTelefonoBusiness TipoTelefonoBusiness = new TipoTelefonoBusiness();
             try
@@ -71,6 +72,7 @@ namespace Presentacion
 
             btnAnterior.Visible = false;
             btnSiguiente.Visible = false;
+            buscarToolStripMenuItem.Visible = true;
         }
 
         private void nuevo()
@@ -95,6 +97,7 @@ namespace Presentacion
             btnSiguiente.Visible = false;
             btnUltimo.Visible = false;
             btnPrimero.Visible = false;
+            buscarToolStripMenuItem.Visible = false;
 
             btnSalir.Location = new Point(164, 370);
 
