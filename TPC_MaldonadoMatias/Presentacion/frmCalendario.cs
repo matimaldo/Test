@@ -44,7 +44,7 @@ namespace Presentacion
             cargarCumpleaños();
             cargarAvisos();
 
-            mhcCalendario.;
+            //mhcCalendario.;
         }
 
         private void mhcCalendario_DateSelected(object sender, DateRangeEventArgs e)

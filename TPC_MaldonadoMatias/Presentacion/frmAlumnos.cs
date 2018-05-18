@@ -20,7 +20,7 @@ namespace Presentacion
         }
 
         public Alumno alumno = new Alumno();
-
+        
         public void habilitar()
         {
             txtNombre.Visible = true;
@@ -317,6 +317,23 @@ namespace Presentacion
             //if (validar())
             //    MessageBox.Show("Desea Guardar los cambios?", "Salir", MessageBoxButtons.YesNo);
             this.Close();
+        }
+
+       
+        private void txtNombre_Validating(object sender, CancelEventArgs e)
+        {
+            
+            //string texto;
+            if (txtNombre.Text == "")
+            {
+               errorProvider2.SetError(txtNombre, "Ingrese Nombre");
+            }
+            else
+            {
+                errorProvider2.SetError(txtNombre, "");
+            }
+
+
         }
     }
 }

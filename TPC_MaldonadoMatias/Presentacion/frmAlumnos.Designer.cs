@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlumnos));
             this.lbNombre = new System.Windows.Forms.Label();
             this.lbApellido = new System.Windows.Forms.Label();
@@ -63,9 +64,11 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnPrimero = new System.Windows.Forms.Button();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbSexo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.gbTelefono.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNombre
@@ -218,6 +221,7 @@
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 0;
             this.txtNombre.Visible = false;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // txtApellido
             // 
@@ -398,6 +402,10 @@
             this.btnPrimero.UseVisualStyleBackColor = true;
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
             // frmAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,6 +449,7 @@
             this.menuStrip1.PerformLayout();
             this.gbTelefono.ResumeLayout(false);
             this.gbTelefono.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,5 +491,6 @@
         public System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Button btnUltimo;
         private System.Windows.Forms.Button btnPrimero;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }
