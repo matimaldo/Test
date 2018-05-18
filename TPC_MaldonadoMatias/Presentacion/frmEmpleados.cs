@@ -329,13 +329,26 @@ namespace Presentacion
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             deshabilitar();
+            
+
             btnSiguiente.Visible = true;
-            btnSiguiente.Enabled = true;
+            
             btnAnterior.Visible = true;
             btnAnterior.Enabled = false;
 
             btnUltimo.Visible = true;
-            btnUltimo.Enabled = true;
+
+            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
+            if (empleadoBusiness.obtenerIDMax() == 0)
+            {
+                btnUltimo.Enabled = false;
+                btnSiguiente.Enabled = false;
+            }
+            else
+            {
+                btnUltimo.Enabled = true;
+                btnSiguiente.Enabled = true;
+            }
 
             btnPrimero.Visible = true;
             btnPrimero.Enabled = false;
@@ -352,6 +365,20 @@ namespace Presentacion
             //    MessageBox.Show("Desea Guardar los cambios?", "Salir", MessageBoxButtons.YesNo);
             this.Close();
         }
-    
-}
+
+        private void frmEmpleados_Load(object sender, EventArgs e)
+        {
+            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
+            if (empleadoBusiness.obtenerIDMax() == 0)
+            {
+                btnUltimo.Enabled = false;
+                btnSiguiente.Enabled = false;
+            }
+            else
+            {
+                btnUltimo.Enabled = true;
+                btnSiguiente.Enabled = true;
+            }
+        }
+    }
 }

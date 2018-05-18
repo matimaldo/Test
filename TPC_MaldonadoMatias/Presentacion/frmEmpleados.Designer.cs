@@ -465,6 +465,7 @@
             this.Name = "frmEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Empleados";
+            this.Load += new System.EventHandler(this.frmEmpleados_Load);
             this.gbTelefono.ResumeLayout(false);
             this.gbTelefono.PerformLayout();
             this.gbSexo.ResumeLayout(false);
