@@ -209,8 +209,41 @@ namespace Presentacion
             frm.ShowDialog();
         }
 
+        public bool ValidarGuardar()
+        {
+            bool ok = true;
+            if (txtNombre.Text == "")
+            {
+                ePerror.SetError(txtNombre, "Ingrese Nombre");
+                ok = false;
+            }
+            if (txtApellido.Text == "")
+            {
+                ePerror.SetError(txtApellido, "Ingrese Apellido");
+                ok = false;
+            }
+            if (txtDni.Text == "")
+            {
+                ePerror.SetError(txtDni, "Ingrese DNI");
+                ok = false;
+            }
+            if (dtpFechaNac.Value == DateTime.Today)
+            {
+                ePerror.SetError(dtpFechaNac, "Ingrese Fecha Nacimento");
+                ok = false;
+            }
+            if (txtMail.Text == "")
+            {
+                ePerror.SetError(txtMail, "Ingrese Mail");
+                ok = false;
+            }
+            return ok;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if(ValidarGuardar())
+            {
             PersonasBusiness personasBusiness = new PersonasBusiness();
             TelefonoBusiness telefonoBusiness = new TelefonoBusiness();
 
@@ -260,6 +293,12 @@ namespace Presentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+
+            }
+            else
+            {
+                MessageBox.Show("Complete Datos minimos");
             }
         }
 
@@ -319,21 +358,66 @@ namespace Presentacion
             this.Close();
         }
 
-       
         private void txtNombre_Validating(object sender, CancelEventArgs e)
         {
-            
-            //string texto;
             if (txtNombre.Text == "")
             {
-               errorProvider2.SetError(txtNombre, "Ingrese Nombre");
+               ePerror.SetError(txtNombre, "Ingrese Nombre");
             }
             else
             {
-                errorProvider2.SetError(txtNombre, "");
+                ePerror.SetError(txtNombre, "");
+            }
+        }
+
+        private void txtApellido_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtApellido.Text == "")
+            {
+                ePerror.SetError(txtApellido, "Ingrese Apellido");
+            }
+            else
+            {
+                ePerror.SetError(txtApellido, "");
             }
 
+        }
 
+        private void txtDni_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtDni.Text == "")
+            {
+                ePerror.SetError(txtDni, "Ingrese DNI");
+            }
+            else
+            {
+                ePerror.SetError(txtDni, "");
+            }
+        }
+
+        private void dtpFechaNac_Validating(object sender, CancelEventArgs e)
+        {
+            if (dtpFechaNac.Value == DateTime.Today)
+            {
+                ePerror.SetError(dtpFechaNac, "Ingrese Fecha Nacimento");
+            }
+            else
+            {
+                ePerror.SetError(dtpFechaNac, "");
+            }
+
+        }
+
+        private void txtMail_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtMail.Text == "")
+            {
+                ePerror.SetError(txtMail, "Ingrese Mail");
+            }
+            else
+            {
+                ePerror.SetError(txtMail, "");
+            }
         }
     }
 }

@@ -4,11 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C3617D7E-48F4-4C5B-AA76-336635EE4C9D}</ProjectGuid>
+    <ProjectGuid>{B7FAE995-4868-4E21-BC29-C5C12D871FB5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Negocio</RootNamespace>
-    <AssemblyName>Negocio</AssemblyName>
+    <RootNamespace>WindowsFormsControlLibrary1</RootNamespace>
+    <AssemblyName>WindowsFormsControlLibrary1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,41 +31,24 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccesoDatos.cs" />
-    <Compile Include="AnioLectivoBusiness.cs" />
-    <Compile Include="AulaBusiness.cs" />
-    <Compile Include="CalendarioBusiness.cs" />
-    <Compile Include="ComisionBusiness.cs" />
-    <Compile Include="CursoBusiness.cs" />
-    <Compile Include="DiasBusiness.cs" />
-    <Compile Include="EmpleadoBusiness.cs" />
-    <Compile Include="HorarioBusiness.cs" />
-    <Compile Include="LoginBusiness.cs" />
-    <Compile Include="PersonasBusiness.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RolBusinness.cs" />
-    <Compile Include="TelefonoBusiness.cs" />
-    <Compile Include="TextBoxValida.cs">
-      <SubType>Component</SubType>
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TipoTelefonoBusiness.cs" />
-    <Compile Include="UsuarioBusiness.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dominio\Dominio.csproj">
-      <Project>{8e3d0b6b-c913-421c-93af-f45b38cdac70}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

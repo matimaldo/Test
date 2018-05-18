@@ -47,7 +47,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.txtDni = new System.Windows.Forms.TextBox();
+            this.txtDni = new Negocio.TextBoxValida();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.lblTipoTelefono = new System.Windows.Forms.Label();
@@ -64,11 +64,11 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnPrimero = new System.Windows.Forms.Button();
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ePerror = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbSexo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.gbTelefono.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ePerror)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNombre
@@ -230,6 +230,7 @@
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
             this.txtApellido.TabIndex = 1;
             this.txtApellido.Visible = false;
+            this.txtApellido.Validating += new System.ComponentModel.CancelEventHandler(this.txtApellido_Validating);
             // 
             // txtDni
             // 
@@ -237,7 +238,9 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(100, 20);
             this.txtDni.TabIndex = 2;
+            this.txtDni.TextboxEstado = Negocio.TextBoxValida.Estados.Solo_numeros;
             this.txtDni.Visible = false;
+            this.txtDni.Validating += new System.ComponentModel.CancelEventHandler(this.txtDni_Validating);
             // 
             // dtpFechaNac
             // 
@@ -247,6 +250,7 @@
             this.dtpFechaNac.Size = new System.Drawing.Size(100, 20);
             this.dtpFechaNac.TabIndex = 3;
             this.dtpFechaNac.Visible = false;
+            this.dtpFechaNac.Validating += new System.ComponentModel.CancelEventHandler(this.dtpFechaNac_Validating);
             // 
             // txtMail
             // 
@@ -255,6 +259,7 @@
             this.txtMail.Size = new System.Drawing.Size(100, 20);
             this.txtMail.TabIndex = 4;
             this.txtMail.Visible = false;
+            this.txtMail.Validating += new System.ComponentModel.CancelEventHandler(this.txtMail_Validating);
             // 
             // lblTipoTelefono
             // 
@@ -402,9 +407,10 @@
             this.btnPrimero.UseVisualStyleBackColor = true;
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
-            // errorProvider2
+            // ePerror
             // 
-            this.errorProvider2.ContainerControl = this;
+            this.ePerror.ContainerControl = this;
+            this.ePerror.Icon = ((System.Drawing.Icon)(resources.GetObject("ePerror.Icon")));
             // 
             // frmAlumnos
             // 
@@ -449,7 +455,7 @@
             this.menuStrip1.PerformLayout();
             this.gbTelefono.ResumeLayout(false);
             this.gbTelefono.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ePerror)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,7 +478,7 @@
         private System.Windows.Forms.Label lblNumero;
         public System.Windows.Forms.TextBox txtNombre;
         public System.Windows.Forms.TextBox txtApellido;
-        public System.Windows.Forms.TextBox txtDni;
+        private Negocio.TextBoxValida txtDni;
         public System.Windows.Forms.DateTimePicker dtpFechaNac;
         public System.Windows.Forms.TextBox txtMail;
         public System.Windows.Forms.TextBox txtNumero;
@@ -491,6 +497,6 @@
         public System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Button btnUltimo;
         private System.Windows.Forms.Button btnPrimero;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider ePerror;
     }
 }
