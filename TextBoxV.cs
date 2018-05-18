@@ -1,6 +1,8 @@
-
-
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 public class : TextBox
@@ -16,7 +18,7 @@ public class : TextBox
    	else if (TextboxEstado == Estados.Defecto)
      		e.Handled = !solo_letras(e.KeyChar);
      	else (TextboxEstado == Estados.Defecto)
-  		e.Handled = !solo_numeros(e.KeyChar);
+  		  e.Handled = !solo_numeros(e.KeyChar);
   };
     
   private Boolean solo_numeros(char caracter)
@@ -40,7 +42,6 @@ public class : TextBox
    	Defecto,
    	Solo_numeros,
    	Solo_letras,
-  } 
-  
-}
+  };
+};
     
