@@ -63,8 +63,8 @@ GO
 
 CREATE TABLE Horarios (
 Id_Horario INT PRIMARY KEY IDENTITY (1,1),
-Horario_Desde DATETIME,
-Horario_Hasta DATETIME
+Horario_Desde DATETIME UNIQUE,
+Horario_Hasta DATETIME UNIQUE
 );
 
 GO
