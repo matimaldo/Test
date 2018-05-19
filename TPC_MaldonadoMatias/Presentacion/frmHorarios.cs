@@ -15,160 +15,149 @@ namespace Presentacion
 {
     public partial class frmHorarios : Form
     {
+        HorarioBusiness horarioBusiness = new HorarioBusiness();
+        Horario horario = new Horario();
+
         public frmHorarios()
         {
             InitializeComponent();
         }
 
-        HorarioBusiness horarioBusiness = new HorarioBusiness();
-        Horario horario = new Horario();
-
         private void frmHorarios_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 24; i++)
-            {
-                if(i<10)
-                {
-                    cboDesdeHora.Items.Add("0" + i);
-                    //cboHastaHora.Items.Add("0" + i);
-                }
-                else
-                {
-                    cboDesdeHora.Items.Add(i);
-                    //cboHastaHora.Items.Add(i);
-                }
-            }
-            for (int i = 0; i < 51; i += 5)
+            for (int i = 0; i < 22; i++)
             {
                 if (i < 10)
                 {
-                    cboDesdeMinuto.Items.Add("0" + i);
+                    cboDesdeHora.Items.Add("0" + i + ":00");
                 }
                 else
                 {
-                    cboDesdeMinuto.Items.Add(i);
+                    cboDesdeHora.Items.Add(i + ":00");
                 }
             }
-
             cboDesdeHora.SelectedIndex = 0;
             cboHastaHora.SelectedIndex = 0;
-            cboDesdeMinuto.SelectedIndex = 0;
-            cboHastaMinuto.SelectedIndex = 0;
 
-            lbHorarios.DataSource = horarioBusiness.listar();
+            lbHorario.DataSource = horarioBusiness.listar();
+            lbHorario.SelectedIndex = -1;
+
         }
 
         private void cboDesdeHora_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboHastaHora.Items.Clear();
+            int hora = DateTime.Parse(cboDesdeHora.SelectedItem.ToString()).Hour+1;
 
-            for (int i = Convert.ToInt32(cboDesdeHora.SelectedItem); i < 24; i++)
+            //for (int i = hora + 1; i < 24; i++)
+            //{
+            if (hora < 10)
             {
-                if (i < 10)
-                {
-                    //cboDesdeHora.Items.Add("0" + i);
-                    cboHastaHora.Items.Add("0" + i);
-                }
-                else
-                {
-                    //cboDesdeHora.Items.Add(i);
-                    cboHastaHora.Items.Add(i);
-                }
+                cboHastaHora.Items.Add("0"+ hora +":00");
             }
+            else
+            {
+                cboHastaHora.Items.Add(hora +":00");
+            }
+            //}
             cboHastaHora.SelectedIndex = 0;
         }
 
-        private void cboHastaHora_SelectedIndexChanged(object sender, EventArgs e)
+        public bool validar(DateTime horaDesde)
         {
-            cboHastaMinuto.Items.Clear();
-            int x = 0;
-            
-            if (cboDesdeHora.SelectedItem.ToString().CompareTo(cboHastaHora.SelectedItem.ToString()) == 0)
+            foreach (Horario item in horarioBusiness.listar())
             {
-                x = Convert.ToInt32(cboDesdeMinuto.SelectedItem)+5;
+                if (horaDesde == item.Desde)
+                    return false;
             }
-
-
-            for ( int i = x; i < 56; i += 5)
-            {
-                if (i < 10)
-                {
-                    cboHastaMinuto.Items.Add("0" + i);
-                }
-                else
-                {
-                    cboHastaMinuto.Items.Add(i);
-                }
-            }
-            cboHastaMinuto.SelectedIndex = 0;
-        }
-
-        private void cboDesdeMinuto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int x = 0;
-
-            if (cboDesdeHora.SelectedItem.ToString().CompareTo(cboHastaHora.SelectedItem.ToString()) == 0)
-            {
-                x = Convert.ToInt32(cboDesdeMinuto.SelectedItem) + 5;
-
-                cboHastaMinuto.Items.Clear();
-
-                for (int i = x; i < 56; i += 5)
-                {
-                    if (i < 10)
-                    {
-                        cboHastaMinuto.Items.Add("0" + i);
-                    }
-                    else
-                    {
-                        cboHastaMinuto.Items.Add(i);
-                    }
-                }
-                cboHastaMinuto.SelectedIndex = 0;
-            }
+            return true;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
 
-            int dh = Convert.ToInt32(cboDesdeHora.SelectedItem);
-            int dm = Convert.ToInt32(cboDesdeMinuto.SelectedItem);
-            int hh = Convert.ToInt32(cboHastaHora.SelectedItem);
-            int hm = Convert.ToInt32(cboHastaMinuto.SelectedItem);
+            horario.Desde = new DateTime(1990, 01, 01, DateTime.Parse(cboDesdeHora.SelectedItem.ToString()).Hour, 0, 0);
+            horario.Hasta = new DateTime(1990, 01, 01, DateTime.Parse(cboHastaHora.SelectedItem.ToString()).Hour, 0, 0);
 
-            horario.Desde = new DateTime(1990, 01, 01, dh, dm, 0);
-            horario.Hasta = new DateTime(1990, 01, 01, hh, hm, 0);
+            if (validar(horario.Desde))
+                horarioBusiness.agregar(horario);
+            else
+                MessageBox.Show("Este Horario ya existe!");
 
-            horarioBusiness.agregar(horario);
-
-            lbHorarios.DataSource = horarioBusiness.listar();
-
+            lbHorario.DataSource = horarioBusiness.listar();
+            lbHorario.SelectedIndex = -1;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
+            if (lbHorario.SelectedIndex != -1)
             {
-                horario = (Horario)lbHorarios.SelectedItem;
+                try
+                {
+                    horario = (Horario)lbHorario.SelectedItem;
 
-                horarioBusiness.eliminar(horario);
+                    horarioBusiness.eliminar(horario);
 
-                lbHorarios.DataSource = horarioBusiness.listar();
+                    lbHorario.DataSource = horarioBusiness.listar();
+                    lbHorario.SelectedIndex = -1;
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 547)
+                        MessageBox.Show("No se puede eliminar porque esta siendo utilizado!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 547)
-                    MessageBox.Show("No se puede eliminar porque esta siendo utilizado!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            else
+                MessageBox.Show("Selecciones un Horario");
         }
 
         private void btnCerrrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            habilitar();
+        }
+
+        public void habilitar()
+        {
+            lblDesde.Visible = true;
+            lblHasta.Visible = true;
+            cboDesdeHora.Visible = true;
+            cboHastaHora.Visible = true;
+            btnAgregar.Visible = true;
+            btnEliminar.Visible = true;
+            lbHorario.Location = new System.Drawing.Point(205, 44);
+            lbHorario.Size = new System.Drawing.Size(89, 121);
+            btnCancelar.Visible = true;
+
+            lbHorario.DataSource = horarioBusiness.listar();
+            lbHorario.SelectedIndex = -1;
+
+        }
+
+        public void deshabilitar()
+        {
+            lblDesde.Visible = false;
+            lblHasta.Visible = false;
+            cboDesdeHora.Visible = false;
+            cboHastaHora.Visible = false;
+            btnAgregar.Visible = false;
+            btnEliminar.Visible = false;
+            lbHorario.Location = new System.Drawing.Point(20, 44);
+            lbHorario.Size = new System.Drawing.Size(278, 121);
+            btnCancelar.Visible = false;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            deshabilitar();
         }
     }
 }

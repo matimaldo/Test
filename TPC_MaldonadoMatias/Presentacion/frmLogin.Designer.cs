@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.btnIngresar = new System.Windows.Forms.Button();
             this.tbUsuario = new System.Windows.Forms.TextBox();
@@ -37,6 +38,7 @@
             this.imgIdent = new System.Windows.Forms.PictureBox();
             this.imgIcono = new System.Windows.Forms.PictureBox();
             this.lblMensaje = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgIdent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgIcono)).BeginInit();
             this.SuspendLayout();
@@ -116,6 +118,10 @@
             this.lblMensaje.Text = "Usuario y/o Contraña Incorrecta";
             this.lblMensaje.Visible = false;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,7 +143,6 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.imgIdent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgIcono)).EndInit();
@@ -156,5 +161,6 @@
         private System.Windows.Forms.PictureBox imgIcono;
         private System.Windows.Forms.PictureBox imgIdent;
         private System.Windows.Forms.Label lblMensaje;
+        private System.Windows.Forms.Timer timer1;
     }
 }

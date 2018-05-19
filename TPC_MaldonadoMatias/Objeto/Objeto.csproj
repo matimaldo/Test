@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C3617D7E-48F4-4C5B-AA76-336635EE4C9D}</ProjectGuid>
+    <ProjectGuid>{6259BED8-1F04-4124-B82E-881392986483}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Negocio</RootNamespace>
-    <AssemblyName>Negocio</AssemblyName>
+    <RootNamespace>Objeto</RootNamespace>
+    <AssemblyName>Objeto</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,34 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccesoDatos.cs" />
-    <Compile Include="AnioLectivoBusiness.cs" />
-    <Compile Include="AulaBusiness.cs" />
-    <Compile Include="CalendarioBusiness.cs" />
-    <Compile Include="ComisionBusiness.cs" />
-    <Compile Include="CursoBusiness.cs" />
-    <Compile Include="DiasBusiness.cs" />
-    <Compile Include="EmpleadoBusiness.cs" />
-    <Compile Include="HorarioBusiness.cs" />
-    <Compile Include="LoginBusiness.cs" />
     <Compile Include="MListBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PersonasBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RolBusinness.cs" />
-    <Compile Include="TelefonoBusiness.cs" />
-    <Compile Include="TipoTelefonoBusiness.cs" />
-    <Compile Include="UsuarioBusiness.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dominio\Dominio.csproj">
-      <Project>{8e3d0b6b-c913-421c-93af-f45b38cdac70}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,189 @@
+USE master
+
+CREATE DATABASE MALDONADO2_DB
+
+GO 
+
+USE MALDONADO2_DB
+
+GO 
+
+CREATE TABLE Personas (
+Id_Persona INT PRIMARY KEY IDENTITY (1,1),
+Nombre VARCHAR(30) NOT NULL,
+Apellido VARCHAR(30) NOT NULL,
+Dni VARCHAR(10) NOT NULL UNIQUE,
+FechaNac DATETIME NOT NULL,
+Sexo VARCHAR(1) NOT NULL CHECK (SEXO='M' OR SEXO ='F'),
+Mail VARCHAR(50),
+Estado bit
+);
+
+GO 
+
+CREATE TABLE TipoTelefonos (
+Id_TipoTel INT PRIMARY KEY IDENTITY (1,1),
+NM_Tipo VARCHAR(30) NOT NULL UNIQUE,
+);
+
+GO 
+
+CREATE TABLE Telefonos (
+Id_Telefono INT PRIMARY KEY IDENTITY (1,1),
+Id_Persona INT FOREIGN KEY REFERENCES Personas(Id_Persona),
+Id_TipoTel INT FOREIGN KEY REFERENCES TipoTelefonos(Id_TipoTel),
+Numero VARCHAR(15),
+Contacto VARCHAR(30)
+);
+
+GO
+
+CREATE TABLE Roles (
+Id_Rol INT PRIMARY KEY IDENTITY (1,1),
+NM_Rol VARCHAR(20) NOT NULL UNIQUE
+);
+
+GO
+
+CREATE TABLE Usuarios (
+Id_Usuario INT PRIMARY KEY IDENTITY (1,1),
+Id_Persona INT NULL FOREIGN KEY REFERENCES Personas (Id_Persona),
+Usuario VARCHAR(10) NOT NULL UNIQUE,
+Clave VARCHAR(10) NOT NULL,	
+);
+
+GO
+
+CREATE TABLE AnioLectivo (
+Id_Anio INT PRIMARY KEY IDENTITY (1,1),
+Anio INT NOT NULL UNIQUE
+);
+
+GO
+
+CREATE TABLE Horarios (
+Id_Horario INT PRIMARY KEY IDENTITY (1,1),
+Horario_Desde DATETIME,
+Horario_Hasta DATETIME
+);
+
+GO
+
+CREATE TABLE Dias (
+Id_Dia INT PRIMARY KEY IDENTITY (1,1),
+NM_Dia VARCHAR(9) NOT NULL UNIQUE,
+);
+
+GO
+
+CREATE TABLE DiasXHorario (
+Id_Dia INT NOT NULL,
+Id_Horario INT NOT NULL,
+PRIMARY KEY (Id_Dia,Id_Horario)
+);
+
+
+GO
+
+CREATE TABLE Aulas (
+Id_Aula INT PRIMARY KEY IDENTITY (1,1),
+NM_Aula VARCHAR(30) NOT NULL UNIQUE,
+);
+
+GO
+
+CREATE TABLE Cursos (
+Id_Curso INT PRIMARY KEY IDENTITY (1,1),
+NM_Curso VARCHAR(30) NOT NULL UNIQUE,
+);
+
+GO
+
+CREATE TABLE Comisiones (
+Id_Comision INT PRIMARY KEY IDENTITY (1,1),
+NM_Comision VARCHAR(30) NOT NULL UNIQUE,
+);
+
+GO
+
+CREATE TABLE Cursadas (
+Id_Cursada INT PRIMARY KEY IDENTITY (1,1),
+Id_Curso INT FOREIGN KEY REFERENCES Cursos (Id_Curso),
+Id_Anio INT FOREIGN KEY REFERENCES AnioLectivo (Id_Anio),
+Id_Comision INT FOREIGN KEY REFERENCES Comisiones (Id_Comision),
+Id_Aula INT FOREIGN KEY REFERENCES Aulas (Id_Aula),
+Cant_Max INT NOT NULL,
+Estado BIT
+);
+
+GO
+
+CREATE TABLE CursadaXAlumnos (
+Id_Cursada INT FOREIGN KEY REFERENCES Cursadas (Id_Cursada),
+Id_Persona INT FOREIGN KEY REFERENCES Personas (Id_Persona),
+PRIMARY KEY (Id_Cursada,Id_Persona)
+);
+
+GO
+
+CREATE TABLE CursadaXDias (
+Id_Cursada INT FOREIGN KEY REFERENCES Cursadas (Id_Cursada),
+Id_Dia INT FOREIGN KEY REFERENCES Dias (Id_Dia),
+Id_Horario INT FOREIGN KEY REFERENCES Horarios (Id_Horario),
+PRIMARY KEY (Id_Cursada,Id_Dia,Id_Horario)
+);
+
+GO
+
+CREATE TABLE Disponiblidad (
+Id_Dispo INT PRIMARY KEY IDENTITY (1,1),
+Id_Aula INT FOREIGN KEY REFERENCES Aulas (Id_Aula),
+Id_Dia INT FOREIGN KEY REFERENCES Dias (Id_Dia),
+Id_Horario INT FOREIGN KEY REFERENCES Horarios (Id_Horario),
+Id_Cursada INT NULL FOREIGN KEY REFERENCES Cursadas (Id_Cursada),
+UNIQUE (Id_Aula,Id_Dia,Id_Horario)
+);
+
+GO 
+
+CREATE TABLE TipoExamen (
+Id_TipoExa INT PRIMARY KEY IDENTITY (1,1),
+NM_Tipo VARCHAR(30) NOT NULL UNIQUE,
+);
+
+GO 
+
+CREATE TABLE Examen (
+Id_Examen INT PRIMARY KEY IDENTITY (1,1),
+NM_Examen VARCHAR(30) UNIQUE,
+Fecha DATETIME,
+Id_TipoExa INT FOREIGN KEY REFERENCES TipoExamen (Id_TipoExa),
+Id_Cursada INT FOREIGN KEY REFERENCES Cursadas (Id_Cursada)
+);
+
+GO
+
+CREATE TABLE ExamenXAlumno (
+Id_Examen INT FOREIGN KEY REFERENCES Examen (Id_Examen),
+Id_Persona INT FOREIGN KEY REFERENCES Personas (Id_Persona),
+Nota DECIMAL (4,2),
+PRIMARY KEY (Id_Examen,Id_Persona)
+);
+
+GO
+
+CREATE TABLE Avisos (
+Id_Aviso INT PRIMARY KEY IDENTITY (1,1),
+Fecha DATETIME,
+Id_Usuario INT FOREIGN KEY REFERENCES Usuarios (Id_Usuario),
+Asunto VARCHAR(100),
+Detalle VARCHAR(500),
+);
+
+
+
+CREATE TABLE RolxPersona(
+Id_Persona INT FOREIGN KEY REFERENCES Personas (Id_Persona),
+Id_Rol INT FOREIGN KEY REFERENCES Roles (Id_Rol) 
+UNIQUE(Id_Persona,Id_Rol)
+);

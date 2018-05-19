@@ -45,15 +45,15 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbxActivo = new System.Windows.Forms.CheckBox();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.txtNombre = new Negocio.TextBoxValida();
-            this.txtApellido = new Negocio.TextBoxValida();
-            this.txtDni = new Negocio.TextBoxValida();
+            this.txtNombre = new Negocio.MTextBox();
+            this.txtApellido = new Negocio.MTextBox();
+            this.txtDni = new Negocio.MTextBox();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
-            this.txtMail = new Negocio.TextBoxValida();
+            this.txtMail = new Negocio.MTextBox();
             this.lblTipoTelefono = new System.Windows.Forms.Label();
             this.cboTipoTelefono = new System.Windows.Forms.ComboBox();
-            this.txtNumero = new Negocio.TextBoxValida();
-            this.txtContacto = new Negocio.TextBoxValida();
+            this.txtNumero = new Negocio.MTextBox();
+            this.txtContacto = new Negocio.MTextBox();
             this.gbTelefono = new System.Windows.Forms.GroupBox();
             this.lblContacto = new System.Windows.Forms.Label();
             this.lblNumero = new System.Windows.Forms.Label();
@@ -220,9 +220,8 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 0;
-            this.txtNombre.TextboxEstado = Negocio.TextBoxValida.Estados.Solo_letras;
+            this.txtNombre.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
             this.txtNombre.Visible = false;
-            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // txtApellido
             // 
@@ -230,9 +229,8 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
             this.txtApellido.TabIndex = 1;
-            this.txtApellido.TextboxEstado = Negocio.TextBoxValida.Estados.Solo_letras;
+            this.txtApellido.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
             this.txtApellido.Visible = false;
-            this.txtApellido.Validating += new System.ComponentModel.CancelEventHandler(this.txtApellido_Validating);
             // 
             // txtDni
             // 
@@ -240,9 +238,8 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(100, 20);
             this.txtDni.TabIndex = 2;
-            this.txtDni.TextboxEstado = Negocio.TextBoxValida.Estados.Solo_numeros;
+            this.txtDni.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
             this.txtDni.Visible = false;
-            this.txtDni.Validating += new System.ComponentModel.CancelEventHandler(this.txtDni_Validating);
             // 
             // dtpFechaNac
             // 
@@ -252,7 +249,6 @@
             this.dtpFechaNac.Size = new System.Drawing.Size(100, 20);
             this.dtpFechaNac.TabIndex = 3;
             this.dtpFechaNac.Visible = false;
-            this.dtpFechaNac.Validating += new System.ComponentModel.CancelEventHandler(this.dtpFechaNac_Validating);
             // 
             // txtMail
             // 
@@ -260,9 +256,8 @@
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(100, 20);
             this.txtMail.TabIndex = 4;
-            this.txtMail.TextboxEstado = Negocio.TextBoxValida.Estados.Defecto;
+            this.txtMail.TextboxEstado = Negocio.MTextBox.Estados.Defecto;
             this.txtMail.Visible = false;
-            this.txtMail.Validating += new System.ComponentModel.CancelEventHandler(this.txtMail_Validating);
             // 
             // lblTipoTelefono
             // 
@@ -289,7 +284,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(100, 20);
             this.txtNumero.TabIndex = 7;
-            this.txtNumero.TextboxEstado = Negocio.TextBoxValida.Estados.Solo_numeros;
+            this.txtNumero.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
             this.txtNumero.Visible = false;
             // 
             // txtContacto
@@ -298,7 +293,7 @@
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(100, 20);
             this.txtContacto.TabIndex = 8;
-            this.txtContacto.TextboxEstado = Negocio.TextBoxValida.Estados.Solo_letras;
+            this.txtContacto.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
             this.txtContacto.Visible = false;
             // 
             // gbTelefono
@@ -481,17 +476,17 @@
         private System.Windows.Forms.GroupBox gbTelefono;
         private System.Windows.Forms.Label lblContacto;
         private System.Windows.Forms.Label lblNumero;
-        public Negocio.TextBoxValida txtNombre;
-        public Negocio.TextBoxValida txtApellido;
-        private Negocio.TextBoxValida txtDni;
+        public Negocio.MTextBox txtNombre;
+        public Negocio.MTextBox txtApellido;
+        private Negocio.MTextBox txtDni;
         public System.Windows.Forms.DateTimePicker dtpFechaNac;
-        public Negocio.TextBoxValida txtMail;
-        public Negocio.TextBoxValida txtNumero;
+        public Negocio.MTextBox txtMail;
+        public Negocio.MTextBox txtNumero;
         public System.Windows.Forms.Button btnGuardar;
         public System.Windows.Forms.RadioButton rbtnMujer;
         public System.Windows.Forms.RadioButton rbtnHombre;
         public System.Windows.Forms.ComboBox cboTipoTelefono;
-        public Negocio.TextBoxValida txtContacto;
+        public Negocio.MTextBox txtContacto;
         public System.Windows.Forms.CheckBox cbxActivo;
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Button btnAnterior;

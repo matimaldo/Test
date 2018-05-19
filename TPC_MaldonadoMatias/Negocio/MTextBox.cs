@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Negocio
 {
-    public class TextBoxValida : TextBox
+    public class MTextBox : TextBox
     {
         private Estados estadotextbox = Estados.Defecto;
 
@@ -23,8 +23,6 @@ namespace Negocio
             }
         }
 
-        //public Estados TextboxEstado { get; set; }
-
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             if (TextboxEstado == Estados.Defecto)
@@ -38,27 +36,32 @@ namespace Negocio
         private Boolean solo_letras(char caracter)
         {
             if ((char.IsLetter(caracter) || char.IsControl(caracter) || char.IsSeparator(caracter)))
-
-                 { return true; }
+            {
+                return true;
+            }
             else
-            { return false; }
+            {
+                return false;
+            }
         }
 
         private Boolean solo_numeros(char caracter)
         {
             if ((char.IsDigit(caracter) || char.IsControl(caracter)))
-
-                 { return true; }
+            {
+                return true;
+            }
             else
-            { return false; }
+            {
+                return false;
+            }
         }
-
+        
         public enum Estados
         {
             Defecto,
             Solo_numeros,
             Solo_letras,
-        };
-
+        }
     }
 }

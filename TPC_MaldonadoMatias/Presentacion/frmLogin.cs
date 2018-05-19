@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Negocio;
 using System.Threading;
 
+
 namespace Presentacion
 {
     public partial class frmLogin : Form
@@ -19,8 +20,12 @@ namespace Presentacion
             InitializeComponent();
         }
 
+
         LoginBusiness loginBusiness = new LoginBusiness();
         bool ok = false;
+
+        int conteo;
+
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -29,8 +34,18 @@ namespace Presentacion
                 ok = true;
                 lblMensaje.Visible = false;
                 imgIdent.Image = global::Presentacion.Properties.Resources.Img_IdentificacionSI;
+
+
+                //timer1.Enabled = true;
+                timer1.Start();
+
+                //Thread.Sleep(2000);
+                //this.Close();
+
+                //Task.Delay(1000);
+                //WaitSeconds(12);
+
                 
-                this.Close();
             }
             else
             {
@@ -48,9 +63,15 @@ namespace Presentacion
             }
         }
 
-        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
-           // Thread.Sleep(2000);
+            conteo++;
+
+            if(conteo == 6)
+            {
+                this.Close();
+            }
         }
     }
 }

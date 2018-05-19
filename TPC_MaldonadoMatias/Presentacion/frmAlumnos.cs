@@ -174,26 +174,6 @@ namespace Presentacion
 
         }
 
-        //public bool validar()
-        //{
-        //    //bool preguntar = false;
-        //    if (alumno.Nombre.CompareTo(txtNombre.Text) == -1) return true;
-        //    if (alumno.Apellido.CompareTo(txtApellido.Text) == -1) return true;
-        //    if (alumno.Dni.CompareTo(txtDni.Text) == -1) return true;            
-
-        //    //alumno.FechaNac.CompareTo(dtpFechaNac.Text);
-        //    alumno.Mail.CompareTo(txtMail.Text);
-        //    //alumno.Telefono.IdTelefono.CompareTo(txtNombre.Text);
-        //    //alumno.Telefono.Numero.CompareTo(txtNumero.Text);
-        //    //alumno.Telefono.Contacto.CompareTo(txtContacto.Text);
-        //    //alumno.Sexo.CompareTo(txtNombre.Text);
-        //    alumno.Estado.CompareTo(cbxActivo.Checked);
-
-        //    //  alumno.Telefono.TipoTelefono.IdTipoTelefono.CompareTo((TipoTelefono)cboTipoTelefono.SelectedItem)
-
-        //    return false;
-        //}
-
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             habilitar();
@@ -209,7 +189,7 @@ namespace Presentacion
             frm.ShowDialog();
         }
 
-        public bool ValidarGuardar()
+        public bool Validar()
         {
             bool ok = true;
             if (txtNombre.Text == "")
@@ -229,7 +209,7 @@ namespace Presentacion
             }
             if (dtpFechaNac.Value == DateTime.Today)
             {
-                ePerror.SetError(dtpFechaNac, "Ingrese Fecha Nacimento");
+                ePerror.SetError(dtpFechaNac, "Ingrese Fecha Nacimento (Distinta a Fecha_HOY)");
                 ok = false;
             }
             if (txtMail.Text == "")
@@ -242,7 +222,7 @@ namespace Presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(ValidarGuardar())
+            if(Validar())
             {
             PersonasBusiness personasBusiness = new PersonasBusiness();
             TelefonoBusiness telefonoBusiness = new TelefonoBusiness();
@@ -358,66 +338,5 @@ namespace Presentacion
             this.Close();
         }
 
-        private void txtNombre_Validating(object sender, CancelEventArgs e)
-        {
-            if (txtNombre.Text == "")
-            {
-               ePerror.SetError(txtNombre, "Ingrese Nombre");
-            }
-            else
-            {
-                ePerror.SetError(txtNombre, "");
-            }
-        }
-
-        private void txtApellido_Validating(object sender, CancelEventArgs e)
-        {
-            if (txtApellido.Text == "")
-            {
-                ePerror.SetError(txtApellido, "Ingrese Apellido");
-            }
-            else
-            {
-                ePerror.SetError(txtApellido, "");
-            }
-
-        }
-
-        private void txtDni_Validating(object sender, CancelEventArgs e)
-        {
-            if (txtDni.Text == "")
-            {
-                ePerror.SetError(txtDni, "Ingrese DNI");
-            }
-            else
-            {
-                ePerror.SetError(txtDni, "");
-            }
-        }
-
-        private void dtpFechaNac_Validating(object sender, CancelEventArgs e)
-        {
-            if (dtpFechaNac.Value == DateTime.Today)
-            {
-                ePerror.SetError(dtpFechaNac, "Ingrese Fecha Nacimento");
-            }
-            else
-            {
-                ePerror.SetError(dtpFechaNac, "");
-            }
-
-        }
-
-        private void txtMail_Validating(object sender, CancelEventArgs e)
-        {
-            if (txtMail.Text == "")
-            {
-                ePerror.SetError(txtMail, "Ingrese Mail");
-            }
-            else
-            {
-                ePerror.SetError(txtMail, "");
-            }
-        }
     }
 }

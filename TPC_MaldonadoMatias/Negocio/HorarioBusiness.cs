@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Negocio
 {
@@ -59,7 +60,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
