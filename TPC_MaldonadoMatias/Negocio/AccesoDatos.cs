@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.Sql;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Negocio
 {
@@ -13,6 +16,8 @@ namespace Negocio
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
+        private SqlDataAdapter da;
+        private DataTable dt;
 
         public SqlDataReader Lector
         {
@@ -88,6 +93,26 @@ namespace Negocio
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        public DataTable agragarDataGridView(string consulta)
+        {
+            try
+            {
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.CommandText = consulta;
+
+                da = new SqlDataAdapter(comando);
+                dt = new DataTable();
+                conexion.Open();
+
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            { 
                 throw ex;
             }
         }

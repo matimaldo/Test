@@ -45,15 +45,9 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbxActivo = new System.Windows.Forms.CheckBox();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.txtNombre = new Negocio.MTextBox();
-            this.txtApellido = new Negocio.MTextBox();
-            this.txtDni = new Negocio.MTextBox();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
-            this.txtMail = new Negocio.MTextBox();
             this.lblTipoTelefono = new System.Windows.Forms.Label();
             this.cboTipoTelefono = new System.Windows.Forms.ComboBox();
-            this.txtNumero = new Negocio.MTextBox();
-            this.txtContacto = new Negocio.MTextBox();
             this.gbTelefono = new System.Windows.Forms.GroupBox();
             this.lblContacto = new System.Windows.Forms.Label();
             this.lblNumero = new System.Windows.Forms.Label();
@@ -65,6 +59,12 @@
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnPrimero = new System.Windows.Forms.Button();
             this.ePerror = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtContacto = new Negocio.MTextBox();
+            this.txtNumero = new Negocio.MTextBox();
+            this.txtMail = new Negocio.MTextBox();
+            this.txtDni = new Negocio.MTextBox();
+            this.txtApellido = new Negocio.MTextBox();
+            this.txtNombre = new Negocio.MTextBox();
             this.gbSexo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.gbTelefono.SuspendLayout();
@@ -214,33 +214,6 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(155, 52);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
-            this.txtNombre.TabIndex = 0;
-            this.txtNombre.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
-            this.txtNombre.Visible = false;
-            // 
-            // txtApellido
-            // 
-            this.txtApellido.Location = new System.Drawing.Point(155, 80);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(100, 20);
-            this.txtApellido.TabIndex = 1;
-            this.txtApellido.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
-            this.txtApellido.Visible = false;
-            // 
-            // txtDni
-            // 
-            this.txtDni.Location = new System.Drawing.Point(155, 108);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(100, 20);
-            this.txtDni.TabIndex = 2;
-            this.txtDni.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
-            this.txtDni.Visible = false;
-            // 
             // dtpFechaNac
             // 
             this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -249,15 +222,6 @@
             this.dtpFechaNac.Size = new System.Drawing.Size(100, 20);
             this.dtpFechaNac.TabIndex = 3;
             this.dtpFechaNac.Visible = false;
-            // 
-            // txtMail
-            // 
-            this.txtMail.Location = new System.Drawing.Point(155, 163);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(100, 20);
-            this.txtMail.TabIndex = 4;
-            this.txtMail.TextboxEstado = Negocio.MTextBox.Estados.Defecto;
-            this.txtMail.Visible = false;
             // 
             // lblTipoTelefono
             // 
@@ -277,24 +241,6 @@
             this.cboTipoTelefono.Size = new System.Drawing.Size(100, 21);
             this.cboTipoTelefono.TabIndex = 6;
             this.cboTipoTelefono.Visible = false;
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(94, 42);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(100, 20);
-            this.txtNumero.TabIndex = 7;
-            this.txtNumero.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
-            this.txtNumero.Visible = false;
-            // 
-            // txtContacto
-            // 
-            this.txtContacto.Location = new System.Drawing.Point(94, 68);
-            this.txtContacto.Name = "txtContacto";
-            this.txtContacto.Size = new System.Drawing.Size(100, 20);
-            this.txtContacto.TabIndex = 8;
-            this.txtContacto.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
-            this.txtContacto.Visible = false;
             // 
             // gbTelefono
             // 
@@ -411,6 +357,60 @@
             // 
             this.ePerror.ContainerControl = this;
             this.ePerror.Icon = ((System.Drawing.Icon)(resources.GetObject("ePerror.Icon")));
+            // 
+            // txtContacto
+            // 
+            this.txtContacto.Location = new System.Drawing.Point(94, 68);
+            this.txtContacto.Name = "txtContacto";
+            this.txtContacto.Size = new System.Drawing.Size(100, 20);
+            this.txtContacto.TabIndex = 8;
+            this.txtContacto.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
+            this.txtContacto.Visible = false;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(94, 42);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(100, 20);
+            this.txtNumero.TabIndex = 7;
+            this.txtNumero.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
+            this.txtNumero.Visible = false;
+            // 
+            // txtMail
+            // 
+            this.txtMail.Location = new System.Drawing.Point(155, 163);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(100, 20);
+            this.txtMail.TabIndex = 4;
+            this.txtMail.TextboxEstado = Negocio.MTextBox.Estados.Defecto;
+            this.txtMail.Visible = false;
+            // 
+            // txtDni
+            // 
+            this.txtDni.Location = new System.Drawing.Point(155, 108);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(100, 20);
+            this.txtDni.TabIndex = 2;
+            this.txtDni.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
+            this.txtDni.Visible = false;
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Location = new System.Drawing.Point(155, 80);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(100, 20);
+            this.txtApellido.TabIndex = 1;
+            this.txtApellido.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
+            this.txtApellido.Visible = false;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(155, 52);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 0;
+            this.txtNombre.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
+            this.txtNombre.Visible = false;
             // 
             // frmAlumnos
             // 

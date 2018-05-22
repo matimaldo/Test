@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using System.Data.SqlClient;
+using System.Data.Sql;
+using System.Data;
 
 namespace Negocio
 {
@@ -16,7 +18,7 @@ namespace Negocio
             IList<Horario> lista = new List<Horario>();
             AccesoDatos conexion = new AccesoDatos();
 
-            string consulta = "SELECT H.Id_Horario, H.Horario_Desde, H.Horario_Hasta FROM Horarios H LEFT JOIN (SELECT * FROM DiasXHorario WHERE Id_Dia = @Id_dia) AS DH ON H.Id_Horario = DH.Id_Horario WHERE DH.Id_Dia IS NULL";
+            string consulta = "SELECT H.Id_Horario, H.Horario_Desde, H.Horario_Hasta FROM Horarios H LEFT JOIN (SELECT * FROM DiasXHorario WHERE Id_Dia = @Id_dia) AS DH ON H.Id_Horario = DH.Id_Horario WHERE DH.Id_Dia IS NULL ORDER BY H.Horario_Desde";
             try
             {
                 conexion.borrarParametros();
@@ -52,7 +54,7 @@ namespace Negocio
             IList<Horario> lista = new List<Horario>();
             AccesoDatos conexion = new AccesoDatos();
 
-            string consulta = "SELECT H.Id_Horario, H.Horario_Desde, H.Horario_Hasta FROM Horarios H INNER JOIN (SELECT * FROM DiasXHorario WHERE Id_Dia = @Id_dia) AS DH ON H.Id_Horario = DH.Id_Horario";
+            string consulta = "SELECT H.Id_Horario, H.Horario_Desde, H.Horario_Hasta FROM Horarios H INNER JOIN (SELECT * FROM DiasXHorario WHERE Id_Dia = @Id_dia) AS DH ON H.Id_Horario = DH.Id_Horario ORDER BY H.Horario_Desde";
             try
             {
                 conexion.borrarParametros();
@@ -165,5 +167,26 @@ namespace Negocio
                 conexion.cerrarConexion();
             }
         }
+
+        public void agregarDgv(DataGridView dgv)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_PIVOT_Horarios";
+            try
+            {
+                dgv.DataSource = conexion.agragarDataGridView(consulta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
+
     }
 }

@@ -34,15 +34,21 @@
             this.btnJueves = new System.Windows.Forms.Button();
             this.btnViernes = new System.Windows.Forms.Button();
             this.btnSabado = new System.Windows.Forms.Button();
-            this.lbHorarios = new System.Windows.Forms.ListBox();
-            this.lbHorariosCargado = new System.Windows.Forms.ListBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnSacar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnSacarTodo = new System.Windows.Forms.Button();
-            this.btnDefecto = new System.Windows.Forms.Button();
             this.lblHorarios = new System.Windows.Forms.Label();
             this.lblDisponibilidad = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.dgvDiaxHorario = new System.Windows.Forms.DataGridView();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mlbHorarios = new Negocio.MListBox();
+            this.mlbHorariosCargado = new Negocio.MListBox();
+            this.btnVolver = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiaxHorario)).BeginInit();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLunes
@@ -54,12 +60,13 @@
             this.btnLunes.TabIndex = 0;
             this.btnLunes.Text = "Lunes";
             this.btnLunes.UseVisualStyleBackColor = false;
+            this.btnLunes.Visible = false;
             this.btnLunes.Click += new System.EventHandler(this.btnLunes_Click);
             // 
             // btnMartes
             // 
             this.btnMartes.BackColor = System.Drawing.Color.Transparent;
-            this.btnMartes.Location = new System.Drawing.Point(122, 30);
+            this.btnMartes.Location = new System.Drawing.Point(102, 30);
             this.btnMartes.Name = "btnMartes";
             this.btnMartes.Size = new System.Drawing.Size(75, 23);
             this.btnMartes.TabIndex = 1;
@@ -70,7 +77,7 @@
             // btnMiercoles
             // 
             this.btnMiercoles.BackColor = System.Drawing.Color.Transparent;
-            this.btnMiercoles.Location = new System.Drawing.Point(223, 30);
+            this.btnMiercoles.Location = new System.Drawing.Point(183, 30);
             this.btnMiercoles.Name = "btnMiercoles";
             this.btnMiercoles.Size = new System.Drawing.Size(75, 23);
             this.btnMiercoles.TabIndex = 2;
@@ -81,7 +88,7 @@
             // btnJueves
             // 
             this.btnJueves.BackColor = System.Drawing.Color.Transparent;
-            this.btnJueves.Location = new System.Drawing.Point(324, 30);
+            this.btnJueves.Location = new System.Drawing.Point(264, 30);
             this.btnJueves.Name = "btnJueves";
             this.btnJueves.Size = new System.Drawing.Size(75, 23);
             this.btnJueves.TabIndex = 3;
@@ -92,7 +99,7 @@
             // btnViernes
             // 
             this.btnViernes.BackColor = System.Drawing.Color.Transparent;
-            this.btnViernes.Location = new System.Drawing.Point(425, 30);
+            this.btnViernes.Location = new System.Drawing.Point(345, 30);
             this.btnViernes.Name = "btnViernes";
             this.btnViernes.Size = new System.Drawing.Size(75, 23);
             this.btnViernes.TabIndex = 4;
@@ -103,33 +110,18 @@
             // btnSabado
             // 
             this.btnSabado.BackColor = System.Drawing.Color.Transparent;
-            this.btnSabado.Location = new System.Drawing.Point(526, 30);
+            this.btnSabado.Location = new System.Drawing.Point(426, 30);
             this.btnSabado.Name = "btnSabado";
             this.btnSabado.Size = new System.Drawing.Size(75, 23);
             this.btnSabado.TabIndex = 5;
             this.btnSabado.Text = "Sabado";
             this.btnSabado.UseVisualStyleBackColor = false;
+            this.btnSabado.Visible = false;
             this.btnSabado.Click += new System.EventHandler(this.btnSabado_Click);
-            // 
-            // lbHorarios
-            // 
-            this.lbHorarios.FormattingEnabled = true;
-            this.lbHorarios.Location = new System.Drawing.Point(62, 90);
-            this.lbHorarios.Name = "lbHorarios";
-            this.lbHorarios.Size = new System.Drawing.Size(178, 251);
-            this.lbHorarios.TabIndex = 6;
-            // 
-            // lbHorariosCargado
-            // 
-            this.lbHorariosCargado.FormattingEnabled = true;
-            this.lbHorariosCargado.Location = new System.Drawing.Point(379, 90);
-            this.lbHorariosCargado.Name = "lbHorariosCargado";
-            this.lbHorariosCargado.Size = new System.Drawing.Size(178, 251);
-            this.lbHorariosCargado.TabIndex = 7;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(275, 148);
+            this.btnAgregar.Location = new System.Drawing.Point(220, 133);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 8;
@@ -139,7 +131,7 @@
             // 
             // btnSacar
             // 
-            this.btnSacar.Location = new System.Drawing.Point(275, 188);
+            this.btnSacar.Location = new System.Drawing.Point(220, 173);
             this.btnSacar.Name = "btnSacar";
             this.btnSacar.Size = new System.Drawing.Size(75, 23);
             this.btnSacar.TabIndex = 9;
@@ -149,7 +141,7 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(275, 357);
+            this.btnCerrar.Location = new System.Drawing.Point(211, 296);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 11;
@@ -159,7 +151,7 @@
             // 
             // btnSacarTodo
             // 
-            this.btnSacarTodo.Location = new System.Drawing.Point(275, 228);
+            this.btnSacarTodo.Location = new System.Drawing.Point(220, 213);
             this.btnSacarTodo.Name = "btnSacarTodo";
             this.btnSacarTodo.Size = new System.Drawing.Size(75, 23);
             this.btnSacarTodo.TabIndex = 13;
@@ -167,19 +159,10 @@
             this.btnSacarTodo.UseVisualStyleBackColor = true;
             this.btnSacarTodo.Click += new System.EventHandler(this.btnSacarTodo_Click);
             // 
-            // btnDefecto
-            // 
-            this.btnDefecto.Location = new System.Drawing.Point(275, 108);
-            this.btnDefecto.Name = "btnDefecto";
-            this.btnDefecto.Size = new System.Drawing.Size(75, 23);
-            this.btnDefecto.TabIndex = 12;
-            this.btnDefecto.Text = "Por Defecto";
-            this.btnDefecto.UseVisualStyleBackColor = true;
-            // 
             // lblHorarios
             // 
             this.lblHorarios.AutoSize = true;
-            this.lblHorarios.Location = new System.Drawing.Point(110, 65);
+            this.lblHorarios.Location = new System.Drawing.Point(96, 74);
             this.lblHorarios.Name = "lblHorarios";
             this.lblHorarios.Size = new System.Drawing.Size(84, 13);
             this.lblHorarios.TabIndex = 14;
@@ -188,39 +171,121 @@
             // lblDisponibilidad
             // 
             this.lblDisponibilidad.AutoSize = true;
-            this.lblDisponibilidad.Location = new System.Drawing.Point(435, 65);
+            this.lblDisponibilidad.Location = new System.Drawing.Point(346, 74);
             this.lblDisponibilidad.Name = "lblDisponibilidad";
             this.lblDisponibilidad.Size = new System.Drawing.Size(70, 13);
             this.lblDisponibilidad.TabIndex = 15;
             this.lblDisponibilidad.Text = "Disponiblidad";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 24);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(520, 24);
+            this.menuStrip1.TabIndex = 16;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // dgvDiaxHorario
+            // 
+            this.dgvDiaxHorario.AllowUserToAddRows = false;
+            this.dgvDiaxHorario.AllowUserToDeleteRows = false;
+            this.dgvDiaxHorario.AllowUserToResizeColumns = false;
+            this.dgvDiaxHorario.AllowUserToResizeRows = false;
+            this.dgvDiaxHorario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDiaxHorario.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvDiaxHorario.Location = new System.Drawing.Point(13, 25);
+            this.dgvDiaxHorario.MultiSelect = false;
+            this.dgvDiaxHorario.Name = "dgvDiaxHorario";
+            this.dgvDiaxHorario.ReadOnly = true;
+            this.dgvDiaxHorario.RowHeadersVisible = false;
+            this.dgvDiaxHorario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDiaxHorario.Size = new System.Drawing.Size(492, 265);
+            this.dgvDiaxHorario.TabIndex = 17;
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(520, 24);
+            this.menuStrip2.TabIndex = 18;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // editarToolStripMenuItem
+            // 
+            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
+            // 
+            // mlbHorarios
+            // 
+            this.mlbHorarios.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.mlbHorarios.FormattingEnabled = true;
+            this.mlbHorarios.Location = new System.Drawing.Point(77, 90);
+            this.mlbHorarios.Name = "mlbHorarios";
+            this.mlbHorarios.Size = new System.Drawing.Size(120, 199);
+            this.mlbHorarios.TabIndex = 20;
+            // 
+            // mlbHorariosCargado
+            // 
+            this.mlbHorariosCargado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.mlbHorariosCargado.FormattingEnabled = true;
+            this.mlbHorariosCargado.Location = new System.Drawing.Point(321, 90);
+            this.mlbHorariosCargado.Name = "mlbHorariosCargado";
+            this.mlbHorariosCargado.Size = new System.Drawing.Size(120, 199);
+            this.mlbHorariosCargado.TabIndex = 21;
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.BackColor = System.Drawing.Color.Red;
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolver.ForeColor = System.Drawing.Color.White;
+            this.btnVolver.Location = new System.Drawing.Point(494, 2);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(20, 20);
+            this.btnVolver.TabIndex = 22;
+            this.btnVolver.Text = "X";
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Visible = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // frmDias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(630, 390);
+            this.ClientSize = new System.Drawing.Size(520, 323);
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.dgvDiaxHorario);
             this.Controls.Add(this.lblDisponibilidad);
             this.Controls.Add(this.lblHorarios);
             this.Controls.Add(this.btnSacarTodo);
-            this.Controls.Add(this.btnDefecto);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnSacar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.lbHorariosCargado);
-            this.Controls.Add(this.lbHorarios);
             this.Controls.Add(this.btnSabado);
             this.Controls.Add(this.btnViernes);
             this.Controls.Add(this.btnJueves);
             this.Controls.Add(this.btnMiercoles);
             this.Controls.Add(this.btnMartes);
             this.Controls.Add(this.btnLunes);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip2);
+            this.Controls.Add(this.mlbHorarios);
+            this.Controls.Add(this.mlbHorariosCargado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dias";
+            this.Load += new System.EventHandler(this.frmDias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiaxHorario)).EndInit();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,14 +299,18 @@
         private System.Windows.Forms.Button btnJueves;
         private System.Windows.Forms.Button btnViernes;
         private System.Windows.Forms.Button btnSabado;
-        private System.Windows.Forms.ListBox lbHorarios;
-        private System.Windows.Forms.ListBox lbHorariosCargado;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnSacar;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnSacarTodo;
-        private System.Windows.Forms.Button btnDefecto;
         private System.Windows.Forms.Label lblHorarios;
         private System.Windows.Forms.Label lblDisponibilidad;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.DataGridView dgvDiaxHorario;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
+        private Negocio.MListBox mlbHorarios;
+        private Negocio.MListBox mlbHorariosCargado;
+        public System.Windows.Forms.Button btnVolver;
     }
 }

@@ -199,6 +199,12 @@
     <Compile Include="frmTomarLista.Designer.cs">
       <DependentUpon>frmTomarLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTurno.Designer.cs">
+      <DependentUpon>frmTurno.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTomarLista.resx">
       <DependentUpon>frmTomarLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTurno.resx">
+      <DependentUpon>frmTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
