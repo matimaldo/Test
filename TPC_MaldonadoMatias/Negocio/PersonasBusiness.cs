@@ -279,7 +279,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MAX(P.Id_Persona) FROM Personas P LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL ");
+                conexion.setearConsulta("SELECT ISNULL(MAX(P.Id_Persona),0) FROM Personas P LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL ");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -305,7 +305,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MIN(P.Id_Persona) FROM Personas P LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL ");
+                conexion.setearConsulta("SELECT ISNULL(MIN(P.Id_Persona),0) FROM Personas P LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NULL ");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())

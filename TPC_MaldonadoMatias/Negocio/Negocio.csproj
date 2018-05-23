@@ -63,6 +63,7 @@
     <Compile Include="RolBusinness.cs" />
     <Compile Include="TelefonoBusiness.cs" />
     <Compile Include="TipoTelefonoBusiness.cs" />
+    <Compile Include="TurnoBusiness.cs" />
     <Compile Include="UsuarioBusiness.cs" />
   </ItemGroup>
   <ItemGroup>

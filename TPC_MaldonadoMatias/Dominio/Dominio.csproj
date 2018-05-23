@@ -64,6 +64,7 @@
     <Compile Include="Telefono.cs" />
     <Compile Include="TipoExamen.cs" />
     <Compile Include="TipoTelefono.cs" />
+    <Compile Include="Turno.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>

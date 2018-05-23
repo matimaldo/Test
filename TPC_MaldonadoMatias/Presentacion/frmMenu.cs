@@ -183,5 +183,13 @@ namespace Presentacion
             frm.Owner = this;
             frm.ShowDialog();
         }
+
+        private void turnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTurno frm = new frmTurno();
+            frm.Owner = this;
+            frm.ShowDialog();
+
+        }
     }
 }

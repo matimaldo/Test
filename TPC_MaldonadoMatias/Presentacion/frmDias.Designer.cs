@@ -44,9 +44,9 @@
             this.dgvDiaxHorario = new System.Windows.Forms.DataGridView();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.mlbHorarios = new Negocio.MListBox();
             this.mlbHorariosCargado = new Negocio.MListBox();
-            this.btnVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiaxHorario)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -219,6 +219,20 @@
             this.editarToolStripMenuItem.Text = "Editar";
             this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
+            // btnVolver
+            // 
+            this.btnVolver.BackColor = System.Drawing.Color.Red;
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolver.ForeColor = System.Drawing.Color.White;
+            this.btnVolver.Location = new System.Drawing.Point(494, 2);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(20, 20);
+            this.btnVolver.TabIndex = 22;
+            this.btnVolver.Text = "X";
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Visible = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // mlbHorarios
             // 
             this.mlbHorarios.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -237,28 +251,14 @@
             this.mlbHorariosCargado.Size = new System.Drawing.Size(120, 199);
             this.mlbHorariosCargado.TabIndex = 21;
             // 
-            // btnVolver
-            // 
-            this.btnVolver.BackColor = System.Drawing.Color.Red;
-            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.Location = new System.Drawing.Point(494, 2);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(20, 20);
-            this.btnVolver.TabIndex = 22;
-            this.btnVolver.Text = "X";
-            this.btnVolver.UseVisualStyleBackColor = false;
-            this.btnVolver.Visible = false;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
             // frmDias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(520, 323);
-            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dgvDiaxHorario);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.lblDisponibilidad);
             this.Controls.Add(this.lblHorarios);
             this.Controls.Add(this.btnSacarTodo);
