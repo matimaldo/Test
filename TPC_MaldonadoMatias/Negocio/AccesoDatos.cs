@@ -116,5 +116,11 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        public void setearSP(string sp)
+        {
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = sp;
+        }
     }
 }

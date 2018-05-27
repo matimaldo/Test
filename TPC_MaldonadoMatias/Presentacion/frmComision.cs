@@ -78,7 +78,8 @@ namespace Presentacion
 
         public void rdoBusqueda()
         {
-            CursoBusiness cursoBusiness = new CursoBusiness();
+            //CursoBusiness cursoBusiness = new CursoBusiness();
+            ComisionBusiness comisionBusiness = new ComisionBusiness();
 
             habilitar();
 
@@ -94,7 +95,7 @@ namespace Presentacion
             btnGuardar.Text = "Modificar";
             btnGuardar.Visible = true;
 
-            if (comision.IdComision < cursoBusiness.obtenerIDMax())
+            if (comision.IdComision < comisionBusiness.obtenerIDMax())
             {
                 btnSiguiente.Enabled = true;
                 btnUltimo.Enabled = true;
@@ -105,7 +106,7 @@ namespace Presentacion
                 btnUltimo.Enabled = false;
             }
 
-            if (cursoBusiness.obtenerIDMin() < comision.IdComision)
+            if (comisionBusiness.obtenerIDMin() < comision.IdComision)
             {
                 btnAnterior.Enabled = true;
                 btnPrimero.Enabled = true;

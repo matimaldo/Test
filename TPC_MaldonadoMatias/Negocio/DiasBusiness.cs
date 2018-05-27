@@ -187,6 +187,78 @@ namespace Negocio
             }
         }
 
+        public IList<Dia> listar()
+        {
+            IList<Dia> lista = new List<Dia>();
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_Listar_Dias";
+            try
+            {
+                conexion.setearSP(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    Dia aux = new Dia();
+
+                    aux.IdDia = conexion.Lector.GetInt32(0);
+                    aux.NombreDia = conexion.Lector.GetString(1);
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
+        public IList<Horario> listarLibres(int dia, int aula, int prof, int turno)
+        {
+            IList<Horario> lista = new List<Horario>();
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_Listar_HorarioxDia";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Id_dia", dia);
+                conexion.agregarParametro("@Id_aula", aula);
+                conexion.agregarParametro("@Id_Prof", prof);
+                conexion.agregarParametro("@Id_Turno", turno);
+
+
+                conexion.setearSP(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    Horario aux = new Horario();
+
+                    aux.IdHorario = conexion.Lector.GetInt32(0);
+                    aux.Desde = conexion.Lector.GetDateTime(1);
+                    aux.Hasta = conexion.Lector.GetDateTime(2);
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
+
 
     }
 }

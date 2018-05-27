@@ -25,7 +25,7 @@ namespace Presentacion
 
         public bool validar()
         {
-            foreach (AnioLectivo itemOtro in lbAnio.Items)
+            foreach (AnioLectivo itemOtro in mlbAnio.Items)
             {
                 if (cboAnio.SelectedItem.ToString() == itemOtro.Anio.ToString())
                 {
@@ -50,7 +50,7 @@ namespace Presentacion
 
                 cboAnio.SelectedItem = anio.Anio;
 
-                lbAnio.DataSource = anioLectivoBusiness.listar();
+                mlbAnio.DataSource = anioLectivoBusiness.listar();
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace Presentacion
                     anioLectivoBusiness.agregar(anio);
                 }
 
-                lbAnio.DataSource = anioLectivoBusiness.listar();
+                mlbAnio.DataSource = anioLectivoBusiness.listar();
             }
             catch (Exception ex)
             {
@@ -80,11 +80,11 @@ namespace Presentacion
         {
             try
             {
-                anio = (AnioLectivo)lbAnio.SelectedItem;
+                anio = (AnioLectivo)mlbAnio.SelectedItem;
 
                 anioLectivoBusiness.eliminar(anio);
 
-                lbAnio.DataSource = anioLectivoBusiness.listar();
+                mlbAnio.DataSource = anioLectivoBusiness.listar();
             }
             catch (SqlException ex)
             {

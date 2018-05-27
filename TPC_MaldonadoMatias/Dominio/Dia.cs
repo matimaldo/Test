@@ -11,5 +11,11 @@ namespace Dominio
         public int IdDia { get; set; }
         public string NombreDia { get; set; }
         public IList<Horario> Horarios { get; set; }
+
+        public override string ToString()
+        {
+            return NombreDia;
+        }
+
     }
 }

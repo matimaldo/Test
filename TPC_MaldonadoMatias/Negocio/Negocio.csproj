@@ -47,6 +47,7 @@
     <Compile Include="AulaBusiness.cs" />
     <Compile Include="CalendarioBusiness.cs" />
     <Compile Include="ComisionBusiness.cs" />
+    <Compile Include="CursadaBusiness.cs" />
     <Compile Include="CursoBusiness.cs" />
     <Compile Include="DiasBusiness.cs" />
     <Compile Include="EmpleadoBusiness.cs" />

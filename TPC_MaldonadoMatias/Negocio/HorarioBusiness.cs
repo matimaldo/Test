@@ -91,58 +91,58 @@ namespace Negocio
             }
         }
 
-        public int apertura()
-        {
-            AccesoDatos conexion = new AccesoDatos();
-            int apertura = new int();
+        //public int apertura()
+        //{
+        //    AccesoDatos conexion = new AccesoDatos();
+        //    int apertura = new int();
 
-            string consulta = "SELECT ISNULL(MIN(DATEPART(HOUR,Horario_Desde)),0) FROM Horarios";
-            try
-            {
-                conexion.setearConsulta(consulta);
-                conexion.leerConsulta();
+        //    string consulta = "SELECT ISNULL(MIN(DATEPART(HOUR,Horario_Desde)),0) FROM Horarios";
+        //    try
+        //    {
+        //        conexion.setearConsulta(consulta);
+        //        conexion.leerConsulta();
 
-                while (conexion.Lector.Read())
-                {
-                    apertura = conexion.Lector.GetInt32(0);
-                }
-                return apertura;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                conexion.cerrarConexion();
-            }
-        }
+        //        while (conexion.Lector.Read())
+        //        {
+        //            apertura = conexion.Lector.GetInt32(0);
+        //        }
+        //        return apertura;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        conexion.cerrarConexion();
+        //    }
+        //}
 
-        public int cierre()
-        {
-            AccesoDatos conexion = new AccesoDatos();
-            int apertura = new int();
+        //public int cierre()
+        //{
+        //    AccesoDatos conexion = new AccesoDatos();
+        //    int apertura = new int();
 
-            string consulta = "SELECT ISNULL(MAX(DATEPART(HOUR,Horario_Hasta)),0) FROM Horarios";
-            try
-            {
-                conexion.setearConsulta(consulta);
-                conexion.leerConsulta();
+        //    string consulta = "SELECT ISNULL(MAX(DATEPART(HOUR,Horario_Hasta)),0) FROM Horarios";
+        //    try
+        //    {
+        //        conexion.setearConsulta(consulta);
+        //        conexion.leerConsulta();
 
-                while (conexion.Lector.Read())
-                {
-                    apertura = conexion.Lector.GetInt32(0);
-                }
-                return apertura;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                conexion.cerrarConexion();
-            }
-        }
+        //        while (conexion.Lector.Read())
+        //        {
+        //            apertura = conexion.Lector.GetInt32(0);
+        //        }
+        //        return apertura;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        conexion.cerrarConexion();
+        //    }
+        //}
     }
 }

@@ -47,15 +47,15 @@
             this.academiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añosLectivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aulasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calendarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.avisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.turnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calendarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +67,8 @@
             this.profesoresToolStripMenuItem,
             this.configuracionToolStripMenuItem,
             this.avisosToolStripMenuItem,
-            this.listaToolStripMenuItem});
+            this.listaToolStripMenuItem,
+            this.calendarioToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(884, 24);
@@ -181,7 +182,6 @@
             this.academiaToolStripMenuItem,
             this.añosLectivoToolStripMenuItem,
             this.aulasToolStripMenuItem,
-            this.calendarioToolStripMenuItem,
             this.diaToolStripMenuItem,
             this.horarioToolStripMenuItem,
             this.comisionToolStripMenuItem,
@@ -211,13 +211,6 @@
             this.aulasToolStripMenuItem.Text = "Aulas";
             this.aulasToolStripMenuItem.Click += new System.EventHandler(this.aulasToolStripMenuItem_Click);
             // 
-            // calendarioToolStripMenuItem
-            // 
-            this.calendarioToolStripMenuItem.Name = "calendarioToolStripMenuItem";
-            this.calendarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.calendarioToolStripMenuItem.Text = "Calendario";
-            this.calendarioToolStripMenuItem.Click += new System.EventHandler(this.calendarioToolStripMenuItem_Click);
-            // 
             // diaToolStripMenuItem
             // 
             this.diaToolStripMenuItem.Name = "diaToolStripMenuItem";
@@ -239,6 +232,13 @@
             this.comisionToolStripMenuItem.Text = "Comision";
             this.comisionToolStripMenuItem.Click += new System.EventHandler(this.comisionToolStripMenuItem_Click);
             // 
+            // turnoToolStripMenuItem
+            // 
+            this.turnoToolStripMenuItem.Name = "turnoToolStripMenuItem";
+            this.turnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.turnoToolStripMenuItem.Text = "Turno";
+            this.turnoToolStripMenuItem.Click += new System.EventHandler(this.turnoToolStripMenuItem_Click);
+            // 
             // avisosToolStripMenuItem
             // 
             this.avisosToolStripMenuItem.Name = "avisosToolStripMenuItem";
@@ -258,22 +258,22 @@
             // alumnosToolStripMenuItem
             // 
             this.alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            this.alumnosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.alumnosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.alumnosToolStripMenuItem.Text = "Alumnos";
             this.alumnosToolStripMenuItem.Click += new System.EventHandler(this.alumnosToolStripMenuItem_Click);
             // 
             // empleadosToolStripMenuItem
             // 
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
-            // turnoToolStripMenuItem
+            // calendarioToolStripMenuItem1
             // 
-            this.turnoToolStripMenuItem.Name = "turnoToolStripMenuItem";
-            this.turnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.turnoToolStripMenuItem.Text = "Turno";
-            this.turnoToolStripMenuItem.Click += new System.EventHandler(this.turnoToolStripMenuItem_Click);
+            this.calendarioToolStripMenuItem1.Name = "calendarioToolStripMenuItem1";
+            this.calendarioToolStripMenuItem1.Size = new System.Drawing.Size(76, 20);
+            this.calendarioToolStripMenuItem1.Text = "Calendario";
+            this.calendarioToolStripMenuItem1.Click += new System.EventHandler(this.calendarioToolStripMenuItem1_Click);
             // 
             // frmMenu
             // 
@@ -312,7 +312,6 @@
         private System.Windows.Forms.ToolStripMenuItem academiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem añosLectivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aulasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem calendarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem profesoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem examenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notasToolStripMenuItem;
@@ -326,5 +325,6 @@
         private System.Windows.Forms.ToolStripMenuItem envioNotasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comisionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem turnoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem calendarioToolStripMenuItem1;
     }
 }

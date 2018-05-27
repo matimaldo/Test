@@ -39,6 +39,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.cboDesdeHora = new System.Windows.Forms.ComboBox();
             this.cboHastaHora = new System.Windows.Forms.ComboBox();
+            this.turnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarToolStripMenuItem});
+            this.agregarToolStripMenuItem,
+            this.turnoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(321, 24);
@@ -90,7 +92,7 @@
             this.lbHorario.FormattingEnabled = true;
             this.lbHorario.Location = new System.Drawing.Point(20, 44);
             this.lbHorario.Name = "lbHorario";
-            this.lbHorario.Size = new System.Drawing.Size(278, 121);
+            this.lbHorario.Size = new System.Drawing.Size(289, 121);
             this.lbHorario.TabIndex = 26;
             // 
             // btnEliminar
@@ -156,6 +158,13 @@
             this.cboHastaHora.TabIndex = 21;
             this.cboHastaHora.Visible = false;
             // 
+            // turnoToolStripMenuItem
+            // 
+            this.turnoToolStripMenuItem.Name = "turnoToolStripMenuItem";
+            this.turnoToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.turnoToolStripMenuItem.Text = "Turno";
+            this.turnoToolStripMenuItem.Click += new System.EventHandler(this.turnoToolStripMenuItem_Click);
+            // 
             // frmHorarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,5 +208,6 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.ComboBox cboDesdeHora;
         private System.Windows.Forms.ComboBox cboHastaHora;
+        private System.Windows.Forms.ToolStripMenuItem turnoToolStripMenuItem;
     }
 }

@@ -141,5 +141,28 @@ namespace Negocio
             }
         }
 
+        public void eliminar(int IdHorario)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            string consulta = "DELETE FROM TurnoxHorario WHERE Id_Horario = @id";
+
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@id", IdHorario);
+
+                conexion.setearConsulta(consulta);
+                conexion.accionEjecutar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
     }
 }

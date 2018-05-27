@@ -28,30 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbAnio = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblAnio = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCerrrar = new System.Windows.Forms.Button();
             this.cboAnio = new System.Windows.Forms.ComboBox();
+            this.mlbAnio = new Negocio.MListBox();
             this.SuspendLayout();
             // 
-            // lbAnio
+            // lblAnio
             // 
-            this.lbAnio.FormattingEnabled = true;
-            this.lbAnio.Location = new System.Drawing.Point(28, 100);
-            this.lbAnio.Name = "lbAnio";
-            this.lbAnio.Size = new System.Drawing.Size(169, 121);
-            this.lbAnio.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Año :";
+            this.lblAnio.AutoSize = true;
+            this.lblAnio.Location = new System.Drawing.Point(38, 26);
+            this.lblAnio.Name = "lblAnio";
+            this.lblAnio.Size = new System.Drawing.Size(32, 13);
+            this.lblAnio.TabIndex = 1;
+            this.lblAnio.Text = "Año :";
             // 
             // btnAgregar
             // 
@@ -75,7 +67,7 @@
             // 
             // btnCerrrar
             // 
-            this.btnCerrrar.Location = new System.Drawing.Point(71, 237);
+            this.btnCerrrar.Location = new System.Drawing.Point(76, 231);
             this.btnCerrrar.Name = "btnCerrrar";
             this.btnCerrrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrrar.TabIndex = 5;
@@ -93,18 +85,27 @@
             this.cboAnio.Size = new System.Drawing.Size(121, 21);
             this.cboAnio.TabIndex = 6;
             // 
+            // mlbAnio
+            // 
+            this.mlbAnio.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.mlbAnio.FormattingEnabled = true;
+            this.mlbAnio.Location = new System.Drawing.Point(26, 101);
+            this.mlbAnio.Name = "mlbAnio";
+            this.mlbAnio.Size = new System.Drawing.Size(171, 121);
+            this.mlbAnio.TabIndex = 7;
+            // 
             // frmAnioLectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(233, 277);
+            this.ClientSize = new System.Drawing.Size(224, 261);
+            this.Controls.Add(this.mlbAnio);
             this.Controls.Add(this.cboAnio);
             this.Controls.Add(this.btnCerrrar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbAnio);
+            this.Controls.Add(this.lblAnio);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -118,12 +119,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lbAnio;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAnio;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCerrrar;
         private System.Windows.Forms.ComboBox cboAnio;
+        private Negocio.MListBox mlbAnio;
     }
 }

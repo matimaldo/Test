@@ -16,6 +16,7 @@ namespace Presentacion
     public partial class frmHorarios : Form
     {
         HorarioBusiness horarioBusiness = new HorarioBusiness();
+        TurnoBusiness turnoBusiness = new TurnoBusiness();
         Horario horario = new Horario();
 
         public frmHorarios()
@@ -97,6 +98,7 @@ namespace Presentacion
                     horario = (Horario)lbHorario.SelectedItem;
 
                     horarioBusiness.eliminar(horario);
+                    turnoBusiness.eliminar(horario.IdHorario);
 
                     lbHorario.DataSource = horarioBusiness.listar();
                     lbHorario.SelectedIndex = -1;
@@ -133,8 +135,10 @@ namespace Presentacion
             cboHastaHora.Visible = true;
             btnAgregar.Visible = true;
             btnEliminar.Visible = true;
-            lbHorario.Location = new System.Drawing.Point(205, 44);
-            lbHorario.Size = new System.Drawing.Size(89, 121);
+
+            lbHorario.Size = new System.Drawing.Size(130, 121);
+            lbHorario.Location = new System.Drawing.Point(182, 44);
+            //lbHorario.Size = new System.Drawing.Size(89, 121);
             btnCancelar.Visible = true;
 
             lbHorario.DataSource = horarioBusiness.listar();
@@ -158,6 +162,13 @@ namespace Presentacion
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             deshabilitar();
+        }
+
+        private void turnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTurno frm = new frmTurno();
+            frm.Owner = this;
+            frm.ShowDialog();
         }
     }
 }

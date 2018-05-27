@@ -96,28 +96,6 @@ namespace Presentacion
             frm.ShowDialog();
         }
 
-        private void calendarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool abierto = false;
-            foreach (Form frm in Application.OpenForms)
-            {
-                if (frm.GetType() == typeof(frmCalendario))
-                {
-                    MessageBox.Show("El Calendario esta abierto");
-                    abierto = true;
-                    break;
-                }
-            }
-
-            if(!abierto)
-            {
-                frmCalendario frmCalendario = new frmCalendario();
-                frmCalendario.MdiParent = this;
-                frmCalendario.Show();
-            }
-
-        }
-
         private void diaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmDias frm = new frmDias();
@@ -190,6 +168,27 @@ namespace Presentacion
             frm.Owner = this;
             frm.ShowDialog();
 
+        }
+
+        private void calendarioToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            bool abierto = false;
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(frmCalendario))
+                {
+                    MessageBox.Show("El Calendario esta abierto");
+                    abierto = true;
+                    break;
+                }
+            }
+
+            if (!abierto)
+            {
+                frmCalendario frmCalendario = new frmCalendario();
+                frmCalendario.MdiParent = this;
+                frmCalendario.Show();
+            }
         }
     }
 }
