@@ -37,32 +37,43 @@
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnSacar = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.lbNoInscriptos = new System.Windows.Forms.Label();
-            this.lbInscriptos = new System.Windows.Forms.Label();
-            this.btnGuardar = new System.Windows.Forms.Button();
+            this.lblNoInscriptos = new System.Windows.Forms.Label();
+            this.lblInscriptos = new System.Windows.Forms.Label();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.lbMsj = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbDisponible = new System.Windows.Forms.ListBox();
+            this.lbEnCurso = new System.Windows.Forms.ListBox();
+            this.lblCantEnCurso = new System.Windows.Forms.Label();
+            this.lblBarra = new System.Windows.Forms.Label();
+            this.lblCantMax = new System.Windows.Forms.Label();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboAnio
             // 
+            this.cboAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAnio.FormattingEnabled = true;
             this.cboAnio.Location = new System.Drawing.Point(84, 36);
             this.cboAnio.Name = "cboAnio";
             this.cboAnio.Size = new System.Drawing.Size(59, 21);
             this.cboAnio.TabIndex = 0;
+            this.cboAnio.SelectionChangeCommitted += new System.EventHandler(this.cboAnio_SelectionChangeCommitted);
             // 
             // cboCurso
             // 
+            this.cboCurso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCurso.FormattingEnabled = true;
             this.cboCurso.Location = new System.Drawing.Point(203, 36);
             this.cboCurso.Name = "cboCurso";
             this.cboCurso.Size = new System.Drawing.Size(121, 21);
             this.cboCurso.TabIndex = 1;
+            this.cboCurso.SelectionChangeCommitted += new System.EventHandler(this.cboCurso_SelectionChangeCommitted);
             // 
             // cboComision
             // 
+            this.cboComision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboComision.FormattingEnabled = true;
             this.cboComision.Location = new System.Drawing.Point(410, 36);
             this.cboComision.Name = "cboComision";
@@ -104,6 +115,7 @@
             this.btnSeleccionar.TabIndex = 6;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // btnAgregar
             // 
@@ -113,6 +125,7 @@
             this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = ">";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnSacar
             // 
@@ -122,58 +135,104 @@
             this.btnSacar.TabIndex = 8;
             this.btnSacar.Text = "<";
             this.btnSacar.UseVisualStyleBackColor = true;
+            this.btnSacar.Click += new System.EventHandler(this.btnSacar_Click);
             // 
-            // checkedListBox1
+            // lblNoInscriptos
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(41, 119);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(220, 169);
-            this.checkedListBox1.TabIndex = 9;
+            this.lblNoInscriptos.AutoSize = true;
+            this.lblNoInscriptos.Location = new System.Drawing.Point(38, 85);
+            this.lblNoInscriptos.Name = "lblNoInscriptos";
+            this.lblNoInscriptos.Size = new System.Drawing.Size(69, 13);
+            this.lblNoInscriptos.TabIndex = 11;
+            this.lblNoInscriptos.Text = "No Inscriptos";
             // 
-            // checkedListBox2
+            // lblInscriptos
             // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(410, 119);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(220, 169);
-            this.checkedListBox2.TabIndex = 10;
+            this.lblInscriptos.AutoSize = true;
+            this.lblInscriptos.Location = new System.Drawing.Point(407, 85);
+            this.lblInscriptos.Name = "lblInscriptos";
+            this.lblInscriptos.Size = new System.Drawing.Size(52, 13);
+            this.lblInscriptos.TabIndex = 12;
+            this.lblInscriptos.Text = "Inscriptos";
             // 
-            // lbNoInscriptos
+            // btnCerrar
             // 
-            this.lbNoInscriptos.AutoSize = true;
-            this.lbNoInscriptos.Location = new System.Drawing.Point(38, 85);
-            this.lbNoInscriptos.Name = "lbNoInscriptos";
-            this.lbNoInscriptos.Size = new System.Drawing.Size(69, 13);
-            this.lbNoInscriptos.TabIndex = 11;
-            this.lbNoInscriptos.Text = "No Inscriptos";
-            // 
-            // lbInscriptos
-            // 
-            this.lbInscriptos.AutoSize = true;
-            this.lbInscriptos.Location = new System.Drawing.Point(407, 85);
-            this.lbInscriptos.Name = "lbInscriptos";
-            this.lbInscriptos.Size = new System.Drawing.Size(52, 13);
-            this.lbInscriptos.TabIndex = 12;
-            this.lbInscriptos.Text = "Inscriptos";
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(296, 318);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 13;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Location = new System.Drawing.Point(296, 318);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 13;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lbMsj
             // 
             this.lbMsj.AutoSize = true;
-            this.lbMsj.Location = new System.Drawing.Point(563, 300);
+            this.lbMsj.Location = new System.Drawing.Point(536, 304);
             this.lbMsj.Name = "lbMsj";
-            this.lbMsj.Size = new System.Drawing.Size(67, 13);
+            this.lbMsj.Size = new System.Drawing.Size(32, 13);
             this.lbMsj.TabIndex = 14;
-            this.lbMsj.Text = "Cant de Max";
+            this.lbMsj.Text = "Cant:";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(664, 24);
+            this.menuStrip1.TabIndex = 15;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // buscarToolStripMenuItem
+            // 
+            this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
+            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.buscarToolStripMenuItem.Text = "Buscar";
+            this.buscarToolStripMenuItem.Click += new System.EventHandler(this.buscarToolStripMenuItem_Click);
+            // 
+            // lbDisponible
+            // 
+            this.lbDisponible.FormattingEnabled = true;
+            this.lbDisponible.Location = new System.Drawing.Point(41, 119);
+            this.lbDisponible.Name = "lbDisponible";
+            this.lbDisponible.Size = new System.Drawing.Size(213, 173);
+            this.lbDisponible.TabIndex = 16;
+            // 
+            // lbEnCurso
+            // 
+            this.lbEnCurso.FormattingEnabled = true;
+            this.lbEnCurso.Location = new System.Drawing.Point(410, 119);
+            this.lbEnCurso.Name = "lbEnCurso";
+            this.lbEnCurso.Size = new System.Drawing.Size(213, 173);
+            this.lbEnCurso.TabIndex = 17;
+            // 
+            // lblCantEnCurso
+            // 
+            this.lblCantEnCurso.AutoSize = true;
+            this.lblCantEnCurso.Location = new System.Drawing.Point(575, 304);
+            this.lblCantEnCurso.Name = "lblCantEnCurso";
+            this.lblCantEnCurso.Size = new System.Drawing.Size(12, 13);
+            this.lblCantEnCurso.TabIndex = 18;
+            this.lblCantEnCurso.Text = "x";
+            // 
+            // lblBarra
+            // 
+            this.lblBarra.AutoSize = true;
+            this.lblBarra.Location = new System.Drawing.Point(591, 304);
+            this.lblBarra.Name = "lblBarra";
+            this.lblBarra.Size = new System.Drawing.Size(12, 13);
+            this.lblBarra.TabIndex = 19;
+            this.lblBarra.Text = "/";
+            // 
+            // lblCantMax
+            // 
+            this.lblCantMax.AutoSize = true;
+            this.lblCantMax.Location = new System.Drawing.Point(607, 304);
+            this.lblCantMax.Name = "lblCantMax";
+            this.lblCantMax.Size = new System.Drawing.Size(12, 13);
+            this.lblCantMax.TabIndex = 20;
+            this.lblCantMax.Text = "x";
             // 
             // frmAsignarAlumnos
             // 
@@ -181,12 +240,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(664, 354);
+            this.Controls.Add(this.lblCantMax);
+            this.Controls.Add(this.lblBarra);
+            this.Controls.Add(this.lblCantEnCurso);
+            this.Controls.Add(this.lbEnCurso);
+            this.Controls.Add(this.lbDisponible);
             this.Controls.Add(this.lbMsj);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.lbInscriptos);
-            this.Controls.Add(this.lbNoInscriptos);
-            this.Controls.Add(this.checkedListBox2);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.lblInscriptos);
+            this.Controls.Add(this.lblNoInscriptos);
             this.Controls.Add(this.btnSacar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnSeleccionar);
@@ -196,11 +258,17 @@
             this.Controls.Add(this.cboComision);
             this.Controls.Add(this.cboCurso);
             this.Controls.Add(this.cboAnio);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAsignarAlumnos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asignacion de Alumnos";
+            this.Load += new System.EventHandler(this.frmAsignarAlumnos_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,11 +285,16 @@
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnSacar;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
-        private System.Windows.Forms.Label lbNoInscriptos;
-        private System.Windows.Forms.Label lbInscriptos;
-        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label lblNoInscriptos;
+        private System.Windows.Forms.Label lblInscriptos;
+        private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lbMsj;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
+        private System.Windows.Forms.ListBox lbDisponible;
+        private System.Windows.Forms.ListBox lbEnCurso;
+        private System.Windows.Forms.Label lblCantEnCurso;
+        private System.Windows.Forms.Label lblBarra;
+        private System.Windows.Forms.Label lblCantMax;
     }
 }

@@ -19,12 +19,16 @@ namespace Presentacion
             InitializeComponent();
         }
 
+        public Usuario usuario = new Usuario();
+
         private void FrmMenu_Load(object sender, EventArgs e)
         {
-            //frmLogin frm = new frmLogin();
-            //frm.Owner = this;
-            //frm.ShowDialog();
-            //academiaToolStripMenuItem.Visible = false;
+            
+
+            frmLogin frm = new frmLogin();
+            frm.Owner = this;
+            frm.ShowDialog();
+            academiaToolStripMenuItem.Visible = false;
 
             frmCalendario frmCalendario = new frmCalendario();
             frmCalendario.MdiParent = this;
@@ -189,6 +193,20 @@ namespace Presentacion
                 frmCalendario.MdiParent = this;
                 frmCalendario.Show();
             }
+        }
+
+        public void Actualizar()
+        {
+            string msjUsuario = usuario.Persona.Apellido + ", " + usuario.Persona.Nombre + " (" + usuario.NMUsuario + ") - " + usuario.Rol.NMRol;
+            toolStripStatusLabel1.Text = msjUsuario;
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.Owner = this;
+            frm.ShowDialog();
+
         }
     }
 }

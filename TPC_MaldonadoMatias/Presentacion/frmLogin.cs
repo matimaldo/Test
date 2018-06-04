@@ -35,17 +35,10 @@ namespace Presentacion
                 lblMensaje.Visible = false;
                 imgIdent.Image = global::Presentacion.Properties.Resources.Img_IdentificacionSI;
 
-
-                //timer1.Enabled = true;
                 timer1.Start();
 
-                //Thread.Sleep(2000);
-                //this.Close();
-
-                //Task.Delay(1000);
-                //WaitSeconds(12);
-
-                
+                (this.Owner as frmMenu).usuario = loginBusiness.ObtenerDatos(tbUsuario.Text, tbClave.Text);
+                (this.Owner as frmMenu).Actualizar();
             }
             else
             {
@@ -63,7 +56,6 @@ namespace Presentacion
             }
         }
 
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             conteo++;
@@ -73,5 +65,7 @@ namespace Presentacion
                 this.Close();
             }
         }
+
+
     }
 }

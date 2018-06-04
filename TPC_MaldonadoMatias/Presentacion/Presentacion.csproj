@@ -55,6 +55,12 @@
     <Compile Include="frmAulas.Designer.cs">
       <DependentUpon>frmAulas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBuscarCursada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarCursada.Designer.cs">
+      <DependentUpon>frmBuscarCursada.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmComision.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,12 @@
     <Compile Include="frmTomarLista.Designer.cs">
       <DependentUpon>frmTomarLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTomarListaCursada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTomarListaCursada.Designer.cs">
+      <DependentUpon>frmTomarListaCursada.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTurno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarAlumno.resx">
       <DependentUpon>frmBuscarAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarCursada.resx">
+      <DependentUpon>frmBuscarCursada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarCurso.resx">
       <DependentUpon>frmBuscarCurso.cs</DependentUpon>
@@ -287,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTomarLista.resx">
       <DependentUpon>frmTomarLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTomarListaCursada.resx">
+      <DependentUpon>frmTomarListaCursada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTurno.resx">
       <DependentUpon>frmTurno.cs</DependentUpon>

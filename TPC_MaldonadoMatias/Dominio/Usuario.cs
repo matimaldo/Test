@@ -12,11 +12,13 @@ namespace Dominio
         public Usuario()
         {
             Persona = new Persona();
+            Rol = new Rol();
         }
 
         public int IdUsuario { get; set; }
         public string NMUsuario { get; set; }
         public string Clave { get; set; }
         public Persona Persona { get; set; }
+        public Rol Rol { get; set; }
     }
 }

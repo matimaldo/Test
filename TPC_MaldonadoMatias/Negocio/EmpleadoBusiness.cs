@@ -30,6 +30,7 @@ namespace Negocio
                     aux.Dni = conexion.Lector.GetString(3);
                     aux.FechaNac = conexion.Lector.GetDateTime(4);
                     aux.Mail = conexion.Lector.GetString(5);
+                    aux.Apno ="";
 
                     aux.Telefono = new Telefono();
                     if (!conexion.Lector.IsDBNull(conexion.Lector.GetOrdinal("Numero")))

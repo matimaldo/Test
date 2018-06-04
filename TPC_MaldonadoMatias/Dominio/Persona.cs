@@ -8,6 +8,9 @@ namespace Dominio
 {
     public class Persona
     {
+
+        
+
         public Persona()
         {
             Telefono = new Telefono();
@@ -22,6 +25,21 @@ namespace Dominio
         public Telefono Telefono { get; set; }
         public string Sexo { get; set; }
         public bool Estado { get; set; }
+
+        private string apno;
+
+        public string Apno
+        {
+
+            get
+            {
+                return apno;
+            }
+            set
+            {
+                apno = Apellido + ", " + Nombre;
+            }
+        }
 
     }
 }

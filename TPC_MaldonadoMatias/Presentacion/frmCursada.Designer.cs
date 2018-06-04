@@ -40,7 +40,6 @@
             this.cboProfesor = new System.Windows.Forms.ComboBox();
             this.cboComision = new System.Windows.Forms.ComboBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCopiar = new System.Windows.Forms.Button();
             this.cboAula = new System.Windows.Forms.ComboBox();
             this.lblAula = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
@@ -63,7 +62,6 @@
             this.lblNroId = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.txtCantidad = new Negocio.MTextBox();
-            this.btnEditarProf = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -171,7 +169,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(163, 117);
+            this.btnGuardar.Location = new System.Drawing.Point(158, 114);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 14;
@@ -180,34 +178,26 @@
             this.btnGuardar.Visible = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnCopiar
-            // 
-            this.btnCopiar.Location = new System.Drawing.Point(197, 395);
-            this.btnCopiar.Name = "btnCopiar";
-            this.btnCopiar.Size = new System.Drawing.Size(75, 23);
-            this.btnCopiar.TabIndex = 15;
-            this.btnCopiar.Text = "Copiar";
-            this.btnCopiar.UseVisualStyleBackColor = true;
-            this.btnCopiar.Click += new System.EventHandler(this.btnCopiar_Click);
-            // 
             // cboAula
             // 
             this.cboAula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAula.FormattingEnabled = true;
-            this.cboAula.Location = new System.Drawing.Point(142, 199);
+            this.cboAula.Location = new System.Drawing.Point(142, 136);
             this.cboAula.Name = "cboAula";
             this.cboAula.Size = new System.Drawing.Size(91, 21);
             this.cboAula.TabIndex = 17;
+            this.cboAula.Visible = false;
             this.cboAula.SelectedIndexChanged += new System.EventHandler(this.cboAula_SelectedIndexChanged);
             // 
             // lblAula
             // 
             this.lblAula.AutoSize = true;
-            this.lblAula.Location = new System.Drawing.Point(102, 202);
+            this.lblAula.Location = new System.Drawing.Point(102, 139);
             this.lblAula.Name = "lblAula";
             this.lblAula.Size = new System.Drawing.Size(34, 13);
             this.lblAula.TabIndex = 16;
             this.lblAula.Text = "Aula :";
+            this.lblAula.Visible = false;
             // 
             // lblCantidad
             // 
@@ -220,12 +210,13 @@
             // 
             // btnAgregarHorario
             // 
-            this.btnAgregarHorario.Location = new System.Drawing.Point(107, 236);
+            this.btnAgregarHorario.Location = new System.Drawing.Point(107, 173);
             this.btnAgregarHorario.Name = "btnAgregarHorario";
             this.btnAgregarHorario.Size = new System.Drawing.Size(126, 23);
             this.btnAgregarHorario.TabIndex = 18;
             this.btnAgregarHorario.Text = "Agregar Horario";
             this.btnAgregarHorario.UseVisualStyleBackColor = true;
+            this.btnAgregarHorario.Visible = false;
             this.btnAgregarHorario.Click += new System.EventHandler(this.btnAgregarHorario_Click);
             // 
             // dataGridView1
@@ -234,85 +225,93 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 265);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 202);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(467, 124);
             this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.Visible = false;
             // 
             // cboDia
             // 
             this.cboDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDia.FormattingEnabled = true;
-            this.cboDia.Location = new System.Drawing.Point(306, 175);
+            this.cboDia.Location = new System.Drawing.Point(306, 112);
             this.cboDia.Name = "cboDia";
             this.cboDia.Size = new System.Drawing.Size(71, 21);
             this.cboDia.TabIndex = 21;
+            this.cboDia.Visible = false;
             this.cboDia.SelectedIndexChanged += new System.EventHandler(this.cboDia_SelectedIndexChanged);
             // 
             // lblDia
             // 
             this.lblDia.AutoSize = true;
-            this.lblDia.Location = new System.Drawing.Point(275, 178);
+            this.lblDia.Location = new System.Drawing.Point(275, 115);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(29, 13);
             this.lblDia.TabIndex = 20;
             this.lblDia.Text = "Dia :";
+            this.lblDia.Visible = false;
             // 
             // cboHorario
             // 
             this.cboHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboHorario.FormattingEnabled = true;
-            this.cboHorario.Location = new System.Drawing.Point(306, 199);
+            this.cboHorario.Location = new System.Drawing.Point(306, 136);
             this.cboHorario.Name = "cboHorario";
             this.cboHorario.Size = new System.Drawing.Size(100, 21);
             this.cboHorario.TabIndex = 23;
+            this.cboHorario.Visible = false;
             // 
             // lblHorario
             // 
             this.lblHorario.AutoSize = true;
-            this.lblHorario.Location = new System.Drawing.Point(257, 202);
+            this.lblHorario.Location = new System.Drawing.Point(257, 139);
             this.lblHorario.Name = "lblHorario";
             this.lblHorario.Size = new System.Drawing.Size(47, 13);
             this.lblHorario.TabIndex = 22;
             this.lblHorario.Text = "Horario :";
+            this.lblHorario.Visible = false;
             // 
             // btnEliminarHorario
             // 
-            this.btnEliminarHorario.Location = new System.Drawing.Point(266, 236);
+            this.btnEliminarHorario.Location = new System.Drawing.Point(266, 173);
             this.btnEliminarHorario.Name = "btnEliminarHorario";
             this.btnEliminarHorario.Size = new System.Drawing.Size(126, 23);
             this.btnEliminarHorario.TabIndex = 24;
             this.btnEliminarHorario.Text = "Eliminar Horario";
             this.btnEliminarHorario.UseVisualStyleBackColor = true;
+            this.btnEliminarHorario.Visible = false;
             this.btnEliminarHorario.Click += new System.EventHandler(this.btnEliminarHorario_Click);
             // 
             // cboTurno
             // 
             this.cboTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTurno.FormattingEnabled = true;
-            this.cboTurno.Location = new System.Drawing.Point(142, 172);
+            this.cboTurno.Location = new System.Drawing.Point(142, 109);
             this.cboTurno.Name = "cboTurno";
             this.cboTurno.Size = new System.Drawing.Size(94, 21);
             this.cboTurno.TabIndex = 26;
+            this.cboTurno.Visible = false;
             this.cboTurno.SelectedIndexChanged += new System.EventHandler(this.cboTurno_SelectedIndexChanged);
             // 
             // lblTurno
             // 
             this.lblTurno.AutoSize = true;
-            this.lblTurno.Location = new System.Drawing.Point(95, 175);
+            this.lblTurno.Location = new System.Drawing.Point(95, 112);
             this.lblTurno.Name = "lblTurno";
             this.lblTurno.Size = new System.Drawing.Size(41, 13);
             this.lblTurno.TabIndex = 25;
             this.lblTurno.Text = "Turno :";
+            this.lblTurno.Visible = false;
             // 
             // btnPrimero
             // 
             this.btnPrimero.Enabled = false;
             this.btnPrimero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrimero.Location = new System.Drawing.Point(380, 408);
+            this.btnPrimero.Location = new System.Drawing.Point(389, 139);
             this.btnPrimero.Name = "btnPrimero";
             this.btnPrimero.Size = new System.Drawing.Size(27, 23);
             this.btnPrimero.TabIndex = 31;
@@ -323,7 +322,7 @@
             // btnUltimo
             // 
             this.btnUltimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUltimo.Location = new System.Drawing.Point(452, 408);
+            this.btnUltimo.Location = new System.Drawing.Point(461, 139);
             this.btnUltimo.Name = "btnUltimo";
             this.btnUltimo.Size = new System.Drawing.Size(27, 23);
             this.btnUltimo.TabIndex = 30;
@@ -334,7 +333,7 @@
             // btnAnterior
             // 
             this.btnAnterior.Enabled = false;
-            this.btnAnterior.Location = new System.Drawing.Point(406, 408);
+            this.btnAnterior.Location = new System.Drawing.Point(415, 139);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(24, 23);
             this.btnAnterior.TabIndex = 28;
@@ -344,7 +343,7 @@
             // 
             // btnSiguiente
             // 
-            this.btnSiguiente.Location = new System.Drawing.Point(429, 408);
+            this.btnSiguiente.Location = new System.Drawing.Point(438, 139);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(24, 23);
             this.btnSiguiente.TabIndex = 29;
@@ -354,17 +353,18 @@
             // 
             // btnBajar
             // 
-            this.btnBajar.Enabled = false;
-            this.btnBajar.Location = new System.Drawing.Point(6, 117);
+            this.btnBajar.Location = new System.Drawing.Point(1, 139);
             this.btnBajar.Name = "btnBajar";
             this.btnBajar.Size = new System.Drawing.Size(24, 23);
             this.btnBajar.TabIndex = 32;
             this.btnBajar.Text = "+";
             this.btnBajar.UseVisualStyleBackColor = true;
+            this.btnBajar.Visible = false;
+            this.btnBajar.Click += new System.EventHandler(this.btnBajar_Click);
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(245, 117);
+            this.btnCerrar.Location = new System.Drawing.Point(240, 114);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 33;
@@ -415,23 +415,13 @@
             this.txtCantidad.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
             this.txtCantidad.Visible = false;
             // 
-            // btnEditarProf
-            // 
-            this.btnEditarProf.Location = new System.Drawing.Point(359, 117);
-            this.btnEditarProf.Name = "btnEditarProf";
-            this.btnEditarProf.Size = new System.Drawing.Size(111, 23);
-            this.btnEditarProf.TabIndex = 38;
-            this.btnEditarProf.Text = "Editar Profesor";
-            this.btnEditarProf.UseVisualStyleBackColor = true;
-            this.btnEditarProf.Visible = false;
-            // 
             // frmCursada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(496, 456);
-            this.Controls.Add(this.btnEditarProf);
+            this.ClientSize = new System.Drawing.Size(496, 167);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.lblNroId);
             this.Controls.Add(this.lblId);
@@ -453,8 +443,6 @@
             this.Controls.Add(this.btnAgregarHorario);
             this.Controls.Add(this.cboAula);
             this.Controls.Add(this.lblAula);
-            this.Controls.Add(this.btnCopiar);
-            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.cboComision);
             this.Controls.Add(this.cboProfesor);
             this.Controls.Add(this.cboAnio);
@@ -470,6 +458,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCursada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cursada";
             this.Load += new System.EventHandler(this.frmCursada_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -494,7 +483,6 @@
         private System.Windows.Forms.ComboBox cboProfesor;
         private System.Windows.Forms.ComboBox cboComision;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnCopiar;
         private System.Windows.Forms.ComboBox cboAula;
         private System.Windows.Forms.Label lblAula;
         private System.Windows.Forms.Label lblCantidad;
@@ -517,6 +505,5 @@
         public System.Windows.Forms.Label lblNroId;
         public System.Windows.Forms.Label lblId;
         private Negocio.MTextBox txtCantidad;
-        private System.Windows.Forms.Button btnEditarProf;
     }
 }

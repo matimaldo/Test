@@ -59,7 +59,7 @@
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(100, 20);
             this.tbUsuario.TabIndex = 1;
-            this.tbUsuario.Text = "MATIASMA";
+            this.tbUsuario.Text = "AUGUSTOR";
             // 
             // tbClave
             // 
@@ -68,7 +68,7 @@
             this.tbClave.PasswordChar = '*';
             this.tbClave.Size = new System.Drawing.Size(100, 20);
             this.tbClave.TabIndex = 2;
-            this.tbClave.Text = "QWERTY";
+            this.tbClave.Text = "666";
             // 
             // lblUsuario
             // 

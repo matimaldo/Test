@@ -33,7 +33,7 @@ namespace Negocio
                     aux.Anio.IdAnio = conexion.Lector.GetInt32(3);
                     aux.Anio.Anio = conexion.Lector.GetInt32(4);
                     aux.Comision.IdComision = conexion.Lector.GetInt32(5);
-                    aux.Comision.IdComision = conexion.Lector.GetInt32(6);
+                    aux.Comision.NombreComision = conexion.Lector.GetString(6);
                     aux.Profesor.IdPersona = conexion.Lector.GetInt32(7);
                     aux.Profesor.Nombre = conexion.Lector.GetString(8);
                     aux.Profesor.Apellido = conexion.Lector.GetString(9);
@@ -78,6 +78,10 @@ namespace Negocio
                     case 3:
                         consulta = "SELECT TOP(1) Cursadas.Id_Cursada, Cursadas.Id_Curso, Cursos.NM_Curso, Cursadas.Id_Anio, AnioLectivo.Anio, Cursadas.Id_Comision, Comisiones.NM_Comision, Cursadas.Id_Profesor, Personas.Nombre, Personas.Apellido, Cursadas.Cant_Max, Cursadas.Estado FROM Cursadas INNER JOIN Cursos ON Cursadas.Id_Curso = Cursos.Id_Curso INNER JOIN AnioLectivo ON Cursadas.Id_Anio = AnioLectivo.Id_Anio INNER JOIN Comisiones ON Cursadas.Id_Comision = Comisiones.Id_Comision INNER JOIN Personas ON Cursadas.Id_Profesor = Personas.Id_Persona ORDER BY 1 DESC";
                         break;
+                    case 4:
+                        consulta = "SELECT TOP(1) Cursadas.Id_Cursada, Cursadas.Id_Curso, Cursos.NM_Curso, Cursadas.Id_Anio, AnioLectivo.Anio, Cursadas.Id_Comision, Comisiones.NM_Comision, Cursadas.Id_Profesor, Personas.Nombre, Personas.Apellido, Cursadas.Cant_Max, Cursadas.Estado FROM Cursadas INNER JOIN Cursos ON Cursadas.Id_Curso = Cursos.Id_Curso INNER JOIN AnioLectivo ON Cursadas.Id_Anio = AnioLectivo.Id_Anio INNER JOIN Comisiones ON Cursadas.Id_Comision = Comisiones.Id_Comision INNER JOIN Personas ON Cursadas.Id_Profesor = Personas.Id_Persona WHERE Cursadas.Id_Cursada =" + id.ToString() + "   ORDER BY 1 ASC";
+                        break;
+
                 }
 
                 conexion.setearConsulta(consulta);
@@ -170,7 +174,6 @@ namespace Negocio
             }
         }
 
-
         public void agregarDgv(DataGridView dgv, int Id)
         {
             AccesoDatos conexion = new AccesoDatos();
@@ -194,7 +197,6 @@ namespace Negocio
                 conexion.cerrarConexion();
             }
         }
-
 
         public void agregarHorario (int IdCursada, int IdDia, int IdHorario, int IdAula)
         {
@@ -253,7 +255,7 @@ namespace Negocio
         public void agregar(Cursada cursada)
         {
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "INSERT INTO Cursadas VALUES (@IdCurso, @IdAnio, @IdComision, @Cantidad, 1, @IdProfesor)";
+            string consulta = "SP_Agregar_Cursada";
 
             try
             {
@@ -264,8 +266,15 @@ namespace Negocio
                 conexion.agregarParametro("@IdProfesor", cursada.Profesor.IdPersona);
                 conexion.agregarParametro("@Cantidad", cursada.CantidadMaxima);
 
-                conexion.setearConsulta(consulta);
-                conexion.accionEjecutar();
+                conexion.setearSP(consulta);
+
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    cursada.IdCursada = int.Parse(conexion.Lector[0].ToString());
+                }
+
             }
             catch (Exception ex)
             {
@@ -281,17 +290,18 @@ namespace Negocio
         public void actualizarProfesor(Cursada cursada)
         {
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "UPDATE Cursadas SET Id_Profesor = @IdProfesor  WHERE Id_Cursada = @IdCursada";
+            string consulta = "UPDATE Cursadas SET Id_Profesor = @IdProfesor, Cant_Max = @Cant  WHERE Id_Cursada = @IdCursada";
 
             try
             {
                 conexion.borrarParametros();
                 conexion.agregarParametro("@IdProfesor", cursada.Profesor.IdPersona);
                 conexion.agregarParametro("@IdCursada", cursada.IdCursada);
+                conexion.agregarParametro("@Cant", cursada.CantidadMaxima);
 
                 conexion.setearConsulta(consulta);
                 conexion.accionEjecutar();
-            }
+                }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -303,5 +313,116 @@ namespace Negocio
 
         }
 
+        public IList<Cursada> listarxProfesor(int Id_Profesor)
+        {
+
+            IList<Cursada> lista = new List<Cursada>();
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_Listar_Cursadas_Profesor";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Profesor", Id_Profesor);
+                conexion.setearSP(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    Cursada aux = new Cursada();
+
+                    aux.IdCursada = conexion.Lector.GetInt32(0);
+                    aux.Curso.IdCurso = conexion.Lector.GetInt32(1);
+                    aux.Curso.NombreCurso = conexion.Lector.GetString(2);
+                    aux.Anio.IdAnio = conexion.Lector.GetInt32(3);
+                    aux.Anio.Anio = conexion.Lector.GetInt32(4);
+                    aux.Comision.IdComision = conexion.Lector.GetInt32(5);
+                    aux.Comision.NombreComision = conexion.Lector.GetString(6);
+                    aux.Profesor.IdPersona = conexion.Lector.GetInt32(7);
+                    aux.Profesor.Nombre = conexion.Lector.GetString(8);
+                    aux.Profesor.Apellido = conexion.Lector.GetString(9);
+                    //aux.Aula.IdAula = conexion.Lector.GetInt32(10);
+                    //aux.Aula.NombreAula = conexion.Lector.GetString(11);
+                    aux.CantidadMaxima = conexion.Lector.GetInt32(10);
+                    aux.Estado = conexion.Lector.GetBoolean(11);
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
+
+        public IList<Alumno> listarAlumnos(int Id_Cursada)
+        {
+
+            IList<Alumno> lista = new List<Alumno>();
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_Listar_Cursadas_Alumnos";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Cursada", Id_Cursada);
+                conexion.setearSP(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    Alumno aux = new Alumno();
+
+                    aux.IdPersona = conexion.Lector.GetInt32(0);
+                    aux.Apellido = conexion.Lector.GetString(1);
+                    aux.Nombre = conexion.Lector.GetString(2);
+                    aux.Apno = "";
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
+
+        public void TomarLista(int Id_Cursada, int Id_Persona, DateTime Fecha , bool Presente)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_TomarLista";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Cursada", Id_Cursada);
+                conexion.agregarParametro("@Persona", Id_Persona);
+                conexion.agregarParametro("@Fecha", Fecha);
+                conexion.agregarParametro("@Presente", Presente);
+
+                conexion.setearSP(consulta);
+                conexion.accionEjecutar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
     }
 }

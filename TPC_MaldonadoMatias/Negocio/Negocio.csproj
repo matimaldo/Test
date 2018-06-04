@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="AnioLectivoBusiness.cs" />
+    <Compile Include="AsignarAlumnosBusiness.cs" />
     <Compile Include="AulaBusiness.cs" />
     <Compile Include="CalendarioBusiness.cs" />
     <Compile Include="ComisionBusiness.cs" />

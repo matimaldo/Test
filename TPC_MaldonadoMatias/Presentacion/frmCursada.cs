@@ -35,14 +35,6 @@ namespace Presentacion
         Cursada cursada = new Cursada();
         Horario horario = new Horario();
 
-
-        private void btnCopiar_Click(object sender, EventArgs e)
-        {
-            frmCopiarCursada frm = new frmCopiarCursada();
-            frm.Owner = this;
-            frm.ShowDialog();
-        }
-
         private void frmCursada_Load(object sender, EventArgs e)
         {
             cboCurso.DataSource = cursoBusiness.listar();
@@ -65,15 +57,15 @@ namespace Presentacion
 
             cboProfesor.DataSource = empleadoBusiness.listar();
             cboProfesor.ValueMember = "IdPersona";
-            cboProfesor.DisplayMember = "Apellido"; //ver de agregar NOmbre
+            cboProfesor.DisplayMember = "Apno"; //ver de agregar NOmbre
 
             cboTurno.DataSource = turnoBusiness.listar();
             cboTurno.ValueMember = "IdTurno";
             cboTurno.DisplayMember = "NombreTurno";
 
-            //cboHorario.SelectedItem = -1;
-            //cboProfesor.SelectedItem = -1;
-            //cboDia.SelectedItem = -1;
+            cboHorario.SelectedIndex = -1;
+            cboProfesor.SelectedIndex = -1;
+            cboDia.SelectedIndex = -1;
 
             cursada.IdCursada = 0;
 
@@ -82,12 +74,16 @@ namespace Presentacion
         public void actualizar()
         {
             if(cboDia.SelectedItem != null & cboProfesor.SelectedItem != null & cboAula.SelectedItem != null & cboTurno.SelectedItem != null)
-            { 
+            {
                 dia = (Dia)cboDia.SelectedItem;
                 aula = (Aula)cboAula.SelectedItem;
                 empleado = (Empleado)cboProfesor.SelectedItem;
                 turno = (Turno)cboTurno.SelectedItem;
                 cboHorario.DataSource = diasBusiness.listarLibres(dia.IdDia, aula.IdAula, empleado.IdPersona, turno.IdTurno);
+            }
+            else
+            {
+                cboHorario.SelectedIndex = -1;
             }
         }
 
@@ -125,7 +121,53 @@ namespace Presentacion
         {
             habilitar();
             nuevo();
+            plus(false);
             btnGuardar.Text = "Guardar";
+        }
+        bool pluss = false;
+
+        public void plus(bool opcion)
+        {
+            cboTurno.Visible = opcion;
+            cboAula.Visible = opcion;
+            cboDia.Visible = opcion;
+            cboHorario.Visible = opcion;
+            dataGridView1.Visible = opcion;
+            btnAgregarHorario.Visible = opcion;
+            btnEliminarHorario.Visible = opcion;
+            lblTurno.Visible = opcion;
+            lblAula.Visible = opcion;
+            lblDia.Visible = opcion;
+            lblHorario.Visible = opcion;
+
+            pluss = opcion;
+
+            if (opcion)
+            {
+                btnGuardar.Location = new System.Drawing.Point(163, 342);
+                btnCerrar.Location = new System.Drawing.Point(245, 342);
+                btnBajar.Location = new System.Drawing.Point(6, 367);
+                btnPrimero.Location = new System.Drawing.Point(394, 367);
+                btnUltimo.Location = new System.Drawing.Point(466, 367);
+                btnAnterior.Location = new System.Drawing.Point(420, 367);
+                btnSiguiente.Location = new System.Drawing.Point(443, 367);
+                this.ClientSize = new System.Drawing.Size(496, 395);
+                btnBajar.Text = "-";
+
+            }
+            else
+            {
+                this.btnGuardar.Location = new System.Drawing.Point(158, 114);
+                this.btnCerrar.Location = new System.Drawing.Point(240, 114);
+                this.btnBajar.Location = new System.Drawing.Point(1, 139);
+                this.btnPrimero.Location = new System.Drawing.Point(389, 139);
+                this.btnUltimo.Location = new System.Drawing.Point(461, 139);
+                this.btnAnterior.Location = new System.Drawing.Point(415, 139);
+                this.btnSiguiente.Location = new System.Drawing.Point(438, 139);
+                this.ClientSize = new System.Drawing.Size(496, 167);
+                btnBajar.Text = "+";
+
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -145,14 +187,19 @@ namespace Presentacion
                     //    cursoBusiness.agregar(curso);
                     cursadaBusiness.agregar(cursada);
 
+
                     MessageBox.Show("Agregado con éxito");
-                    nuevo();
+                    plus(true);
+                    btnBajar.Visible = true;
+                    //nuevo();
+
+                    btnBajar.Visible = true;
                 }
                 else // Modificar Persona
                 {
-                //    cursoBusiness.modificar(curso);
+                    cursadaBusiness.actualizarProfesor(cursada);
 
-                //    MessageBox.Show("Modificado con éxito");
+                    MessageBox.Show("Modificado con éxito");
                 }
 
 
@@ -204,6 +251,7 @@ namespace Presentacion
             //cboTurno.SelectedValue = cursada.Turno.IdTurno;
             //cboAula.SelectedValue = cursada.Aula.IdAula;
             txtCantidad.Text = cursada.CantidadMaxima.ToString();
+            btnBajar.Visible = true;
 
             cursadaBusiness.agregarDgv(dataGridView1, cursada.IdCursada);
             dataGridView1.Columns[0].Visible = false;
@@ -226,6 +274,7 @@ namespace Presentacion
 
             btnSiguiente.Visible = true;
             btnAnterior.Visible = true;
+            btnBajar.Visible = true;
             
 
             btnGuardar.Text = "Modificar";
@@ -260,10 +309,13 @@ namespace Presentacion
             lblNroId.Text = "";
             btnCancelar.Visible = true;
             txtCantidad.Text = "";
+            btnBajar.Visible = false;
+
 
             cboAnio.Enabled = true;
             cboCurso.Enabled = true;
             cboComision.Enabled = true;
+            cboProfesor.Enabled = true;
 
             cursada.IdCursada = 0;
             buscarToolStripMenuItem.Visible = false;
@@ -297,6 +349,7 @@ namespace Presentacion
             btnGuardar.Visible = false;
             cboProfesor.Visible = false;
             txtCantidad.Visible = false;
+            btnBajar.Visible = false;
 
             btnUltimo.Visible = true;
 
@@ -337,9 +390,6 @@ namespace Presentacion
 
                 if(cboProfesor.Enabled == true)
                 {
-                    //UPDATE
-                    //MessageBox.Show("Actualiza Profesor");
-
                     cursadaBusiness.actualizarProfesor(cursada);
                 }
             }
@@ -409,6 +459,11 @@ namespace Presentacion
             {
                 cboProfesor.Enabled = false;
             }
+        }
+
+        private void btnBajar_Click(object sender, EventArgs e)
+        {
+            plus(!pluss);
         }
     }
 }

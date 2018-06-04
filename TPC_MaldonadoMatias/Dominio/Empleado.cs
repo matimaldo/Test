@@ -8,7 +8,6 @@ namespace Dominio
 {
     public class Empleado : Persona
     {
-
         public override string ToString()
         {
             return Apellido +", "+Nombre;

@@ -43,6 +43,8 @@ namespace Presentacion
             lblAviso.Text = "Avisos para " + DateTime.Today.ToString("dd/MM/yyyy");
             cargarCumpleaños();
             cargarAvisos();
+            mhcCalendario.UpdateBoldedDates();
+            
 
             //mhcCalendario.;
         }
