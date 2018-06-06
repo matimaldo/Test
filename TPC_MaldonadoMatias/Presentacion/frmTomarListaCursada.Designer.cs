@@ -52,6 +52,7 @@
             this.dtpDia.Name = "dtpDia";
             this.dtpDia.Size = new System.Drawing.Size(99, 20);
             this.dtpDia.TabIndex = 2;
+            this.dtpDia.ValueChanged += new System.EventHandler(this.dtpDia_ValueChanged);
             // 
             // btnSeleccionar
             // 
@@ -71,6 +72,7 @@
             this.dgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLista.Size = new System.Drawing.Size(639, 281);
             this.dgvLista.TabIndex = 4;
+            this.dgvLista.Visible = false;
             // 
             // btnGuardar
             // 

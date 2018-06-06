@@ -424,5 +424,37 @@ namespace Negocio
                 conexion.cerrarConexion();
             }
         }
+
+
+       public bool SeTomoLista(int Id_Cursada, DateTime Fecha)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_SeTomoLista";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Cursada", Id_Cursada);
+                conexion.agregarParametro("@Fecha", Fecha);
+
+                conexion.setearSP(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
     }
 }

@@ -29,22 +29,34 @@ namespace Presentacion
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            //dgvLista.DataSource = null;
 
-            dgvLista.DataSource = cursadaBusiness.listarAlumnos((this.Owner as frmTomarLista).cursada.IdCursada);
-            dgvLista.Columns["Apno"].HeaderText = "Alumno";
-            dgvLista.Columns["Apno"].Width = 200;
-            dgvLista.Columns["Apno"].ReadOnly = true;
 
-            dgvLista.Columns["Telefono"].Visible = false;
-            dgvLista.Columns["Estado"].Visible = false;
-            dgvLista.Columns["Sexo"].Visible = false;
-            dgvLista.Columns["Apellido"].Visible = false;
-            dgvLista.Columns["Nombre"].Visible = false;
-            dgvLista.Columns["DNI"].Visible = false;
-            dgvLista.Columns["FechaNac"].Visible = false;
-            dgvLista.Columns["Mail"].Visible = false;
-            dgvLista.Columns["IdPersona"].Visible = false;
+
+
+            if (cursadaBusiness.SeTomoLista((this.Owner as frmTomarLista).cursada.IdCursada, DateTime.Parse(dtpDia.Text)))
+            {
+                MessageBox.Show("Ya se Tomo lista este dia!");
+            }
+            else
+            {
+
+                dgvLista.Visible = true;
+                //dgvLista.DataSource = null;
+
+                dgvLista.DataSource = cursadaBusiness.listarAlumnos((this.Owner as frmTomarLista).cursada.IdCursada);
+                dgvLista.Columns["Apno"].HeaderText = "Alumno";
+                dgvLista.Columns["Apno"].Width = 200;
+                dgvLista.Columns["Apno"].ReadOnly = true;
+
+                dgvLista.Columns["Telefono"].Visible = false;
+                dgvLista.Columns["Estado"].Visible = false;
+                dgvLista.Columns["Sexo"].Visible = false;
+                dgvLista.Columns["Apellido"].Visible = false;
+                dgvLista.Columns["Nombre"].Visible = false;
+                dgvLista.Columns["DNI"].Visible = false;
+                dgvLista.Columns["FechaNac"].Visible = false;
+                dgvLista.Columns["Mail"].Visible = false;
+                dgvLista.Columns["IdPersona"].Visible = false;
 
             if (dgvLista.Columns.Contains("Presente"))
             {
@@ -62,6 +74,8 @@ namespace Presentacion
             {
                 row.Cells["Presente"].Value = false;
             }
+
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -72,11 +86,17 @@ namespace Presentacion
                 int IdPersona = (int)row.Cells["IdPersona"].Value;
                 DateTime Dia = DateTime.Parse(dtpDia.Text);
                 bool Presente = (bool)row.Cells["Presente"].Value;
-                //MessageBox.Show(IdCursada + " " + IdPersona + " " + Dia + " " + Presente);
 
                 cursadaBusiness.TomarLista(IdCursada, IdPersona, Dia, Presente);
 
             }
+            MessageBox.Show("Se guardo Correctamente");
+            dgvLista.Visible = false;
+        }
+
+        private void dtpDia_ValueChanged(object sender, EventArgs e)
+        {
+            dgvLista.Visible = false;
         }
     }
 }
