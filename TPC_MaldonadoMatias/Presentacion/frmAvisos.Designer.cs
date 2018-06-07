@@ -34,7 +34,7 @@
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbCreador = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtCreador = new System.Windows.Forms.TextBox();
             this.txtAsunto = new System.Windows.Forms.TextBox();
             this.txtDetalle = new System.Windows.Forms.TextBox();
@@ -87,26 +87,26 @@
             // lbCreador
             // 
             this.lbCreador.AutoSize = true;
-            this.lbCreador.Location = new System.Drawing.Point(310, 41);
+            this.lbCreador.Location = new System.Drawing.Point(265, 41);
             this.lbCreador.Name = "lbCreador";
             this.lbCreador.Size = new System.Drawing.Size(65, 13);
             this.lbCreador.TabIndex = 3;
             this.lbCreador.Text = "Creado por :";
             // 
-            // dateTimePicker1
+            // dtpFecha
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(111, 38);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(106, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFecha.Location = new System.Drawing.Point(111, 38);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(106, 20);
+            this.dtpFecha.TabIndex = 4;
             // 
             // txtCreador
             // 
             this.txtCreador.Enabled = false;
-            this.txtCreador.Location = new System.Drawing.Point(381, 38);
+            this.txtCreador.Location = new System.Drawing.Point(336, 38);
             this.txtCreador.Name = "txtCreador";
-            this.txtCreador.Size = new System.Drawing.Size(100, 20);
+            this.txtCreador.Size = new System.Drawing.Size(145, 20);
             this.txtCreador.TabIndex = 5;
             // 
             // txtAsunto
@@ -142,6 +142,7 @@
             this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // frmAvisos
             // 
@@ -154,7 +155,7 @@
             this.Controls.Add(this.txtDetalle);
             this.Controls.Add(this.txtAsunto);
             this.Controls.Add(this.txtCreador);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.lbCreador);
             this.Controls.Add(this.lbAsunto);
             this.Controls.Add(this.lbFecha);
@@ -165,6 +166,7 @@
             this.MinimizeBox = false;
             this.Name = "frmAvisos";
             this.Text = "Avisos";
+            this.Load += new System.EventHandler(this.frmAvisos_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -178,7 +180,7 @@
         private System.Windows.Forms.Label lbAsunto;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lbCreador;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
         private System.Windows.Forms.TextBox txtCreador;

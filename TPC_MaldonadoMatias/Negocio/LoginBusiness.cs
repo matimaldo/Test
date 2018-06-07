@@ -67,6 +67,7 @@ namespace Negocio
                     aux.Persona.Nombre = conexion.Lector.GetString(4);
                     aux.Rol.IdRol = conexion.Lector.GetInt32(5);
                     aux.Rol.NMRol = conexion.Lector.GetString(6);
+                    aux.Persona.Apno="";
                 }
                 return aux;
             }

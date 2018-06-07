@@ -23,8 +23,6 @@ namespace Presentacion
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
-            
-
             frmLogin frm = new frmLogin();
             frm.Owner = this;
             frm.ShowDialog();

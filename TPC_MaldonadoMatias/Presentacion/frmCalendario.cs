@@ -30,31 +30,42 @@ namespace Presentacion
             foreach (DateTime fecha in calendarioBusiness.listar())
             {
                 mhcCalendario.AddAnnuallyBoldedDate(fecha);
+
             }
         }
 
-        public void cargarAvisos()
-        {   
-            lbxAvisos.DataSource = calendarioBusiness.Avisos(mhcCalendario.SelectionStart);
+        public void cargarAvisosProfesores()
+        {
+            foreach (DateTime fecha in calendarioBusiness.listarAvisos())
+            {
+                mhcCalendario.AddAnnuallyBoldedDate(fecha);
+            }
+        }
+
+        public void Actualizar()
+        {
+            cargarCumpleaños();
+            cargarAvisosProfesores();
+            cargarAvisos();
+            mhcCalendario.UpdateBoldedDates();
+
         }
 
         private void frmCalendario_Load(object sender, EventArgs e)
         {
             lblAviso.Text = "Avisos para " + DateTime.Today.ToString("dd/MM/yyyy");
-            cargarCumpleaños();
-            cargarAvisos();
-            mhcCalendario.UpdateBoldedDates();
-            
+            Actualizar();
+        }
 
-            //mhcCalendario.;
+        public void cargarAvisos()
+        {
+            lbxAvisos.DataSource = calendarioBusiness.AvisosCumple(mhcCalendario.SelectionStart);
         }
 
         private void mhcCalendario_DateSelected(object sender, DateRangeEventArgs e)
         {
             lblAviso.Text = "Avisos para " + mhcCalendario.SelectionStart.ToString("dd/MM/yyyy");
-            cargarCumpleaños();
-            cargarAvisos();
-
+            Actualizar();
         }
     }
 }

@@ -96,10 +96,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MonthCalendar mhcCalendario;
         private System.Windows.Forms.ListBox lbxAvisos;
         private System.Windows.Forms.Label lblAviso;
         public System.Windows.Forms.Button btnCancelar;
+        public System.Windows.Forms.MonthCalendar mhcCalendario;
     }
 }

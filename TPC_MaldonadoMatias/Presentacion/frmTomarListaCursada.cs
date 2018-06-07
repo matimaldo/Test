@@ -30,9 +30,6 @@ namespace Presentacion
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
 
-
-
-
             if (cursadaBusiness.SeTomoLista((this.Owner as frmTomarLista).cursada.IdCursada, DateTime.Parse(dtpDia.Text)))
             {
                 MessageBox.Show("Ya se Tomo lista este dia!");
