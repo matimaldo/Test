@@ -399,7 +399,7 @@ namespace Negocio
         }
 
 
-        public void TomarLista(int Id_Cursada, int Id_Persona, DateTime Fecha , bool Presente)
+       public void TomarLista(int Id_Cursada, int Id_Persona, DateTime Fecha , bool Presente)
         {
             AccesoDatos conexion = new AccesoDatos();
 
@@ -425,7 +425,6 @@ namespace Negocio
             }
         }
 
-
        public bool SeTomoLista(int Id_Cursada, DateTime Fecha)
         {
             AccesoDatos conexion = new AccesoDatos();
@@ -438,6 +437,60 @@ namespace Negocio
                 conexion.agregarParametro("@Fecha", Fecha);
 
                 conexion.setearSP(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
+
+        public void ListarAsistencia(DataGridView dgv, int Cursada)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_Asistencia";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Cursada", Cursada);
+
+                dgv.DataSource = conexion.agragarDataGridView(consulta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+  
+        }
+
+        public bool ValidarAsistencia(int Id_Cursada)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SELECT top(1)* FROM Asistencia WHERE Id_Cursada =@Cursada";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Cursada", Id_Cursada);
+
+                conexion.setearConsulta(consulta);
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())

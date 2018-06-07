@@ -206,5 +206,12 @@ namespace Presentacion
             frm.ShowDialog();
 
         }
+
+        private void asistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAsistencia frm = new frmAsistencia();
+            frm.Owner = this;
+            frm.ShowDialog();
+        }
     }
 }
