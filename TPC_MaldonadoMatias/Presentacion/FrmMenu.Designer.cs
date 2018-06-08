@@ -55,10 +55,10 @@
             this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.asistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -197,7 +197,7 @@
             // academiaToolStripMenuItem
             // 
             this.academiaToolStripMenuItem.Name = "academiaToolStripMenuItem";
-            this.academiaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.academiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.academiaToolStripMenuItem.Text = "Academia";
             this.academiaToolStripMenuItem.Visible = false;
             this.academiaToolStripMenuItem.Click += new System.EventHandler(this.academiaToolStripMenuItem_Click);
@@ -205,42 +205,42 @@
             // añosLectivoToolStripMenuItem
             // 
             this.añosLectivoToolStripMenuItem.Name = "añosLectivoToolStripMenuItem";
-            this.añosLectivoToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.añosLectivoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.añosLectivoToolStripMenuItem.Text = "Años Lectivo";
             this.añosLectivoToolStripMenuItem.Click += new System.EventHandler(this.añosLectivoToolStripMenuItem_Click);
             // 
             // aulasToolStripMenuItem
             // 
             this.aulasToolStripMenuItem.Name = "aulasToolStripMenuItem";
-            this.aulasToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.aulasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aulasToolStripMenuItem.Text = "Aulas";
             this.aulasToolStripMenuItem.Click += new System.EventHandler(this.aulasToolStripMenuItem_Click);
             // 
             // diaToolStripMenuItem
             // 
             this.diaToolStripMenuItem.Name = "diaToolStripMenuItem";
-            this.diaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.diaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.diaToolStripMenuItem.Text = "Dia";
             this.diaToolStripMenuItem.Click += new System.EventHandler(this.diaToolStripMenuItem_Click);
             // 
             // horarioToolStripMenuItem
             // 
             this.horarioToolStripMenuItem.Name = "horarioToolStripMenuItem";
-            this.horarioToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.horarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.horarioToolStripMenuItem.Text = "Horario";
             this.horarioToolStripMenuItem.Click += new System.EventHandler(this.horarioToolStripMenuItem_Click);
             // 
             // comisionToolStripMenuItem
             // 
             this.comisionToolStripMenuItem.Name = "comisionToolStripMenuItem";
-            this.comisionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.comisionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.comisionToolStripMenuItem.Text = "Comision";
             this.comisionToolStripMenuItem.Click += new System.EventHandler(this.comisionToolStripMenuItem_Click);
             // 
             // turnoToolStripMenuItem
             // 
             this.turnoToolStripMenuItem.Name = "turnoToolStripMenuItem";
-            this.turnoToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.turnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.turnoToolStripMenuItem.Text = "Turno";
             this.turnoToolStripMenuItem.Click += new System.EventHandler(this.turnoToolStripMenuItem_Click);
             // 
@@ -273,6 +273,14 @@
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
             this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empleadosToolStripMenuItem.Text = "Empleados";
+            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
+            // 
+            // asistenciaToolStripMenuItem
+            // 
+            this.asistenciaToolStripMenuItem.Name = "asistenciaToolStripMenuItem";
+            this.asistenciaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asistenciaToolStripMenuItem.Text = "Asistencia";
+            this.asistenciaToolStripMenuItem.Click += new System.EventHandler(this.asistenciaToolStripMenuItem_Click);
             // 
             // calendarioToolStripMenuItem1
             // 
@@ -296,13 +304,6 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
-            // 
-            // asistenciaToolStripMenuItem
-            // 
-            this.asistenciaToolStripMenuItem.Name = "asistenciaToolStripMenuItem";
-            this.asistenciaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.asistenciaToolStripMenuItem.Text = "Asistencia";
-            this.asistenciaToolStripMenuItem.Click += new System.EventHandler(this.asistenciaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

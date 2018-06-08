@@ -214,5 +214,12 @@ namespace Presentacion
             frm.Owner = this;
             frm.ShowDialog();
         }
+
+        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListarEmpleados frm = new frmListarEmpleados();
+            frm.Owner = this;
+            frm.ShowDialog();
+        }
     }
 }

@@ -30,6 +30,8 @@ namespace Presentacion
             avisosBusiness.agregar(dtpFecha.Value, (this.Owner as frmMenu).usuario.IdUsuario, txtAsunto.Text, txtDetalle.Text);
 
             MessageBox.Show("Se guardo con Exito!");
+            txtAsunto.Text = "";
+            txtDetalle.Text = "";
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using System.Windows.Forms;
 
 namespace Negocio
 {
@@ -13,7 +14,7 @@ namespace Negocio
         {
             IList<Empleado> lista = new List<Empleado>();
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "SELECT P.Id_Persona, P.Nombre, P.Apellido, P.DNI, P.FechaNac, P.Mail, T.Numero, TT.NM_Tipo,RP.Id_Rol FROM dbo.PERSONAS AS P LEFT OUTER JOIN dbo.Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT OUTER JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol IS NOT NULL AND P.Eliminado = 0";
+            string consulta = "SELECT P.Id_Persona, P.Nombre, P.Apellido, P.DNI, P.FechaNac, P.Mail, T.Numero, TT.NM_Tipo,RP.Id_Rol FROM dbo.PERSONAS AS P LEFT OUTER JOIN dbo.Telefonos AS T ON P.Id_Persona = T.Id_Persona LEFT OUTER JOIN TipoTelefonos AS TT ON T.Id_TipoTel = TT.Id_TipoTel LEFT JOIN RolxPersona RP ON p.Id_Persona = RP.Id_Persona WHERE Id_Rol = 3 AND P.Eliminado = 0 ";
 
             try
             {
@@ -366,6 +367,26 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
+
+        public void agregarDgv(DataGridView dgv)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_ListarEmpleado";
+            try
+            {
+                dgv.DataSource = conexion.agragarDataGridView(consulta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
