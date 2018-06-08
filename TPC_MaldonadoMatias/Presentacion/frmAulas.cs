@@ -20,34 +20,32 @@ namespace Presentacion
         }
 
 
-        public Aula curso = new Aula();
-        AulaBusiness cursoBusiness = new AulaBusiness();
+        public Aula aula = new Aula();
+        AulaBusiness aulaBusiness = new AulaBusiness();
 
 
         public void habilitar()
         {
-            txtNmCurso.Visible = true;
-            txtCantidad.Visible = true;
+            txtNmAula.Visible = true;
 
             btnAnterior.Visible = true;
             btnSiguiente.Visible = true;
             btnPrimero.Visible = true;
             btnUltimo.Visible = true;
 
+            ErrorNombre.Clear();
         }
 
         public void deshabilitar()
         {
-            txtNmCurso.Visible = false;
-            txtCantidad.Visible = false;
+            txtNmAula.Visible = false;
             btnGuardar.Visible = false;
 
         }
 
         public void nuevo()
         {
-            txtNmCurso.Text = "";
-            txtCantidad.Text = "";
+            txtNmAula.Text = "";
             btnAnterior.Visible = false;
             btnSiguiente.Visible = false;
             btnUltimo.Visible = false;
@@ -62,9 +60,9 @@ namespace Presentacion
 
             lblNroId.Text = "";
 
-            txtNmCurso.Focus();
+            txtNmAula.Focus();
 
-            curso.IdAula = 0;
+            aula.IdAula = 0;
             eliminarToolStripMenuItem.Visible = false;
         }
 
@@ -88,9 +86,8 @@ namespace Presentacion
 
             habilitar();
 
-            lblNroId.Text = curso.IdAula.ToString();
-            txtNmCurso.Text = curso.NombreAula;
-            txtCantidad.Text = curso.Cantidad.ToString();
+            lblNroId.Text = aula.IdAula.ToString();
+            txtNmAula.Text = aula.NombreAula;
 
             btnCerrar.Location = new System.Drawing.Point(186, 87);
 
@@ -101,7 +98,7 @@ namespace Presentacion
             btnGuardar.Text = "Modificar";
             btnGuardar.Visible = true;
 
-            if (curso.IdAula < cursoBusiness.obtenerIDMax())
+            if (aula.IdAula < aulaBusiness.obtenerIDMax())
             {
                 btnSiguiente.Enabled = true;
                 btnUltimo.Enabled = true;
@@ -112,7 +109,7 @@ namespace Presentacion
                 btnUltimo.Enabled = false;
             }
 
-            if (cursoBusiness.obtenerIDMin() < curso.IdAula)
+            if (aulaBusiness.obtenerIDMin() < aula.IdAula)
             {
                 btnAnterior.Enabled = true;
                 btnPrimero.Enabled = true;
@@ -125,7 +122,7 @@ namespace Presentacion
 
             eliminarToolStripMenuItem.Visible = true;
 
-            txtNmCurso.Focus();
+            txtNmAula.Focus();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -149,25 +146,25 @@ namespace Presentacion
 
         private void btnPrimero_Click(object sender, EventArgs e)
         {
-            curso = cursoBusiness.IrA(0, curso.IdAula);
+            aula = aulaBusiness.IrA(0, aula.IdAula);
             rdoBusqueda();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            curso = cursoBusiness.IrA(1, curso.IdAula);
+            aula = aulaBusiness.IrA(1, aula.IdAula);
             rdoBusqueda();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            curso = cursoBusiness.IrA(2, curso.IdAula);
+            aula = aulaBusiness.IrA(2, aula.IdAula);
             rdoBusqueda();
         }
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            curso = cursoBusiness.IrA(3, curso.IdAula);
+            aula = aulaBusiness.IrA(3, aula.IdAula);
             rdoBusqueda();
         }
 
@@ -176,31 +173,89 @@ namespace Presentacion
             this.Close();
         }
 
+        public bool Validar()
+        {
+            bool ok = true;
+            if (txtNmAula.Text == "")
+            {
+                ErrorNombre.SetError(txtNmAula, "Ingrese Nombre de Aula");
+                ok = false;
+            }
+            else
+            {
+                ErrorNombre.Clear();
+            }
+            return ok;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (Validar())
             {
-                curso.NombreAula = txtNmCurso.Text;
-                curso.Cantidad = int.Parse(txtCantidad.Text);
-
-                if (btnGuardar.Text == "Guardar")
+                try
                 {
-                    cursoBusiness.agregar(curso);
+                    aula.NombreAula = txtNmAula.Text;
 
-                    MessageBox.Show("Agregado con éxito");
-                    nuevo();
+                    if (btnGuardar.Text == "Guardar")
+                    {
+                        if (aulaBusiness.ValidarIngreso(aula.NombreAula))
+                        {
+                            aulaBusiness.agregar(aula);
+
+                            MessageBox.Show("Agregado con éxito");
+                            nuevo();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El Nombre de Aula ya Existe!");
+
+                        }
+                    }
+                    else // Modificar Persona
+                    {
+                        aulaBusiness.modificar(aula);
+
+                        MessageBox.Show("Modificado con éxito");
+                    }
                 }
-                else // Modificar Persona
+                catch (Exception ex)
                 {
-                    cursoBusiness.modificar(curso);
-
-                    MessageBox.Show("Modificado con éxito");
+                    MessageBox.Show(ex.ToString());
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Complete Datos minimos");
+            }
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Esta Seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                aulaBusiness.eliminar(aula);
+
+                deshabilitar();
+                btnSiguiente.Visible = true;
+                btnSiguiente.Enabled = true;
+                btnAnterior.Visible = true;
+                btnAnterior.Enabled = false;
+
+                btnUltimo.Visible = true;
+                btnUltimo.Enabled = true;
+
+                btnPrimero.Visible = true;
+                btnPrimero.Enabled = false;
+
+                btnCerrar.Location = new Point(134, 87);
+                btnCancelar.Visible = false;
+                lblNroId.Text = "0";
+
+                lblId.Visible = false;
+                lblNroId.Visible = false;
+
+                eliminarToolStripMenuItem.Visible = false;
             }
         }
     }

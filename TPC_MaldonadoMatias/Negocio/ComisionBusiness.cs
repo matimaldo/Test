@@ -26,7 +26,7 @@ namespace Negocio
                     break;
             }
 
-            string consulta = "SELECT Id_Comision, NM_Comision FROM Comisiones WHERE " + where + " ORDER BY 1";
+            string consulta = "SELECT Id_Comision, NM_Comision FROM Comisiones WHERE Eliminado =0 AND " + where + " ORDER BY 1";
             try
             {
                 conexion.setearConsulta(consulta);
@@ -59,7 +59,7 @@ namespace Negocio
             IList<Comision> lista = new List<Comision>();
             AccesoDatos conexion = new AccesoDatos();
 
-            string consulta = "SELECT Id_Comision, NM_Comision FROM Comisiones ORDER BY 1";
+            string consulta = "SELECT Id_Comision, NM_Comision FROM Comisiones WHERE Eliminado =0 ORDER BY 1";
             try
             {
                 conexion.setearConsulta(consulta);
@@ -86,10 +86,35 @@ namespace Negocio
             }
         }
 
+        public bool ValidarIngreso(string Nombre)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            string consulta = "SELECT * FROM Comisiones WHERE NM_Comision = '" + Nombre + "'";
+            try
+            {
+                conexion.setearConsulta(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
         public void agregar(Comision comision)
         {
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "INSERT INTO Comisiones VALUES (@Nombre)";
+            string consulta = "INSERT INTO Comisiones VALUES (@Nombre, 0)";
 
             try
             {
@@ -140,7 +165,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MAX(Id_Comision) FROM Comisiones");
+                conexion.setearConsulta("SELECT MAX(Id_Comision) FROM Comisiones WHERE Eliminado =0");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -166,7 +191,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MIN(Id_Comision) FROM Comisiones");
+                conexion.setearConsulta("SELECT MIN(Id_Comision) FROM Comisiones WHERE Eliminado =0");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -197,16 +222,16 @@ namespace Negocio
                 switch (tipo)
                 {
                     case 0:
-                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones ORDER BY 1 ASC";
+                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones WHERE Eliminado =0 ORDER BY 1 ASC";
                         break;
                     case 1:
-                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones WHERE Id_Comision <" + id.ToString() + "ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones WHERE Eliminado =0 AND Id_Comision <" + id.ToString() + "ORDER BY 1 DESC";
                         break;
                     case 2:
-                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones WHERE Id_Comision >" + id.ToString() + "ORDER BY 1 ASC";
+                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones WHERE Eliminado =0 AND Id_Comision >" + id.ToString() + "ORDER BY 1 ASC";
                         break;
                     case 3:
-                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) Id_Comision, NM_Comision  FROM Comisiones WHERE Eliminado =0 ORDER BY 1 DESC";
                         break;
                 }
 
@@ -230,6 +255,29 @@ namespace Negocio
                 conexion.cerrarConexion();
             }
 
+        }
+
+        public void eliminar(Comision comision)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            string consulta = "UPDATE Comisiones SET Eliminado = 1 WHERE Id_Comision = @IdComision";
+
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@IdComision", comision.IdComision);
+
+                conexion.setearConsulta(consulta);
+                conexion.accionEjecutar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
         }
 
     }

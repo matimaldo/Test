@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleados));
             this.btnPrimero = new System.Windows.Forms.Button();
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -65,9 +67,23 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cboRol = new System.Windows.Forms.ComboBox();
             this.lblTipoEmpleado = new System.Windows.Forms.Label();
+            this.ErrorNombre = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorApellido = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorDNI = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorFecha = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorMail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorTipo = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorTE = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbTelefono.SuspendLayout();
             this.gbSexo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNombre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorApellido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorDNI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorFecha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorMail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorTipo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorTE)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPrimero
@@ -414,6 +430,7 @@
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Visible = false;
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // cboRol
             // 
@@ -433,6 +450,48 @@
             this.lblTipoEmpleado.Size = new System.Drawing.Size(96, 13);
             this.lblTipoEmpleado.TabIndex = 47;
             this.lblTipoEmpleado.Text = "Tipo de Empleado:";
+            // 
+            // ErrorNombre
+            // 
+            this.ErrorNombre.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorNombre.ContainerControl = this;
+            this.ErrorNombre.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorNombre.Icon")));
+            // 
+            // ErrorApellido
+            // 
+            this.ErrorApellido.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorApellido.ContainerControl = this;
+            this.ErrorApellido.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorApellido.Icon")));
+            // 
+            // ErrorDNI
+            // 
+            this.ErrorDNI.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorDNI.ContainerControl = this;
+            this.ErrorDNI.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorDNI.Icon")));
+            // 
+            // ErrorFecha
+            // 
+            this.ErrorFecha.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorFecha.ContainerControl = this;
+            this.ErrorFecha.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorFecha.Icon")));
+            // 
+            // ErrorMail
+            // 
+            this.ErrorMail.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorMail.ContainerControl = this;
+            this.ErrorMail.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorMail.Icon")));
+            // 
+            // ErrorTipo
+            // 
+            this.ErrorTipo.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorTipo.ContainerControl = this;
+            this.ErrorTipo.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorTipo.Icon")));
+            // 
+            // ErrorTE
+            // 
+            this.ErrorTE.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorTE.ContainerControl = this;
+            this.ErrorTE.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorTE.Icon")));
             // 
             // frmEmpleados
             // 
@@ -478,6 +537,13 @@
             this.gbSexo.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNombre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorApellido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorDNI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorFecha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorMail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorTipo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorTE)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,5 +588,12 @@
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         public System.Windows.Forms.ComboBox cboRol;
         private System.Windows.Forms.Label lblTipoEmpleado;
+        private System.Windows.Forms.ErrorProvider ErrorNombre;
+        private System.Windows.Forms.ErrorProvider ErrorApellido;
+        private System.Windows.Forms.ErrorProvider ErrorDNI;
+        private System.Windows.Forms.ErrorProvider ErrorFecha;
+        private System.Windows.Forms.ErrorProvider ErrorMail;
+        private System.Windows.Forms.ErrorProvider ErrorTipo;
+        private System.Windows.Forms.ErrorProvider ErrorTE;
     }
 }

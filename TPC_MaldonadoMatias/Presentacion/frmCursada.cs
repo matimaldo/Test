@@ -87,6 +87,11 @@ namespace Presentacion
             }
         }
 
+        private void cboTurno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                actualizar();
+        }
+
         private void cboDia_SelectedIndexChanged(object sender, EventArgs e)
         {
                 actualizar();
@@ -172,7 +177,6 @@ namespace Presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //CursadaBusiness cursadaBusiness = new CursadaBusiness();
 
             try
             {
@@ -184,14 +188,12 @@ namespace Presentacion
 
                 if (btnGuardar.Text == "Guardar")
                 {
-                    //    cursoBusiness.agregar(curso);
                     cursadaBusiness.agregar(cursada);
 
 
                     MessageBox.Show("Agregado con éxito");
                     plus(true);
                     btnBajar.Visible = true;
-                    //nuevo();
 
                     btnBajar.Visible = true;
                 }
@@ -248,8 +250,6 @@ namespace Presentacion
             cboCurso.SelectedValue = cursada.Curso.IdCurso;
             cboComision.SelectedValue = cursada.Comision.IdComision;
             cboProfesor.SelectedValue = cursada.Profesor.IdPersona;
-            //cboTurno.SelectedValue = cursada.Turno.IdTurno;
-            //cboAula.SelectedValue = cursada.Aula.IdAula;
             txtCantidad.Text = cursada.CantidadMaxima.ToString();
             btnBajar.Visible = true;
 
@@ -372,10 +372,7 @@ namespace Presentacion
             buscarToolStripMenuItem.Visible = true;
         }
 
-        private void cboTurno_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            actualizar();
-        }
+
 
         private void btnAgregarHorario_Click(object sender, EventArgs e)
         {

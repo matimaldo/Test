@@ -20,6 +20,7 @@ namespace Presentacion
         }
 
         public Usuario usuario = new Usuario();
+        public bool CambioUsuario = false;
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {

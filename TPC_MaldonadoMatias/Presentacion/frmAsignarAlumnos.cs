@@ -141,5 +141,23 @@ namespace Presentacion
         {
             this.Close();
         }
+
+        private void cboAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbDisponible.DataSource = null;
+            lbEnCurso.DataSource = null;
+        }
+
+        private void cboCurso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbDisponible.DataSource = null;
+            lbEnCurso.DataSource = null;
+        }
+
+        private void cboComision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbDisponible.DataSource = null;
+            lbEnCurso.DataSource = null;
+        }
     }
 }

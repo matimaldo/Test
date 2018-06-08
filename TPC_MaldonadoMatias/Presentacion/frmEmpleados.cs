@@ -22,6 +22,10 @@ namespace Presentacion
         public Empleado empleado = new Empleado();
         public Rol rol = new Rol();
 
+        EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
+        TelefonoBusiness telefonoBusiness = new TelefonoBusiness();
+        RolBusinness rolBusinness = new RolBusinness();
+
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUsuario frm = new frmUsuario();
@@ -51,6 +55,14 @@ namespace Presentacion
             btnPrimero.Visible = true;
             btnUltimo.Visible = true;
             usuarioToolStripMenuItem.Visible = true;
+
+            ErrorNombre.Clear();
+            ErrorApellido.Clear();
+            ErrorDNI.Clear();
+            ErrorFecha.Clear();
+            ErrorMail.Clear();
+            ErrorTipo.Clear();
+            ErrorTE.Clear();
 
             TipoTelefonoBusiness TipoTelefonoBusiness = new TipoTelefonoBusiness();
             try
@@ -199,26 +211,6 @@ namespace Presentacion
 
         }
 
-        //public bool validar()
-        //{
-        //    //bool preguntar = false;
-        //    if (empleado.Nombre.CompareTo(txtNombre.Text) == -1) return true;
-        //    if (empleado.Apellido.CompareTo(txtApellido.Text) == -1) return true;
-        //    if (empleado.Dni.CompareTo(txtDni.Text) == -1) return true;            
-
-        //    //empleado.FechaNac.CompareTo(dtpFechaNac.Text);
-        //    empleado.Mail.CompareTo(txtMail.Text);
-        //    //empleado.Telefono.IdTelefono.CompareTo(txtNombre.Text);
-        //    //empleado.Telefono.Numero.CompareTo(txtNumero.Text);
-        //    //empleado.Telefono.Contacto.CompareTo(txtContacto.Text);
-        //    //empleado.Sexo.CompareTo(txtNombre.Text);
-        //    empleado.Estado.CompareTo(cbxActivo.Checked);
-
-        //    //  empleado.Telefono.TipoTelefono.IdTipoTelefono.CompareTo((TipoTelefono)cboTipoTelefono.SelectedItem)
-
-        //    return false;
-        //}
-
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             habilitar();
@@ -236,11 +228,10 @@ namespace Presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
-            TelefonoBusiness telefonoBusiness = new TelefonoBusiness();
-            RolBusinness rolBusinness = new RolBusinness();
+            if (Validar())
+            {
 
-            try
+                try
             {
                 empleado.Nombre = txtNombre.Text;
                 empleado.Apellido = txtApellido.Text;
@@ -256,20 +247,31 @@ namespace Presentacion
 
                 rol = (Rol)cboRol.SelectedItem;
 
-                if (btnGuardar.Text == "Guardar")
-                {
-                    empleadoBusiness.agregar(empleado);
-
-                    if (empleado.Telefono.Numero != "")
+                    if (empleadoBusiness.ValidarIngreso(empleado.Dni))
                     {
-                        telefonoBusiness.agregar(empleado.Telefono, empleadoBusiness.obtenerIDPersona(empleado.Dni)); // Manejo con DNI porque no tengo ID (new)
+
+                        if (btnGuardar.Text == "Guardar")
+                        {
+                            empleadoBusiness.agregar(empleado);
+
+                            if (empleado.Telefono.Numero != "")
+                            {
+                                telefonoBusiness.agregar(empleado.Telefono, empleadoBusiness.obtenerIDPersona(empleado.Dni)); // Manejo con DNI porque no tengo ID (new)
+                            }
+
+                            rolBusinness.agregar(rol.IdRol, empleadoBusiness.obtenerIDPersona(empleado.Dni));
+
+                            MessageBox.Show("Agregado con éxito");
+                            nuevo();
+
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("El Numero de DNI ya Existe!");
+
+                        }
                     }
-
-                    rolBusinness.agregar(rol.IdRol, empleadoBusiness.obtenerIDPersona(empleado.Dni));
-
-                    MessageBox.Show("Agregado con éxito");
-                    nuevo();
-                }
                 else // Modificar Persona
                 {
                     empleadoBusiness.modificar(empleado);
@@ -294,25 +296,27 @@ namespace Presentacion
             {
                 MessageBox.Show(ex.ToString());
             }
+            }
+            else
+            {
+                MessageBox.Show("Complete Datos minimos");
+            }
         }
 
         private void btnPrimero_Click(object sender, EventArgs e)
         {
-            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
             empleado = empleadoBusiness.empleadoIrA(0, empleado.IdPersona);
             rdoBusqueda();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
             empleado = empleadoBusiness.empleadoIrA(1, empleado.IdPersona);
             rdoBusqueda();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
             empleado = empleadoBusiness.empleadoIrA(2, empleado.IdPersona);
             rdoBusqueda();
 
@@ -320,7 +324,6 @@ namespace Presentacion
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
             empleado = empleadoBusiness.empleadoIrA(3, empleado.IdPersona);
             rdoBusqueda();
 
@@ -338,7 +341,6 @@ namespace Presentacion
 
             btnUltimo.Visible = true;
 
-            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
             if (empleadoBusiness.obtenerIDMax() == 0)
             {
                 btnUltimo.Enabled = false;
@@ -361,14 +363,11 @@ namespace Presentacion
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            //if (validar())
-            //    MessageBox.Show("Desea Guardar los cambios?", "Salir", MessageBoxButtons.YesNo);
             this.Close();
         }
 
         private void frmEmpleados_Load(object sender, EventArgs e)
         {
-            EmpleadoBusiness empleadoBusiness = new EmpleadoBusiness();
             if (empleadoBusiness.obtenerIDMax() == 0)
             {
                 btnUltimo.Enabled = false;
@@ -379,6 +378,113 @@ namespace Presentacion
                 btnUltimo.Enabled = true;
                 btnSiguiente.Enabled = true;
             }
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Esta Seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                empleadoBusiness.eliminar(empleado);
+
+                deshabilitar();
+                btnSiguiente.Visible = true;
+                btnSiguiente.Enabled = true;
+                btnAnterior.Visible = true;
+                btnAnterior.Enabled = false;
+
+                btnUltimo.Visible = true;
+                btnUltimo.Enabled = true;
+
+                btnPrimero.Visible = true;
+                btnPrimero.Enabled = false;
+
+                btnSalir.Location = new Point(107, 398);
+                btnCancelar.Visible = false;
+                lblNroId.Text = "0";
+
+                lblId.Visible = false;
+                lblNroId.Visible = false;
+
+                eliminarToolStripMenuItem.Visible = false;
+            }
+        }
+
+
+        public bool Validar()
+        {
+            bool ok = true;
+            if (txtNombre.Text == "")
+            {
+                ErrorNombre.SetError(txtNombre, "Ingrese Nombre");
+                ok = false;
+            }
+            else
+            {
+                ErrorNombre.Clear();
+            }
+
+            if (txtApellido.Text == "")
+            {
+                ErrorApellido.SetError(txtApellido, "Ingrese Apellido");
+                ok = false;
+            }
+            else
+            {
+                ErrorApellido.Clear();
+            }
+
+            if (txtDni.Text == "")
+            {
+                ErrorDNI.SetError(txtDni, "Ingrese DNI");
+                ok = false;
+            }
+            else
+            {
+                ErrorDNI.Clear();
+            }
+
+            if (dtpFechaNac.Value >= DateTime.Today)
+            {
+                ErrorFecha.SetError(dtpFechaNac, "Ingrese Fecha Nacimento menor a Hoy");
+                ok = false;
+            }
+            else
+            {
+                ErrorFecha.Clear();
+            }
+
+            if (txtMail.Text == "")
+            {
+                ErrorMail.SetError(txtMail, "Ingrese Mail");
+                ok = false;
+            }
+            else
+            {
+                ErrorMail.Clear();
+            }
+
+            if (txtNumero.Text != "" && cboTipoTelefono.SelectedIndex == -1)
+            {
+                ErrorTipo.SetError(cboTipoTelefono, "Ingrese Tipo de Telefono");
+                ok = false;
+            }
+            else
+            {
+                ErrorTipo.Clear();
+            }
+
+            if (cboRol.SelectedIndex == -1)
+            {
+                ErrorTE.SetError(cboRol, "Seleccione un Rol");
+                ok = false;
+            }
+            else
+            {
+                ErrorTipo.Clear();
+            }
+
+            return ok;
         }
     }
 }

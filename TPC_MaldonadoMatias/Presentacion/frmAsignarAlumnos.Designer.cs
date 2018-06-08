@@ -59,6 +59,7 @@
             this.cboAnio.Name = "cboAnio";
             this.cboAnio.Size = new System.Drawing.Size(59, 21);
             this.cboAnio.TabIndex = 0;
+            this.cboAnio.SelectedIndexChanged += new System.EventHandler(this.cboAnio_SelectedIndexChanged);
             this.cboAnio.SelectionChangeCommitted += new System.EventHandler(this.cboAnio_SelectionChangeCommitted);
             // 
             // cboCurso
@@ -69,6 +70,7 @@
             this.cboCurso.Name = "cboCurso";
             this.cboCurso.Size = new System.Drawing.Size(121, 21);
             this.cboCurso.TabIndex = 1;
+            this.cboCurso.SelectedIndexChanged += new System.EventHandler(this.cboCurso_SelectedIndexChanged);
             this.cboCurso.SelectionChangeCommitted += new System.EventHandler(this.cboCurso_SelectionChangeCommitted);
             // 
             // cboComision
@@ -79,6 +81,7 @@
             this.cboComision.Name = "cboComision";
             this.cboComision.Size = new System.Drawing.Size(96, 21);
             this.cboComision.TabIndex = 2;
+            this.cboComision.SelectedIndexChanged += new System.EventHandler(this.cboComision_SelectedIndexChanged);
             // 
             // lbAnio
             // 

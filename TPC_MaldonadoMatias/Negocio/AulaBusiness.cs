@@ -27,7 +27,7 @@ namespace Negocio
                     break;
             }
 
-            string consulta = "SELECT Id_Aula, NM_Aula, Cantidad FROM Aulas " + where + " ORDER BY 1";
+            string consulta = "SELECT Id_Aula, NM_Aula FROM Aulas WHERE Eliminado = 0 AND " + where + " ORDER BY 1";
             try
             {
                 conexion.setearConsulta(consulta);
@@ -39,7 +39,6 @@ namespace Negocio
 
                     aux.IdAula = conexion.Lector.GetInt32(0);
                     aux.NombreAula = conexion.Lector.GetString(1);
-                    aux.Cantidad = conexion.Lector.GetInt32(2);
 
                     lista.Add(aux);
                 }
@@ -61,7 +60,7 @@ namespace Negocio
             IList<Aula> lista = new List<Aula>();
             AccesoDatos conexion = new AccesoDatos();
 
-            string consulta = "SELECT Id_Aula, NM_Aula, Cantidad FROM Aulas ORDER BY 1";
+            string consulta = "SELECT Id_Aula, NM_Aula FROM Aulas WHERE Eliminado = 0 ORDER BY 1";
             try
             {
                 conexion.setearConsulta(consulta);
@@ -73,7 +72,6 @@ namespace Negocio
 
                     aux.IdAula = conexion.Lector.GetInt32(0);
                     aux.NombreAula = conexion.Lector.GetString(1);
-                    aux.Cantidad = conexion.Lector.GetInt32(2);
 
                     lista.Add(aux);
                 }
@@ -89,16 +87,40 @@ namespace Negocio
             }
         }
 
+        public bool ValidarIngreso(string Nombre)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            string consulta = "SELECT * FROM Aulas WHERE NM_Aula = '" + Nombre + "'";
+            try
+            {
+                conexion.setearConsulta(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
         public void agregar(Aula aula)
         {
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "INSERT INTO Aulas VALUES (@Nombre , @Cantidad)";
+            string consulta = "INSERT INTO Aulas VALUES (@Nombre,0)";
 
             try
             {
                 conexion.borrarParametros();
                 conexion.agregarParametro("@Nombre", aula.NombreAula);
-                conexion.agregarParametro("@Cantidad", aula.Cantidad);
 
                 conexion.setearConsulta(consulta);
                 conexion.accionEjecutar();
@@ -116,14 +138,13 @@ namespace Negocio
         public void modificar(Aula aula)
         {
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "UPDATE Aulas SET NM_Aula = @Nombre, Cantidad = @Cantidad WHERE Id_Aula = @IdAula";
+            string consulta = "UPDATE Aulas SET NM_Aula = @Nombre WHERE Id_Aula = @IdAula";
 
             try
             {
                 conexion.borrarParametros();
                 conexion.agregarParametro("@Nombre", aula.NombreAula);
                 conexion.agregarParametro("@IdAula", aula.IdAula);
-                conexion.agregarParametro("@Cantidad", aula.Cantidad);
 
                 conexion.setearConsulta(consulta);
                 conexion.accionEjecutar();
@@ -145,7 +166,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MAX(Id_Aula) FROM Aulas");
+                conexion.setearConsulta("SELECT MAX(Id_Aula) FROM Aulas WHERE Eliminado = 0");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -171,7 +192,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MIN(Id_Aula) FROM Aulas");
+                conexion.setearConsulta("SELECT MIN(Id_Aula) FROM Aulas  WHERE Eliminado = 0");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -202,16 +223,16 @@ namespace Negocio
                 switch (tipo)
                 {
                     case 0:
-                        consulta = "SELECT TOP(1) Id_Aula, NM_Aula, Cantidad FROM Aulas ORDER BY 1 ASC";
-                        break;
-                    case 1:
-                        consulta = "SELECT TOP(1) Id_Aula, NM_Aula, Cantidad FROM Aulas WHERE Id_Aula <" + id.ToString() + "ORDER BY 1 DESC";
-                        break;
-                    case 2:
-                        consulta = "SELECT TOP(1) Id_Aula, NM_Aula, Cantidad FROM Aulas WHERE Id_Aula >" + id.ToString() + "ORDER BY 1 ASC";
-                        break;
-                    case 3:
-                        consulta = "SELECT TOP(1) Id_Aula, NM_Aula, Cantidad FROM Aulas ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) Id_Aula, NM_Aula FROM Aulas  WHERE Eliminado = 0 ORDER BY 1 ASC";
+                        break;                                     
+                    case 1:                                        
+                        consulta = "SELECT TOP(1) Id_Aula, NM_Aula FROM Aulas WHERE Eliminado = 0 AND Id_Aula <" + id.ToString() + "ORDER BY 1 DESC";
+                        break;                                     
+                    case 2:                                        
+                        consulta = "SELECT TOP(1) Id_Aula, NM_Aula FROM Aulas WHERE Eliminado = 0 AND Id_Aula >" + id.ToString() + "ORDER BY 1 ASC";
+                        break;                                     
+                    case 3:                                        
+                        consulta = "SELECT TOP(1) Id_Aula, NM_Aula FROM Aulas WHERE Eliminado = 0 ORDER BY 1 DESC";
                         break;
                 }
 
@@ -222,7 +243,6 @@ namespace Negocio
                 {
                     aux.IdAula = conexion.Lector.GetInt32(0);
                     aux.NombreAula = conexion.Lector.GetString(1);
-                    aux.Cantidad = conexion.Lector.GetInt32(2);
                 }
                 return aux;
 
@@ -236,6 +256,29 @@ namespace Negocio
                 conexion.cerrarConexion();
             }
 
+        }
+
+        public void eliminar(Aula aula)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            string consulta = "UPDATE Aulas SET Eliminado = 1 WHERE Id_Aula = @IdAula";
+
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@IdAula", aula.IdAula);
+
+                conexion.setearConsulta(consulta);
+                conexion.accionEjecutar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
         }
 
     }

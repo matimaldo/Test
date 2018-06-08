@@ -23,6 +23,8 @@ namespace Presentacion
         private void frmAsistencia_Load(object sender, EventArgs e)
         {
             cboCursada.DataSource = cursadaBusiness.listarxProfesor((this.Owner as frmMenu).usuario.Persona.IdPersona);
+            cboCursada.ValueMember = "IdCursada";
+            cboCursada.DisplayMember = "ACC";
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace Presentacion
 
             if(cursadaBusiness.ValidarAsistencia(cursada.IdCursada))
             {
+                dgvAsistencia.Visible = true;
                 cursadaBusiness.ListarAsistencia(dgvAsistencia, cursada.IdCursada);
                 dgvAsistencia.Columns["APNO"].HeaderText = "Apellido y Nombre";
             }
@@ -43,6 +46,16 @@ namespace Presentacion
                 MessageBox.Show("No se tomo lista para esta Cursada!");
             }
 
+        }
+
+        private void cboCursada_SelectedValueChanged(object sender, EventArgs e)
+        {
+            dgvAsistencia.Visible = false;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

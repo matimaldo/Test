@@ -20,6 +20,8 @@ namespace Presentacion
         }
 
         public Comision comision = new Comision();
+        ComisionBusiness comisionBusiness = new ComisionBusiness();
+
 
         public void habilitar()
         {
@@ -30,6 +32,7 @@ namespace Presentacion
             btnPrimero.Visible = true;
             btnUltimo.Visible = true;
 
+            ErrorNombre.Clear();
         }
 
         public void deshabilitar()
@@ -62,13 +65,6 @@ namespace Presentacion
             eliminarToolStripMenuItem.Visible = false;
         }
 
-        //private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    frmBuscarCurso frm = new frmBuscarCurso();
-        //    frm.Owner = this;
-        //    frm.ShowDialog();
-        //}
-
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             habilitar();
@@ -78,9 +74,6 @@ namespace Presentacion
 
         public void rdoBusqueda()
         {
-            //CursoBusiness cursoBusiness = new CursoBusiness();
-            ComisionBusiness comisionBusiness = new ComisionBusiness();
-
             habilitar();
 
             lblNroId.Text = comision.IdComision.ToString();
@@ -143,28 +136,24 @@ namespace Presentacion
 
         private void btnPrimero_Click(object sender, EventArgs e)
         {
-            ComisionBusiness comisionBusiness = new ComisionBusiness();
             comision = comisionBusiness.IrA(0, comision.IdComision);
             rdoBusqueda();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            ComisionBusiness comisionBusiness = new ComisionBusiness();
             comision = comisionBusiness.IrA(1, comision.IdComision);
             rdoBusqueda();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            ComisionBusiness comisionBusiness = new ComisionBusiness();
             comision = comisionBusiness.IrA(2, comision.IdComision);
             rdoBusqueda();
         }
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            ComisionBusiness comisionBusiness = new ComisionBusiness();
             comision = comisionBusiness.IrA(3, comision.IdComision);
             rdoBusqueda();
         }
@@ -174,33 +163,92 @@ namespace Presentacion
             this.Close();
         }
 
+        public bool Validar()
+        {
+            bool ok = true;
+            if (txtNmComision.Text == "")
+            {
+                ErrorNombre.SetError(txtNmComision, "Ingrese Nombre de Comision");
+                ok = false;
+            }
+            else
+            {
+                ErrorNombre.Clear();
+            }
+            return ok;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            ComisionBusiness comisionBusiness = new ComisionBusiness();
-
-            try
+            if (Validar())
             {
-                comision.NombreComision = txtNmComision.Text;
-
-                if (btnGuardar.Text == "Guardar")
+                try
                 {
-                    comisionBusiness.agregar(comision);
+                    comision.NombreComision = txtNmComision.Text;
 
-                    MessageBox.Show("Agregado con éxito");
-                    nuevo();
+                    if (btnGuardar.Text == "Guardar")
+                    {
+                        if (comisionBusiness.ValidarIngreso(comision.NombreComision))
+                        {
+                            comisionBusiness.agregar(comision);
+
+                            MessageBox.Show("Agregado con éxito");
+                            nuevo();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El Nombre de Comisión ya Existe!");
+
+                        }
+                    }
+                    else // Modificar Persona
+                    {
+                        comisionBusiness.modificar(comision);
+
+                        MessageBox.Show("Modificado con éxito");
+                    }
+
+
                 }
-                else // Modificar Persona
+                catch (Exception ex)
                 {
-                    comisionBusiness.modificar(comision);
-
-                    MessageBox.Show("Modificado con éxito");
+                    MessageBox.Show(ex.ToString());
                 }
-
-
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Complete Datos minimos");
+            }
+
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Esta Seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                comisionBusiness.eliminar(comision);
+
+                deshabilitar();
+                btnSiguiente.Visible = true;
+                btnSiguiente.Enabled = true;
+                btnAnterior.Visible = true;
+                btnAnterior.Enabled = false;
+
+                btnUltimo.Visible = true;
+                btnUltimo.Enabled = true;
+
+                btnPrimero.Visible = true;
+                btnPrimero.Enabled = false;
+
+                btnCerrar.Location = new Point(132, 86);
+                btnCancelar.Visible = false;
+                lblNroId.Text = "0";
+
+                lblId.Visible = false;
+                lblNroId.Visible = false;
+
+                eliminarToolStripMenuItem.Visible = false;
             }
         }
     }

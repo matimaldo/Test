@@ -20,6 +20,8 @@ namespace Presentacion
         }
 
         public Curso curso = new Curso();
+        CursoBusiness cursoBusiness = new CursoBusiness();
+
 
         public void habilitar()
         {
@@ -29,6 +31,9 @@ namespace Presentacion
             btnSiguiente.Visible = true;
             btnPrimero.Visible = true;
             btnUltimo.Visible = true;
+
+            ErrorNombre.Clear();
+
 
         }
 
@@ -78,7 +83,6 @@ namespace Presentacion
 
         public void rdoBusqueda()
         {
-            CursoBusiness cursoBusiness = new CursoBusiness();
 
             habilitar();
 
@@ -142,28 +146,24 @@ namespace Presentacion
 
         private void btnPrimero_Click(object sender, EventArgs e)
         {
-            CursoBusiness cursoBusiness = new CursoBusiness();
             curso = cursoBusiness.IrA(0, curso.IdCurso);
             rdoBusqueda();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            CursoBusiness cursoBusiness = new CursoBusiness();
             curso = cursoBusiness.IrA(1, curso.IdCurso);
             rdoBusqueda();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            CursoBusiness cursoBusiness = new CursoBusiness();
             curso = cursoBusiness.IrA(2, curso.IdCurso);
             rdoBusqueda();
         }
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            CursoBusiness cursoBusiness = new CursoBusiness();
             curso = cursoBusiness.IrA(3, curso.IdCurso);
             rdoBusqueda();
         }
@@ -173,33 +173,97 @@ namespace Presentacion
             this.Close();
         }
 
+        public bool Validar()
+        {
+            bool ok = true;
+            if (txtNmCurso.Text == "")
+            {
+                ErrorNombre.SetError(txtNmCurso, "Ingrese Nombre de Curso");
+                ok = false;
+            }
+            else
+            {
+                ErrorNombre.Clear();
+            }
+            return ok;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            CursoBusiness cursoBusiness = new CursoBusiness();
-
-            try
+            if (Validar())
             {
-                curso.NombreCurso = txtNmCurso.Text;
-
-                if (btnGuardar.Text == "Guardar")
+                try
                 {
-                    cursoBusiness.agregar(curso);
+                    curso.NombreCurso = txtNmCurso.Text;
 
-                    MessageBox.Show("Agregado con éxito");
-                    nuevo();
+                    if (btnGuardar.Text == "Guardar")
+                    {
+                        if (cursoBusiness.ValidarIngreso(curso.NombreCurso))
+                        {
+                            cursoBusiness.agregar(curso);
+
+                            MessageBox.Show("Agregado con éxito");
+                            nuevo();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El Nombre de Curso ya Existe!");
+
+                        }
+                    }
+                    else // Modificar Persona
+                        {
+                        //if (cursoBusiness.ValidarIngreso(curso.NombreCurso))
+                        //{
+                            cursoBusiness.modificar(curso);
+
+                            MessageBox.Show("Modificado con éxito");
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("El Nombre de Curso ya Existe!");
+
+                        //}
+                    }
                 }
-                else // Modificar Persona
+                catch (Exception ex)
                 {
-                    cursoBusiness.modificar(curso);
-
-                    MessageBox.Show("Modificado con éxito");
+                    MessageBox.Show(ex.ToString());
                 }
-
-
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Complete Datos minimos");
+            }
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Esta Seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                cursoBusiness.eliminar(curso);
+
+                deshabilitar();
+                btnSiguiente.Visible = true;
+                btnSiguiente.Enabled = true;
+                btnAnterior.Visible = true;
+                btnAnterior.Enabled = false;
+
+                btnUltimo.Visible = true;
+                btnUltimo.Enabled = true;
+
+                btnPrimero.Visible = true;
+                btnPrimero.Enabled = false;
+
+                //btnSalir.Location = new Point(107, 370);
+                btnCancelar.Visible = false;
+                lblNroId.Text = "0";
+
+                lblId.Visible = false;
+                lblNroId.Visible = false;
+
+                eliminarToolStripMenuItem.Visible = false;
             }
         }
     }  

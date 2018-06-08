@@ -211,7 +211,7 @@ namespace Negocio
                     
 
                     aux.IdCursada = conexion.Lector.GetInt32(0);
-                    aux.CantidadMaxima = conexion.Lector.GetInt32(0);
+                    aux.CantidadMaxima = conexion.Lector.GetInt32(1);
 
 
                 }

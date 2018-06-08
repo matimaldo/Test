@@ -52,7 +52,10 @@ namespace Presentacion
         {
             if (!ok)
             {
-                Application.Exit();
+                if(!(this.Owner as frmMenu).CambioUsuario)
+                {
+                    Application.Exit();
+                }
             }
         }
 
@@ -63,6 +66,7 @@ namespace Presentacion
             if(conteo == 6)
             {
                 this.Close();
+                (this.Owner as frmMenu).CambioUsuario = true;
             }
         }
 

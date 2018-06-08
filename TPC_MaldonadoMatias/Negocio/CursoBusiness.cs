@@ -60,7 +60,7 @@ namespace Negocio
             IList<Curso> lista = new List<Curso>();
             AccesoDatos conexion = new AccesoDatos();
 
-            string consulta = "SELECT Id_Curso, NM_Curso FROM Cursos ORDER BY 1";
+            string consulta = "SELECT Id_Curso, NM_Curso FROM Cursos WHERE Eliminado = 0 ORDER BY 1";
             try
             {
                 conexion.setearConsulta(consulta);
@@ -87,10 +87,35 @@ namespace Negocio
             }
         }
 
+        public bool ValidarIngreso(string Nombre)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            string consulta = "SELECT * FROM Cursos WHERE NM_Curso = '" + Nombre+"'";
+            try
+            {
+                conexion.setearConsulta(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
         public void agregar(Curso curso)
         {
             AccesoDatos conexion = new AccesoDatos();
-            string consulta = "INSERT INTO CURSOS VALUES (@Nombre)";
+            string consulta = "INSERT INTO CURSOS VALUES (@Nombre,0)";
 
             try
             {
@@ -141,7 +166,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MAX(Id_Curso) FROM Cursos");
+                conexion.setearConsulta("SELECT MAX(Id_Curso) FROM Cursos WHERE Eliminado = 0");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -167,7 +192,7 @@ namespace Negocio
 
             try
             {
-                conexion.setearConsulta("SELECT MIN(Id_Curso) FROM Cursos");
+                conexion.setearConsulta("SELECT MIN(Id_Curso) FROM Cursos WHERE Eliminado = 0");
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())
@@ -198,16 +223,16 @@ namespace Negocio
                 switch (tipo)
                 {
                     case 0:
-                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos ORDER BY 1 ASC";
+                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos WHERE Eliminado = 0 ORDER BY 1 ASC";
                         break;
                     case 1:
-                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos WHERE Id_Curso <" + id.ToString() + "ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos WHERE Eliminado = 0 AND Id_Curso <" + id.ToString() + "ORDER BY 1 DESC";
                         break;
                     case 2:
-                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos WHERE Id_Curso >" + id.ToString() + "ORDER BY 1 ASC";
+                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos WHERE Eliminado = 0 AND Id_Curso >" + id.ToString() + "ORDER BY 1 ASC";
                         break;
                     case 3:
-                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos ORDER BY 1 DESC";
+                        consulta = "SELECT TOP(1) Id_Curso, NM_Curso  FROM Cursos WHERE Eliminado = 0 ORDER BY 1 DESC";
                         break;
                 }
 
@@ -231,6 +256,29 @@ namespace Negocio
                 conexion.cerrarConexion();
             }
 
+        }
+
+        public void eliminar(Curso curso)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            string consulta = "UPDATE Cursos SET Eliminado = 1 WHERE Id_Curso = @IdCurso";
+
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@IdCurso", curso.IdCurso);
+
+                conexion.setearConsulta(consulta);
+                conexion.accionEjecutar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
         }
     }
 }

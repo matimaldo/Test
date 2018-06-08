@@ -42,6 +42,8 @@ namespace Negocio
                     aux.CantidadMaxima = conexion.Lector.GetInt32(10);
                     aux.Estado = conexion.Lector.GetBoolean(11);
 
+                    aux.ACC = "";
+
                     lista.Add(aux);
                 }
                 return lista;
@@ -345,6 +347,7 @@ namespace Negocio
                     //aux.Aula.NombreAula = conexion.Lector.GetString(11);
                     aux.CantidadMaxima = conexion.Lector.GetInt32(10);
                     aux.Estado = conexion.Lector.GetBoolean(11);
+                    aux.ACC = "";
 
                     lista.Add(aux);
                 }

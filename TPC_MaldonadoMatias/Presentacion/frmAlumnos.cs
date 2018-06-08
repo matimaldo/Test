@@ -20,7 +20,10 @@ namespace Presentacion
         }
 
         public Alumno alumno = new Alumno();
-        
+        PersonasBusiness personasBusiness = new PersonasBusiness();
+        TelefonoBusiness telefonoBusiness = new TelefonoBusiness();
+
+
         public void habilitar()
         {
             txtNombre.Visible = true;
@@ -42,6 +45,14 @@ namespace Presentacion
             btnPrimero.Visible = true;
             btnUltimo.Visible = true;
             buscarToolStripMenuItem.Visible = true;
+
+            ErrorNombre.Clear();
+            ErrorApellido.Clear();
+            ErrorDNI.Clear();
+            ErrorFecha.Clear();
+            ErrorMail.Clear();
+            ErrorTipo.Clear();
+
 
             TipoTelefonoBusiness TipoTelefonoBusiness = new TipoTelefonoBusiness();
             try
@@ -110,6 +121,7 @@ namespace Presentacion
 
             alumno.IdPersona = 0;
             eliminarToolStripMenuItem.Visible = false;
+
         }
 
         public void rdoBusqueda()
@@ -194,29 +206,64 @@ namespace Presentacion
             bool ok = true;
             if (txtNombre.Text == "")
             {
-                ePerror.SetError(txtNombre, "Ingrese Nombre");
+                ErrorNombre.SetError(txtNombre, "Ingrese Nombre");
                 ok = false;
             }
+            else
+            {
+                ErrorNombre.Clear();
+            }
+
             if (txtApellido.Text == "")
             {
-                ePerror.SetError(txtApellido, "Ingrese Apellido");
+                ErrorApellido.SetError(txtApellido, "Ingrese Apellido");
                 ok = false;
             }
+            else
+            {
+                ErrorApellido.Clear();
+            }
+
             if (txtDni.Text == "")
             {
-                ePerror.SetError(txtDni, "Ingrese DNI");
+                ErrorDNI.SetError(txtDni, "Ingrese DNI");
                 ok = false;
             }
-            if (dtpFechaNac.Value == DateTime.Today)
+            else
             {
-                ePerror.SetError(dtpFechaNac, "Ingrese Fecha Nacimento (Distinta a Fecha_HOY)");
+                ErrorDNI.Clear();
+            }
+
+            if (dtpFechaNac.Value >= DateTime.Today)
+            {
+                ErrorFecha.SetError(dtpFechaNac, "Ingrese Fecha Nacimento menor a Hoy");
                 ok = false;
             }
+            else
+            {
+                ErrorFecha.Clear();
+            }
+
             if (txtMail.Text == "")
             {
-                ePerror.SetError(txtMail, "Ingrese Mail");
+                ErrorMail.SetError(txtMail, "Ingrese Mail");
                 ok = false;
             }
+            else
+            {
+                ErrorMail.Clear();
+            }
+
+            if (txtNumero.Text != "" && cboTipoTelefono.SelectedIndex == -1)
+            {
+                ErrorTipo.SetError(cboTipoTelefono, "Ingrese Tipo de Telefono");
+                ok = false;
+            }
+            else
+            {
+                ErrorTipo.Clear();
+            }
+
             return ok;
         }
 
@@ -224,8 +271,6 @@ namespace Presentacion
         {
             if(Validar())
             {
-            PersonasBusiness personasBusiness = new PersonasBusiness();
-            TelefonoBusiness telefonoBusiness = new TelefonoBusiness();
 
             try
             {
@@ -242,17 +287,27 @@ namespace Presentacion
                 alumno.Telefono.Contacto = txtContacto.Text;
 
                 if (btnGuardar.Text == "Guardar")
-                {
-                    personasBusiness.agregar(alumno);
+                {   
+                    if(personasBusiness.ValidarIngreso(alumno.Dni))
+                        {
+                            personasBusiness.agregar(alumno);
 
-                    if (alumno.Telefono.Numero != "")
-                    {
-                        telefonoBusiness.agregar(alumno.Telefono, personasBusiness.obtenerIDPersona(alumno.Dni)); // Manejo con DNI porque no tengo ID (new)
+                            if (alumno.Telefono.Numero != "")
+                            {
+                                telefonoBusiness.agregar(alumno.Telefono, personasBusiness.obtenerIDPersona(alumno.Dni)); // Manejo con DNI porque no tengo ID (new)
+                            }
+
+                            MessageBox.Show("Agregado con éxito");
+                            nuevo();
+                        }
+
+                    else
+                        {
+                            MessageBox.Show("El Numero de DNI ya Existe!");
+
+                        }
+
                     }
-
-                    MessageBox.Show("Agregado con éxito");
-                    nuevo();
-                }
                 else // Modificar Persona
                 {
                     personasBusiness.modificar(alumno);
@@ -338,5 +393,34 @@ namespace Presentacion
             this.Close();
         }
 
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult =  MessageBox.Show("¿Esta Seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                personasBusiness.eliminar(alumno);
+
+                deshabilitar();
+                btnSiguiente.Visible = true;
+                btnSiguiente.Enabled = true;
+                btnAnterior.Visible = true;
+                btnAnterior.Enabled = false;
+
+                btnUltimo.Visible = true;
+                btnUltimo.Enabled = true;
+
+                btnPrimero.Visible = true;
+                btnPrimero.Enabled = false;
+
+                btnSalir.Location = new Point(107, 370);
+                btnCancelar.Visible = false;
+                lblNroId.Text = "0";
+
+                lblId.Visible = false;
+                lblNroId.Visible = false;
+
+                eliminarToolStripMenuItem.Visible = false;
+            }
+        }
     }
 }

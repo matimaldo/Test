@@ -51,6 +51,8 @@
             this.gbTelefono = new System.Windows.Forms.GroupBox();
             this.lblContacto = new System.Windows.Forms.Label();
             this.lblNumero = new System.Windows.Forms.Label();
+            this.txtContacto = new Negocio.MTextBox();
+            this.txtNumero = new Negocio.MTextBox();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
@@ -58,17 +60,25 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnPrimero = new System.Windows.Forms.Button();
-            this.ePerror = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtContacto = new Negocio.MTextBox();
-            this.txtNumero = new Negocio.MTextBox();
+            this.ErrorNombre = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtMail = new Negocio.MTextBox();
             this.txtDni = new Negocio.MTextBox();
             this.txtApellido = new Negocio.MTextBox();
             this.txtNombre = new Negocio.MTextBox();
+            this.ErrorApellido = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorDNI = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorFecha = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorMail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorTipo = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbSexo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.gbTelefono.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ePerror)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNombre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorApellido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorDNI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorFecha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorMail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorTipo)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNombre
@@ -192,6 +202,7 @@
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Visible = false;
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // cbxActivo
             // 
@@ -275,6 +286,24 @@
             this.lblNumero.TabIndex = 24;
             this.lblNumero.Text = "Nº :";
             // 
+            // txtContacto
+            // 
+            this.txtContacto.Location = new System.Drawing.Point(94, 68);
+            this.txtContacto.Name = "txtContacto";
+            this.txtContacto.Size = new System.Drawing.Size(100, 20);
+            this.txtContacto.TabIndex = 8;
+            this.txtContacto.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
+            this.txtContacto.Visible = false;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(94, 42);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(100, 20);
+            this.txtNumero.TabIndex = 7;
+            this.txtNumero.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
+            this.txtNumero.Visible = false;
+            // 
             // btnSiguiente
             // 
             this.btnSiguiente.Location = new System.Drawing.Point(257, 412);
@@ -353,28 +382,11 @@
             this.btnPrimero.UseVisualStyleBackColor = true;
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
-            // ePerror
+            // ErrorNombre
             // 
-            this.ePerror.ContainerControl = this;
-            this.ePerror.Icon = ((System.Drawing.Icon)(resources.GetObject("ePerror.Icon")));
-            // 
-            // txtContacto
-            // 
-            this.txtContacto.Location = new System.Drawing.Point(94, 68);
-            this.txtContacto.Name = "txtContacto";
-            this.txtContacto.Size = new System.Drawing.Size(100, 20);
-            this.txtContacto.TabIndex = 8;
-            this.txtContacto.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
-            this.txtContacto.Visible = false;
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(94, 42);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(100, 20);
-            this.txtNumero.TabIndex = 7;
-            this.txtNumero.TextboxEstado = Negocio.MTextBox.Estados.Solo_numeros;
-            this.txtNumero.Visible = false;
+            this.ErrorNombre.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorNombre.ContainerControl = this;
+            this.ErrorNombre.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorNombre.Icon")));
             // 
             // txtMail
             // 
@@ -411,6 +423,36 @@
             this.txtNombre.TabIndex = 0;
             this.txtNombre.TextboxEstado = Negocio.MTextBox.Estados.Solo_letras;
             this.txtNombre.Visible = false;
+            // 
+            // ErrorApellido
+            // 
+            this.ErrorApellido.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorApellido.ContainerControl = this;
+            this.ErrorApellido.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorApellido.Icon")));
+            // 
+            // ErrorDNI
+            // 
+            this.ErrorDNI.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorDNI.ContainerControl = this;
+            this.ErrorDNI.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorDNI.Icon")));
+            // 
+            // ErrorFecha
+            // 
+            this.ErrorFecha.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorFecha.ContainerControl = this;
+            this.ErrorFecha.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorFecha.Icon")));
+            // 
+            // ErrorMail
+            // 
+            this.ErrorMail.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorMail.ContainerControl = this;
+            this.ErrorMail.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorMail.Icon")));
+            // 
+            // ErrorTipo
+            // 
+            this.ErrorTipo.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorTipo.ContainerControl = this;
+            this.ErrorTipo.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorTipo.Icon")));
             // 
             // frmAlumnos
             // 
@@ -455,7 +497,12 @@
             this.menuStrip1.PerformLayout();
             this.gbTelefono.ResumeLayout(false);
             this.gbTelefono.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ePerror)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNombre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorApellido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorDNI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorFecha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorMail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorTipo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -497,6 +544,11 @@
         public System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Button btnUltimo;
         private System.Windows.Forms.Button btnPrimero;
-        private System.Windows.Forms.ErrorProvider ePerror;
+        private System.Windows.Forms.ErrorProvider ErrorNombre;
+        private System.Windows.Forms.ErrorProvider ErrorApellido;
+        private System.Windows.Forms.ErrorProvider ErrorDNI;
+        private System.Windows.Forms.ErrorProvider ErrorFecha;
+        private System.Windows.Forms.ErrorProvider ErrorMail;
+        private System.Windows.Forms.ErrorProvider ErrorTipo;
     }
 }

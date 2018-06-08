@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAulas));
             this.lblNombre = new System.Windows.Forms.Label();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.txtNmCurso = new System.Windows.Forms.TextBox();
+            this.txtNmAula = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +46,9 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cbxActivo = new System.Windows.Forms.CheckBox();
+            this.ErrorNombre = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNombre)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -58,30 +60,13 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre Aula :";
             // 
-            // txtCantidad
+            // txtNmAula
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(283, 53);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(32, 20);
-            this.txtCantidad.TabIndex = 13;
-            this.txtCantidad.Visible = false;
-            // 
-            // lblCantidad
-            // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(222, 56);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(55, 13);
-            this.lblCantidad.TabIndex = 12;
-            this.lblCantidad.Text = "Cantidad :";
-            // 
-            // txtNmCurso
-            // 
-            this.txtNmCurso.Location = new System.Drawing.Point(100, 53);
-            this.txtNmCurso.Name = "txtNmCurso";
-            this.txtNmCurso.Size = new System.Drawing.Size(100, 20);
-            this.txtNmCurso.TabIndex = 14;
-            this.txtNmCurso.Visible = false;
+            this.txtNmAula.Location = new System.Drawing.Point(100, 53);
+            this.txtNmAula.Name = "txtNmAula";
+            this.txtNmAula.Size = new System.Drawing.Size(158, 20);
+            this.txtNmAula.TabIndex = 14;
+            this.txtNmAula.Visible = false;
             // 
             // menuStrip1
             // 
@@ -114,6 +99,8 @@
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Visible = false;
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // btnPrimero
             // 
@@ -227,6 +214,12 @@
             this.cbxActivo.UseVisualStyleBackColor = true;
             this.cbxActivo.Visible = false;
             // 
+            // ErrorNombre
+            // 
+            this.ErrorNombre.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorNombre.ContainerControl = this;
+            this.ErrorNombre.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorNombre.Icon")));
+            // 
             // frmAulas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,9 +236,7 @@
             this.Controls.Add(this.btnUltimo);
             this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.btnSiguiente);
-            this.Controls.Add(this.txtNmCurso);
-            this.Controls.Add(this.txtCantidad);
-            this.Controls.Add(this.lblCantidad);
+            this.Controls.Add(this.txtNmAula);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -257,6 +248,7 @@
             this.Text = "Aulas";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNombre)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,9 +257,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.TextBox txtNmCurso;
+        private System.Windows.Forms.TextBox txtNmAula;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
@@ -282,5 +272,6 @@
         public System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.CheckBox cbxActivo;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ErrorProvider ErrorNombre;
     }
 }

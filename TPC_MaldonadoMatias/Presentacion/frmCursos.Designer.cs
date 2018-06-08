@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCursos));
             this.lblNombre = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +46,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblNroId = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
+            this.ErrorNombre = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNombre)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -88,6 +92,7 @@
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Visible = false;
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // txtNmCurso
             // 
@@ -209,6 +214,12 @@
             this.lblId.Text = "ID:";
             this.lblId.Visible = false;
             // 
+            // ErrorNombre
+            // 
+            this.ErrorNombre.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ErrorNombre.ContainerControl = this;
+            this.ErrorNombre.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorNombre.Icon")));
+            // 
             // frmCursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,6 +248,7 @@
             this.Text = "Curso";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNombre)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +272,6 @@
         public System.Windows.Forms.Button btnCancelar;
         public System.Windows.Forms.Label lblNroId;
         public System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.ErrorProvider ErrorNombre;
     }
 }

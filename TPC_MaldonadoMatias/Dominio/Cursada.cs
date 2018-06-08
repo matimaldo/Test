@@ -32,6 +32,21 @@ namespace Dominio
         public int CantidadMaxima { get; set; }
         public bool Estado { get; set; }
 
+        private string acc;
+
+        public string ACC
+        {
+
+            get
+            {
+                return acc;
+            }
+            set
+            {
+                acc = Anio.Anio + " - " + Curso.NombreCurso + " - "+ Comision.NombreComision;
+            }
+        }
+
 
         public override string ToString()
         {

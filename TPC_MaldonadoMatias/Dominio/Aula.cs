@@ -9,7 +9,6 @@ namespace Dominio
     {
         public int IdAula { get; set; }
         public string NombreAula { get; set; }
-        public int Cantidad { get; set; }
 
 
         public override string ToString()
