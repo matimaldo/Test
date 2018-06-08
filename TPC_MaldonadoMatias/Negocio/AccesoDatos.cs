@@ -37,6 +37,12 @@ namespace Negocio
             comando.CommandText = consulta;
         }
 
+        public void setearSP(string sp)
+        {
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = sp;
+        }
+
         public void leerConsulta()
         {
             try
@@ -49,12 +55,6 @@ namespace Negocio
 
                 throw ex;
             }
-        }
-
-        public void cerrarConexion()
-        {
-            conexion.Close();
-            conexion = null;
         }
 
         public void accionEjecutar()
@@ -117,10 +117,10 @@ namespace Negocio
             }
         }
 
-        public void setearSP(string sp)
+        public void cerrarConexion()
         {
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = sp;
+            conexion.Close();
+            conexion = null;
         }
     }
 }
