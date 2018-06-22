@@ -8,6 +8,13 @@ namespace Dominio
 {
     public class Examen
     {
+        public Examen()
+        {
+            TipoExamen = new TipoExamen();
+            Cursada = new Cursada();
+        }
+
+
         public int IdExamen { get; set; }
         public TipoExamen TipoExamen { get; set; }
         public string NombreExamen { get; set; }

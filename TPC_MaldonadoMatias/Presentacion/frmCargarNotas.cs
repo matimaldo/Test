@@ -19,62 +19,119 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        AsignarAlumnosBusiness asignarAlumnosBusiness = new AsignarAlumnosBusiness();
-
+        ExamenBusiness examenBusiness = new ExamenBusiness();
+        CursadaBusiness cursadaBusiness = new CursadaBusiness();
 
         private void frmCargarNotas_Load(object sender, EventArgs e)
         {
-            cboAnio.DataSource = asignarAlumnosBusiness.listarAnio();
-            cboAnio.ValueMember = "IdAnio";
-            cboAnio.DisplayMember = "Anio";
-            cboAnio.SelectedIndex = -1;
+            cboExamen.DataSource = examenBusiness.ListarExamen((this.Owner as frmCargarNota).cursada);
+            cboExamen.ValueMember = "IdExamen";
+            cboExamen.DisplayMember = "NombreExamen";
         }
-
-        private void cboAnio_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            cboCurso.DataSource = asignarAlumnosBusiness.listarCurso((AnioLectivo)cboAnio.SelectedItem);
-            cboCurso.ValueMember = "IdCurso";
-            cboCurso.DisplayMember = "NombreCurso";
-            cboCurso.SelectedIndex = -1;
-            cboComision.DataSource = null;
-            cboComision.SelectedIndex = -1;
-
-        }
-
-        private void cboCurso_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            cboComision.DataSource = asignarAlumnosBusiness.listarComision((AnioLectivo)cboAnio.SelectedItem, (Curso)cboCurso.SelectedItem);
-            cboComision.ValueMember = "IdComision";
-            cboComision.DisplayMember = "NombreComision";
-            cboComision.SelectedIndex = -1;
-        }
-
-        public bool ValidarSeleccion()
-        {
-            if (cboAnio.SelectedIndex == -1)
-                return false;
-
-            if (cboCurso.SelectedIndex == -1)
-                return false;
-
-            if (cboComision.SelectedIndex == -1)
-                return false;
-
-            return true;
-        }
-
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (ValidarSeleccion())
+            if (false)
             {
-                //cursada = asignarAlumnosBusiness.ObtenerIDCursada((AnioLectivo)cboAnio.SelectedItem, (Curso)cboCurso.SelectedItem, (Comision)cboComision.SelectedItem);
-                //Actualizar();
+                //MessageBox.Show("Ya se Cargaron las Notas");
             }
             else
             {
-                MessageBox.Show("Debe Seleccionar Año, Curso y Comisión");
+
+                dgvLista.Visible = true;
+                //dgvLista.DataSource = null;
+
+                dgvLista.DataSource = cursadaBusiness.listarAlumnos((this.Owner as frmCargarNota).cursada.IdCursada);
+                dgvLista.Columns["Apno"].HeaderText = "Alumno";
+                dgvLista.Columns["Apno"].Width = 200;
+                dgvLista.Columns["Apno"].ReadOnly = true;
+
+                dgvLista.Columns["Telefono"].Visible = false;
+                dgvLista.Columns["Estado"].Visible = false;
+                dgvLista.Columns["Sexo"].Visible = false;
+                dgvLista.Columns["Apellido"].Visible = false;
+                dgvLista.Columns["Nombre"].Visible = false;
+                dgvLista.Columns["DNI"].Visible = false;
+                dgvLista.Columns["FechaNac"].Visible = false;
+                dgvLista.Columns["Mail"].Visible = false;
+                dgvLista.Columns["IdPersona"].Visible = true;
+                dgvLista.Columns["IdPersona"].Width = 200;
+                dgvLista.Columns["IdPersona"].ReadOnly = true;
+
+
+                if (dgvLista.Columns.Contains("Nota"))
+                {
+                    dgvLista.Columns.RemoveAt(0);
+                }
+
+                DataGridViewTextBoxColumn Nota = new DataGridViewTextBoxColumn();
+
+                Nota.HeaderText = "Nota";
+                Nota.Name = "Nota";
+                dgvLista.Columns.Add(Nota);
+
+                foreach (DataGridViewRow row in dgvLista.Rows)
+                {
+                    row.Cells["Nota"].Value = "";
+                }
+
             }
+        }
+
+        public void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            DataGridViewTextBoxEditingControl dText = (DataGridViewTextBoxEditingControl)e.Control;
+
+            dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+            dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
+        }
+
+        void dText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvLista.Rows)
+            {
+                Examen examen = new Examen();
+                examen = (Examen)cboExamen.SelectedItem;
+                int IdPersona = (int)row.Cells["IdPersona"].Value;
+                int Nota;
+                if (row.Cells["Nota"].Value.ToString() == "")
+                {
+                    Nota = 0;
+                }
+                else
+                {
+                    Nota = int.Parse(row.Cells["Nota"].Value.ToString());
+                }
+
+                examenBusiness.AgregarNota(examen.IdExamen, IdPersona, Nota);
+
+            }
+            MessageBox.Show("Se guardo Correctamente");
+            dgvLista.Visible = false;
         }
     }
 }

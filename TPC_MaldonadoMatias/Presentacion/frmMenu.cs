@@ -130,7 +130,7 @@ namespace Presentacion
 
         private void notasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCargarNotas frm = new frmCargarNotas();
+            frmCargarNota frm = new frmCargarNota();
             frm.Owner = this;
             frm.ShowDialog();
         }

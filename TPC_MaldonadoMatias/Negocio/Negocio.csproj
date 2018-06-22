@@ -53,6 +53,7 @@
     <Compile Include="CursoBusiness.cs" />
     <Compile Include="DiasBusiness.cs" />
     <Compile Include="EmpleadoBusiness.cs" />
+    <Compile Include="ExamenBusiness.cs" />
     <Compile Include="HorarioBusiness.cs" />
     <Compile Include="LoginBusiness.cs" />
     <Compile Include="MListBox.cs">
