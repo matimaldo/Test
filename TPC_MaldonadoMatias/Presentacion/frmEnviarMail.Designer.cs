@@ -39,9 +39,9 @@
             this.gbDe = new System.Windows.Forms.GroupBox();
             this.rbtnProfesor = new System.Windows.Forms.RadioButton();
             this.gbPara = new System.Windows.Forms.GroupBox();
+            this.cboCursada = new System.Windows.Forms.ComboBox();
             this.rbtnCurso = new System.Windows.Forms.RadioButton();
             this.rbtnTodos = new System.Windows.Forms.RadioButton();
-            this.cboCursada = new System.Windows.Forms.ComboBox();
             this.gbDe.SuspendLayout();
             this.gbPara.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +105,7 @@
             this.btnEnviar.TabIndex = 52;
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = true;
-            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar1_Click);
             // 
             // rbtnAcademia
             // 
@@ -152,6 +152,16 @@
             this.gbPara.TabStop = false;
             this.gbPara.Text = "Para:";
             // 
+            // cboCursada
+            // 
+            this.cboCursada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCursada.Enabled = false;
+            this.cboCursada.FormattingEnabled = true;
+            this.cboCursada.Location = new System.Drawing.Point(218, 14);
+            this.cboCursada.Name = "cboCursada";
+            this.cboCursada.Size = new System.Drawing.Size(167, 21);
+            this.cboCursada.TabIndex = 56;
+            // 
             // rbtnCurso
             // 
             this.rbtnCurso.AutoSize = true;
@@ -175,16 +185,6 @@
             this.rbtnTodos.Text = "Todos";
             this.rbtnTodos.UseVisualStyleBackColor = true;
             // 
-            // cboCursada
-            // 
-            this.cboCursada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCursada.Enabled = false;
-            this.cboCursada.FormattingEnabled = true;
-            this.cboCursada.Location = new System.Drawing.Point(218, 14);
-            this.cboCursada.Name = "cboCursada";
-            this.cboCursada.Size = new System.Drawing.Size(167, 21);
-            this.cboCursada.TabIndex = 56;
-            // 
             // frmEnviarMail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,6 +204,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEnviarMail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Enviar Mail";
             this.Load += new System.EventHandler(this.frmEnviarMail_Load);
             this.gbDe.ResumeLayout(false);

@@ -56,6 +56,7 @@
     <Compile Include="ExamenBusiness.cs" />
     <Compile Include="HorarioBusiness.cs" />
     <Compile Include="LoginBusiness.cs" />
+    <Compile Include="MailBusiness.cs" />
     <Compile Include="MListBox.cs">
       <SubType>Component</SubType>
     </Compile>
