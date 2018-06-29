@@ -39,7 +39,7 @@
             // lblDia
             // 
             this.lblDia.AutoSize = true;
-            this.lblDia.Location = new System.Drawing.Point(53, 33);
+            this.lblDia.Location = new System.Drawing.Point(117, 34);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(90, 13);
             this.lblDia.TabIndex = 0;
@@ -48,7 +48,7 @@
             // dtpDia
             // 
             this.dtpDia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDia.Location = new System.Drawing.Point(149, 31);
+            this.dtpDia.Location = new System.Drawing.Point(213, 32);
             this.dtpDia.Name = "dtpDia";
             this.dtpDia.Size = new System.Drawing.Size(99, 20);
             this.dtpDia.TabIndex = 2;
@@ -56,7 +56,7 @@
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(264, 28);
+            this.btnSeleccionar.Location = new System.Drawing.Point(328, 29);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.btnSeleccionar.TabIndex = 3;
@@ -67,16 +67,16 @@
             // dgvLista
             // 
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Location = new System.Drawing.Point(56, 76);
+            this.dgvLista.Location = new System.Drawing.Point(46, 70);
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLista.Size = new System.Drawing.Size(639, 281);
+            this.dgvLista.Size = new System.Drawing.Size(396, 328);
             this.dgvLista.TabIndex = 4;
             this.dgvLista.Visible = false;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(332, 385);
+            this.btnGuardar.Location = new System.Drawing.Point(200, 416);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 5;
@@ -88,8 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(484, 451);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgvLista);
             this.Controls.Add(this.btnSeleccionar);
@@ -99,6 +98,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTomarListaCursada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tomar Lista";
             this.Load += new System.EventHandler(this.frmTomarListaCursada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();

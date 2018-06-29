@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Negocio;
+using System.Text.RegularExpressions;
 
 namespace Presentacion
 {
@@ -385,31 +386,38 @@ namespace Presentacion
             DialogResult dialogResult = MessageBox.Show("¿Esta Seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                empleadoBusiness.eliminar(empleado);
+                if (empleadoBusiness.ctrl_eliminar(empleado) == 0)
+                {
+                    empleadoBusiness.eliminar(empleado);
 
-                deshabilitar();
-                btnSiguiente.Visible = true;
-                btnSiguiente.Enabled = true;
-                btnAnterior.Visible = true;
-                btnAnterior.Enabled = false;
+                    deshabilitar();
+                    btnSiguiente.Visible = true;
+                    btnSiguiente.Enabled = true;
+                    btnAnterior.Visible = true;
+                    btnAnterior.Enabled = false;
 
-                btnUltimo.Visible = true;
-                btnUltimo.Enabled = true;
+                    btnUltimo.Visible = true;
+                    btnUltimo.Enabled = true;
 
-                btnPrimero.Visible = true;
-                btnPrimero.Enabled = false;
+                    btnPrimero.Visible = true;
+                    btnPrimero.Enabled = false;
 
-                btnSalir.Location = new Point(107, 398);
-                btnCancelar.Visible = false;
-                lblNroId.Text = "0";
+                    btnSalir.Location = new Point(107, 398);
+                    btnCancelar.Visible = false;
+                    lblNroId.Text = "0";
 
-                lblId.Visible = false;
-                lblNroId.Visible = false;
+                    lblId.Visible = false;
+                    lblNroId.Visible = false;
 
-                eliminarToolStripMenuItem.Visible = false;
+                    eliminarToolStripMenuItem.Visible = false;
+
+                }
+                else
+                {
+                    MessageBox.Show("No se puede Eliminar porque esta en Uso!");
+                }
             }
         }
-
 
         public bool Validar()
         {
@@ -454,9 +462,11 @@ namespace Presentacion
                 ErrorFecha.Clear();
             }
 
-            if (txtMail.Text == "")
+            Regex RX = new Regex("^[a-zA-Z0-9]{1,20}@[a-zA-Z0-9]{1,20}.[a-zA-Z]{2,3}$");
+
+            if (!RX.IsMatch(txtMail.Text))
             {
-                ErrorMail.SetError(txtMail, "Ingrese Mail");
+                ErrorMail.SetError(txtMail, "Ingrese Mail con formato correcto(AlfaNum@AlfaNum.com)");
                 ok = false;
             }
             else

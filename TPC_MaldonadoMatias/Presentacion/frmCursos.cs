@@ -211,19 +211,12 @@ namespace Presentacion
 
                         }
                     }
-                    else // Modificar Persona
+                    else // Modificar 
                         {
-                        //if (cursoBusiness.ValidarIngreso(curso.NombreCurso))
-                        //{
+
                             cursoBusiness.modificar(curso);
 
                             MessageBox.Show("Modificado con éxito");
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("El Nombre de Curso ya Existe!");
-
-                        //}
                     }
                 }
                 catch (Exception ex)
@@ -242,28 +235,34 @@ namespace Presentacion
             DialogResult dialogResult = MessageBox.Show("¿Esta Seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                cursoBusiness.eliminar(curso);
+                if (cursoBusiness.ctrl_eliminar(curso) == 0)
+                {
+                    cursoBusiness.eliminar(curso);
 
-                deshabilitar();
-                btnSiguiente.Visible = true;
-                btnSiguiente.Enabled = true;
-                btnAnterior.Visible = true;
-                btnAnterior.Enabled = false;
+                    deshabilitar();
+                    btnSiguiente.Visible = true;
+                    btnSiguiente.Enabled = true;
+                    btnAnterior.Visible = true;
+                    btnAnterior.Enabled = false;
 
-                btnUltimo.Visible = true;
-                btnUltimo.Enabled = true;
+                    btnUltimo.Visible = true;
+                    btnUltimo.Enabled = true;
 
-                btnPrimero.Visible = true;
-                btnPrimero.Enabled = false;
+                    btnPrimero.Visible = true;
+                    btnPrimero.Enabled = false;
 
-                //btnSalir.Location = new Point(107, 370);
-                btnCancelar.Visible = false;
-                lblNroId.Text = "0";
+                    btnCancelar.Visible = false;
+                    lblNroId.Text = "0";
 
-                lblId.Visible = false;
-                lblNroId.Visible = false;
+                    lblId.Visible = false;
+                    lblNroId.Visible = false;
 
-                eliminarToolStripMenuItem.Visible = false;
+                    eliminarToolStripMenuItem.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("No se puede Eliminar porque esta en Uso!");
+                }
             }
         }
     }  

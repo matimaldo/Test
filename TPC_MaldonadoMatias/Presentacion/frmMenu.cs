@@ -32,6 +32,20 @@ namespace Presentacion
             frmCalendario frmCalendario = new frmCalendario();
             frmCalendario.MdiParent = this;
             frmCalendario.Show();
+
+            switch (usuario.Rol.IdRol)
+            {
+                case 2:
+                    frmAtajoAdministrativo frmAtajoAdministrativo = new frmAtajoAdministrativo();
+                    frmAtajoAdministrativo.MdiParent = this;
+                    frmAtajoAdministrativo.Show();
+                    break;
+                case 3:
+                    frmAtajosProfesor frmAtajosProfesor = new frmAtajosProfesor();
+                    frmAtajosProfesor.MdiParent = this;
+                    frmAtajosProfesor.Show();
+                    break;
+            }
         }
 
         private void alumnoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -115,7 +129,7 @@ namespace Presentacion
 
         private void tomarListaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTomarLista frm = new frmTomarLista();
+            frmTomarLista frm = new frmTomarLista(usuario.Persona.IdPersona);
             frm.Owner = this;
             frm.ShowDialog();
         }
@@ -125,12 +139,11 @@ namespace Presentacion
             frmExamen frm = new frmExamen();
             frm.Owner = this;
             frm.ShowDialog();
-
         }
 
         private void notasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCargarNota frm = new frmCargarNota();
+            frmCargarNota frm = new frmCargarNota(usuario.Persona.IdPersona);
             frm.Owner = this;
             frm.ShowDialog();
         }
@@ -220,6 +233,38 @@ namespace Presentacion
             frmListarEmpleados frm = new frmListarEmpleados();
             frm.Owner = this;
             frm.ShowDialog();
+        }
+
+        private void atajoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool abiertoA = false;
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(frmAtajoAdministrativo) || frm.GetType() == typeof(frmAtajosProfesor))
+                {
+                    MessageBox.Show("El Calendario esta abierto");
+                    abiertoA = true;
+                    break;
+                }
+            }
+
+            if (!abiertoA)
+            {
+                switch (usuario.Rol.IdRol)
+                {
+                    case 2:
+                        frmAtajoAdministrativo frmAtajoAdministrativo = new frmAtajoAdministrativo();
+                        frmAtajoAdministrativo.MdiParent = this;
+                        frmAtajoAdministrativo.Show();
+                        break;
+                    case 3:
+                        frmAtajosProfesor frmAtajosProfesor = new frmAtajosProfesor();
+                        frmAtajosProfesor.MdiParent = this;
+                        frmAtajosProfesor.Show();
+                        break;
+                }
+            }
+
         }
     }
 }

@@ -40,7 +40,7 @@
             // 
             this.cboExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboExamen.FormattingEnabled = true;
-            this.cboExamen.Location = new System.Drawing.Point(222, 28);
+            this.cboExamen.Location = new System.Drawing.Point(192, 33);
             this.cboExamen.Name = "cboExamen";
             this.cboExamen.Size = new System.Drawing.Size(107, 21);
             this.cboExamen.TabIndex = 30;
@@ -48,7 +48,7 @@
             // lbExamen
             // 
             this.lbExamen.AutoSize = true;
-            this.lbExamen.Location = new System.Drawing.Point(165, 31);
+            this.lbExamen.Location = new System.Drawing.Point(120, 36);
             this.lbExamen.Name = "lbExamen";
             this.lbExamen.Size = new System.Drawing.Size(51, 13);
             this.lbExamen.TabIndex = 28;
@@ -57,15 +57,15 @@
             // dgvLista
             // 
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Location = new System.Drawing.Point(31, 65);
+            this.dgvLista.Location = new System.Drawing.Point(47, 70);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(547, 277);
+            this.dgvLista.Size = new System.Drawing.Size(396, 328);
             this.dgvLista.TabIndex = 31;
             this.dgvLista.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(249, 360);
+            this.btnGuardar.Location = new System.Drawing.Point(205, 416);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(80, 23);
             this.btnGuardar.TabIndex = 32;
@@ -75,7 +75,7 @@
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(365, 26);
+            this.btnSeleccionar.Location = new System.Drawing.Point(320, 31);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(80, 23);
             this.btnSeleccionar.TabIndex = 41;
@@ -88,7 +88,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(602, 395);
+            this.ClientSize = new System.Drawing.Size(484, 451);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgvLista);

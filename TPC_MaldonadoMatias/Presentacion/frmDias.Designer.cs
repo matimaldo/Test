@@ -181,7 +181,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(520, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(541, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -199,7 +199,7 @@
             this.dgvDiaxHorario.ReadOnly = true;
             this.dgvDiaxHorario.RowHeadersVisible = false;
             this.dgvDiaxHorario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDiaxHorario.Size = new System.Drawing.Size(492, 265);
+            this.dgvDiaxHorario.Size = new System.Drawing.Size(514, 265);
             this.dgvDiaxHorario.TabIndex = 17;
             // 
             // menuStrip2
@@ -208,7 +208,7 @@
             this.editarToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(520, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(541, 24);
             this.menuStrip2.TabIndex = 18;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -224,7 +224,7 @@
             this.btnVolver.BackColor = System.Drawing.Color.Red;
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.Location = new System.Drawing.Point(494, 2);
+            this.btnVolver.Location = new System.Drawing.Point(513, 2);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(20, 20);
             this.btnVolver.TabIndex = 22;
@@ -256,7 +256,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(520, 323);
+            this.ClientSize = new System.Drawing.Size(541, 323);
             this.Controls.Add(this.dgvDiaxHorario);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.lblDisponibilidad);

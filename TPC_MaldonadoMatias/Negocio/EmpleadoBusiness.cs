@@ -351,6 +351,35 @@ namespace Negocio
             }
         }
 
+        public int ctrl_eliminar(Empleado persona)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            int nro = new int();
+
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@IdPersona", persona.IdPersona);
+                conexion.setearConsulta("SELECT COUNT(*) FROM Personas P INNER JOIN Cursadas CA ON P.Id_Persona = CA.Id_Profesor WHERE P.Id_Persona =  @IdPersona");
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    nro = conexion.Lector.GetInt32(0);
+                }
+
+                return nro;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
         public void eliminar(Empleado persona)
         {
             AccesoDatos conexion = new AccesoDatos();
@@ -373,7 +402,6 @@ namespace Negocio
                 conexion.cerrarConexion();
             }
         }
-
 
         public void agregarDgv(DataGridView dgv)
         {

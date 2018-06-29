@@ -48,6 +48,7 @@
             this.ClientSize = new System.Drawing.Size(254, 397);
             this.Controls.Add(this.btnCerrar);
             this.Name = "frmCargarNota";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccionar Curso";
             this.Load += new System.EventHandler(this.frmTomarLista_Load);
             this.ResumeLayout(false);

@@ -258,6 +258,35 @@ namespace Negocio
 
         }
 
+        public int ctrl_eliminar(Curso curso)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            int nro = new int();
+
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@IdCurso", curso.IdCurso);
+                conexion.setearConsulta("SELECT COUNT(*) FROM Cursos C INNER JOIN Cursadas CA ON C.Id_Curso = CA.Id_Curso WHERE C.Id_Curso = @IdCurso");
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    nro = conexion.Lector.GetInt32(0);
+                }
+
+                return nro;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
         public void eliminar(Curso curso)
         {
             AccesoDatos conexion = new AccesoDatos();

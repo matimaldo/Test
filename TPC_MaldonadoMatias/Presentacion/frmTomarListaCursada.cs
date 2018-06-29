@@ -27,33 +27,27 @@ namespace Presentacion
 
         }
 
-        private void btnSeleccionar_Click(object sender, EventArgs e)
+        public void conf_dgv()
         {
+            dgvLista.Visible = true;
+            //dgvLista.DataSource = null;
 
-            if (cursadaBusiness.SeTomoLista((this.Owner as frmTomarLista).cursada.IdCursada, DateTime.Parse(dtpDia.Text)))
-            {
-                MessageBox.Show("Ya se Tomo lista este dia!");
-            }
-            else
-            {
+            dgvLista.DataSource = cursadaBusiness.listarAlumnos((this.Owner as frmTomarLista).cursada.IdCursada);
+            dgvLista.Columns["Apno"].HeaderText = "Alumno";
+            dgvLista.Columns["Apno"].Width = 200;
+            dgvLista.Columns["Apno"].ReadOnly = true;
 
-                dgvLista.Visible = true;
-                //dgvLista.DataSource = null;
-
-                dgvLista.DataSource = cursadaBusiness.listarAlumnos((this.Owner as frmTomarLista).cursada.IdCursada);
-                dgvLista.Columns["Apno"].HeaderText = "Alumno";
-                dgvLista.Columns["Apno"].Width = 200;
-                dgvLista.Columns["Apno"].ReadOnly = true;
-
-                dgvLista.Columns["Telefono"].Visible = false;
-                dgvLista.Columns["Estado"].Visible = false;
-                dgvLista.Columns["Sexo"].Visible = false;
-                dgvLista.Columns["Apellido"].Visible = false;
-                dgvLista.Columns["Nombre"].Visible = false;
-                dgvLista.Columns["DNI"].Visible = false;
-                dgvLista.Columns["FechaNac"].Visible = false;
-                dgvLista.Columns["Mail"].Visible = false;
-                dgvLista.Columns["IdPersona"].Visible = false;
+            dgvLista.Columns["Telefono"].Visible = false;
+            dgvLista.Columns["Estado"].Visible = false;
+            dgvLista.Columns["Sexo"].Visible = false;
+            dgvLista.Columns["Apellido"].Visible = false;
+            dgvLista.Columns["Nombre"].Visible = false;
+            dgvLista.Columns["DNI"].Visible = false;
+            dgvLista.Columns["FechaNac"].Visible = false;
+            dgvLista.Columns["Mail"].Visible = false;
+            dgvLista.Columns["IdPersona"].ReadOnly = true;
+            dgvLista.Columns["IdPersona"].HeaderText = "ID";
+            dgvLista.Columns["IdPersona"].Width = 30;
 
             if (dgvLista.Columns.Contains("Presente"))
             {
@@ -61,11 +55,39 @@ namespace Presentacion
             }
 
             DataGridViewCheckBoxColumn Presente = new DataGridViewCheckBoxColumn();
-            
+
 
             Presente.HeaderText = "Presente";
             Presente.Name = "Presente";
             dgvLista.Columns.Add(Presente);
+        }
+
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            btnGuardar.Text = "Guardar";
+            dgvLista.Visible = false;
+
+            if (cursadaBusiness.SeTomoLista((this.Owner as frmTomarLista).cursada.IdCursada, DateTime.Parse(dtpDia.Text)))
+            {
+                DialogResult dialogResult = MessageBox.Show("Ya se Paso la Asistencia. Desea Editar?", "Editar", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    conf_dgv();
+                    btnGuardar.Text = "Modificar";
+
+                    foreach (DataGridViewRow row in dgvLista.Rows)
+                    {
+                        row.Cells["Presente"].Value = cursadaBusiness.TraerAsistencia((this.Owner as frmTomarLista).cursada.IdCursada, (int)row.Cells["IdPersona"].Value, DateTime.Parse(dtpDia.Text));
+                    }
+
+                }
+            }
+            else
+            {
+
+                conf_dgv();
 
             foreach (DataGridViewRow row in dgvLista.Rows)
             {
@@ -84,10 +106,17 @@ namespace Presentacion
                 DateTime Dia = DateTime.Parse(dtpDia.Text);
                 bool Presente = (bool)row.Cells["Presente"].Value;
 
-                cursadaBusiness.TomarLista(IdCursada, IdPersona, Dia, Presente);
-
+                if (btnGuardar.Text == "Guardar")
+                {
+                    cursadaBusiness.TomarLista(IdCursada, IdPersona, Dia, Presente);
+                }
+                else
+                {
+                    cursadaBusiness.ActualizarLista(IdCursada, IdPersona, Dia, Presente);
+                }
             }
             MessageBox.Show("Se guardo Correctamente");
+            btnGuardar.Text = "Guardar";
             dgvLista.Visible = false;
         }
 

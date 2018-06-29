@@ -14,8 +14,16 @@ namespace Presentacion
 {
     public partial class frmCargarNota : Form
     {
+        private int usuario;
+
         public frmCargarNota()
         {
+            InitializeComponent();
+        }
+
+        public frmCargarNota(int usuario)
+        {
+            this.usuario = usuario;
             InitializeComponent();
         }
 
@@ -36,7 +44,7 @@ namespace Presentacion
         private void frmTomarLista_Load(object sender, EventArgs e)
         {
             int x = 25, y = 30;
-            foreach (Cursada item in cursadaBusiness.listarxProfesor((this.Owner as frmMenu).usuario.Persona.IdPersona))
+            foreach (Cursada item in cursadaBusiness.listarxProfesor(usuario))
             {
                 Button boton = new Button();
                 boton.Size = new System.Drawing.Size(200, 23);

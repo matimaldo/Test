@@ -401,8 +401,40 @@ namespace Negocio
             }
         }
 
+        public bool TraerAsistencia(int IdCursada, int IdPersona, DateTime dia)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            bool nro = new bool();
 
-       public void TomarLista(int Id_Cursada, int Id_Persona, DateTime Fecha , bool Presente)
+            string consulta = "SELECT Presente FROM Asistencia WHERE Id_Cursada = @Id_Cursada AND Id_Persona = @Id_Persona AND Fecha = @Dia";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Id_Cursada", IdCursada);
+                conexion.agregarParametro("@Id_Persona", IdPersona);
+                conexion.agregarParametro("@Dia", dia);
+
+                conexion.setearConsulta(consulta);
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                        nro = conexion.Lector.GetBoolean(0);
+                }
+                return nro;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+
+        }
+
+        public void TomarLista(int Id_Cursada, int Id_Persona, DateTime Fecha , bool Presente)
         {
             AccesoDatos conexion = new AccesoDatos();
 
@@ -428,7 +460,33 @@ namespace Negocio
             }
         }
 
-       public bool SeTomoLista(int Id_Cursada, DateTime Fecha)
+        public void ActualizarLista(int Id_Cursada, int Id_Persona, DateTime Fecha, bool Presente)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+
+            string consulta = "SP_ListaActualizar";
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@Cursada", Id_Cursada);
+                conexion.agregarParametro("@Persona", Id_Persona);
+                conexion.agregarParametro("@Fecha", Fecha);
+                conexion.agregarParametro("@Presente", Presente);
+
+                conexion.setearSP(consulta);
+                conexion.accionEjecutar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
+        public bool SeTomoLista(int Id_Cursada, DateTime Fecha)
         {
             AccesoDatos conexion = new AccesoDatos();
 
@@ -458,7 +516,6 @@ namespace Negocio
                 conexion.cerrarConexion();
             }
         }
-
 
         public void ListarAsistencia(DataGridView dgv, int Cursada)
         {

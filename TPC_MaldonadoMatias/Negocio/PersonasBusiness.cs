@@ -350,6 +350,35 @@ namespace Negocio
             }
         }
 
+        public int ctrl_eliminar(Alumno persona)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            int nro = new int();
+
+            try
+            {
+                conexion.borrarParametros();
+                conexion.agregarParametro("@IdPersona", persona.IdPersona);
+                conexion.setearConsulta("SELECT COUNT(*) FROM Personas P INNER JOIN CursadaXAlumnos CA ON P.Id_Persona = CA.Id_Persona WHERE P.Id_Persona = @IdPersona");
+                conexion.leerConsulta();
+
+                while (conexion.Lector.Read())
+                {
+                    nro = conexion.Lector.GetInt32(0);
+                }
+
+                return nro;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarConexion();
+            }
+        }
+
         public void eliminar(Alumno persona)
         {
             AccesoDatos conexion = new AccesoDatos();

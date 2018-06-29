@@ -63,6 +63,16 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondo {
+            get {
+                object obj = ResourceManager.GetObject("fondo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Img_Candado {
             get {
                 object obj = ResourceManager.GetObject("Img_Candado", resourceCulture);
@@ -116,6 +126,16 @@ namespace Presentacion.Properties {
         internal static System.Drawing.Bitmap Img_Visible {
             get {
                 object obj = ResourceManager.GetObject("Img_Visible", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pizarron {
+            get {
+                object obj = ResourceManager.GetObject("pizarron", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

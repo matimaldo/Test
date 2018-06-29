@@ -29,46 +29,72 @@ namespace Presentacion
             cboExamen.DisplayMember = "NombreExamen";
         }
 
+        public void conf_dgv()
+        {
+            dgvLista.Visible = true;
+
+            dgvLista.DataSource = cursadaBusiness.listarAlumnos((this.Owner as frmCargarNota).cursada.IdCursada);
+            dgvLista.Columns["Apno"].HeaderText = "Alumno";
+            dgvLista.Columns["Apno"].Width = 200;
+            dgvLista.Columns["Apno"].ReadOnly = true;
+
+            dgvLista.Columns["Telefono"].Visible = false;
+            dgvLista.Columns["Estado"].Visible = false;
+            dgvLista.Columns["Sexo"].Visible = false;
+            dgvLista.Columns["Apellido"].Visible = false;
+            dgvLista.Columns["Nombre"].Visible = false;
+            dgvLista.Columns["DNI"].Visible = false;
+            dgvLista.Columns["FechaNac"].Visible = false;
+            dgvLista.Columns["Mail"].Visible = false;
+            dgvLista.Columns["IdPersona"].Visible = true;
+            dgvLista.Columns["IdPersona"].Width = 200;
+            dgvLista.Columns["IdPersona"].ReadOnly = true;
+            dgvLista.Columns["IdPersona"].HeaderText = "ID";
+            dgvLista.Columns["IdPersona"].Width = 30;
+
+            if (dgvLista.Columns.Contains("Nota"))
+            {
+                dgvLista.Columns.RemoveAt(0);
+            }
+
+            DataGridViewTextBoxColumn Nota = new DataGridViewTextBoxColumn();
+
+            Nota.HeaderText = "Nota";
+            Nota.Name = "Nota";
+            dgvLista.Columns.Add(Nota);
+        }
+
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (false)
+            Examen examen = new Examen();
+            examen = (Examen)cboExamen.SelectedItem;
+            btnGuardar.Text = "Guardar";
+            dgvLista.Visible = false;
+
+
+            if (examenBusiness.SeCargoNota(examen))
             {
                 //MessageBox.Show("Ya se Cargaron las Notas");
+
+                DialogResult dialogResult = MessageBox.Show("Ya se Cargaron las Notas. Desea Editar?", "Editar", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    conf_dgv();
+                    btnGuardar.Text = "Modificar";
+
+                    foreach (DataGridViewRow row in dgvLista.Rows)
+                    {
+                        row.Cells["Nota"].Value = examenBusiness.TraerNota(examen.IdExamen, int.Parse(row.Cells["IdPersona"].Value.ToString()));
+                    }
+
+                }
+
             }
             else
             {
 
-                dgvLista.Visible = true;
-                //dgvLista.DataSource = null;
-
-                dgvLista.DataSource = cursadaBusiness.listarAlumnos((this.Owner as frmCargarNota).cursada.IdCursada);
-                dgvLista.Columns["Apno"].HeaderText = "Alumno";
-                dgvLista.Columns["Apno"].Width = 200;
-                dgvLista.Columns["Apno"].ReadOnly = true;
-
-                dgvLista.Columns["Telefono"].Visible = false;
-                dgvLista.Columns["Estado"].Visible = false;
-                dgvLista.Columns["Sexo"].Visible = false;
-                dgvLista.Columns["Apellido"].Visible = false;
-                dgvLista.Columns["Nombre"].Visible = false;
-                dgvLista.Columns["DNI"].Visible = false;
-                dgvLista.Columns["FechaNac"].Visible = false;
-                dgvLista.Columns["Mail"].Visible = false;
-                dgvLista.Columns["IdPersona"].Visible = true;
-                dgvLista.Columns["IdPersona"].Width = 200;
-                dgvLista.Columns["IdPersona"].ReadOnly = true;
-
-
-                if (dgvLista.Columns.Contains("Nota"))
-                {
-                    dgvLista.Columns.RemoveAt(0);
-                }
-
-                DataGridViewTextBoxColumn Nota = new DataGridViewTextBoxColumn();
-
-                Nota.HeaderText = "Nota";
-                Nota.Name = "Nota";
-                dgvLista.Columns.Add(Nota);
+                conf_dgv();
 
                 foreach (DataGridViewRow row in dgvLista.Rows)
                 {
@@ -117,20 +143,29 @@ namespace Presentacion
                 Examen examen = new Examen();
                 examen = (Examen)cboExamen.SelectedItem;
                 int IdPersona = (int)row.Cells["IdPersona"].Value;
-                int Nota;
-                if (row.Cells["Nota"].Value.ToString() == "")
+                decimal Nota;
+                if (string.IsNullOrEmpty(row.Cells["Nota"].Value.ToString()))
                 {
                     Nota = 0;
                 }
                 else
                 {
-                    Nota = int.Parse(row.Cells["Nota"].Value.ToString());
+                    Nota = decimal.Parse(row.Cells["Nota"].Value.ToString());
                 }
 
-                examenBusiness.AgregarNota(examen.IdExamen, IdPersona, Nota);
 
+                if (btnGuardar.Text == "Guardar")
+                {
+                    examenBusiness.AgregarNota(examen.IdExamen, IdPersona, Nota);
+                }
+                else
+                {
+                    examenBusiness.ActualizarNota(examen.IdExamen, IdPersona, Nota);
+                }
+                
             }
             MessageBox.Show("Se guardo Correctamente");
+            btnGuardar.Text = "Guardar";
             dgvLista.Visible = false;
         }
     }

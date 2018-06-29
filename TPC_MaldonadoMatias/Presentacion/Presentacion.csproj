@@ -55,6 +55,18 @@
     <Compile Include="frmAsistencia.Designer.cs">
       <DependentUpon>frmAsistencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAtajoAdministrativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAtajoAdministrativo.Designer.cs">
+      <DependentUpon>frmAtajoAdministrativo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAtajosProfesor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAtajosProfesor.Designer.cs">
+      <DependentUpon>frmAtajosProfesor.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAulas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +96,12 @@
     </Compile>
     <Compile Include="frmDias.Designer.cs">
       <DependentUpon>frmDias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnvioMailDesde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnvioMailDesde.Designer.cs">
+      <DependentUpon>frmEnvioMailDesde.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEnvioNotas.cs">
       <SubType>Form</SubType>
@@ -246,6 +264,12 @@
     <EmbeddedResource Include="frmAsistencia.resx">
       <DependentUpon>frmAsistencia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAtajoAdministrativo.resx">
+      <DependentUpon>frmAtajoAdministrativo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAtajosProfesor.resx">
+      <DependentUpon>frmAtajosProfesor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAulas.resx">
       <DependentUpon>frmAulas.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEnviarMail.resx">
       <DependentUpon>frmEnviarMail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnvioMailDesde.resx">
+      <DependentUpon>frmEnvioMailDesde.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEnvioNotas.resx">
       <DependentUpon>frmEnvioNotas.cs</DependentUpon>
@@ -386,6 +413,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Img_IdentificacionSI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pizarron.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
