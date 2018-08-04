@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "Presentacion\Presentacion.csproj", "{21187353-89D6-46AD-8C9D-734FB33B27A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{B13B2CBD-30CE-4916-9499-D2934E0EC270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{9767FF39-802E-4BF3-B90C-F4A9BCF349F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21187353-89D6-46AD-8C9D-734FB33B27A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21187353-89D6-46AD-8C9D-734FB33B27A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21187353-89D6-46AD-8C9D-734FB33B27A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21187353-89D6-46AD-8C9D-734FB33B27A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B13B2CBD-30CE-4916-9499-D2934E0EC270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B13B2CBD-30CE-4916-9499-D2934E0EC270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B13B2CBD-30CE-4916-9499-D2934E0EC270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B13B2CBD-30CE-4916-9499-D2934E0EC270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9767FF39-802E-4BF3-B90C-F4A9BCF349F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9767FF39-802E-4BF3-B90C-F4A9BCF349F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9767FF39-802E-4BF3-B90C-F4A9BCF349F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9767FF39-802E-4BF3-B90C-F4A9BCF349F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48F75EC3-BCDB-485A-9E92-656C81879D3F}
+	EndGlobalSection
+EndGlobal
