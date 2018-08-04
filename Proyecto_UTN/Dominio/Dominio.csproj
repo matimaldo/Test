@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Abono.cs" />
     <Compile Include="AbonoVendido.cs" />
+    <Compile Include="Administrador.cs" />
     <Compile Include="AplicacionAbono.cs" />
     <Compile Include="Barrera.cs" />
     <Compile Include="Caja.cs" />
@@ -53,6 +54,9 @@
     <Compile Include="PagoDia.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recepcionista.cs" />
+    <Compile Include="Seguridad.cs" />
+    <Compile Include="Supervisor.cs" />
     <Compile Include="TipoIngresos.cs" />
     <Compile Include="TipoPersona.cs" />
     <Compile Include="Usuario.cs" />
