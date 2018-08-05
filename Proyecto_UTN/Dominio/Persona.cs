@@ -16,7 +16,7 @@ namespace Dominio
         public int IdPersona { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public string Dni { get; set; }
+        public int Dni { get; set; }
         public string Mail { get; set; }
         public string Huella1 { get; set; }
         public string Huella2 { get; set; }

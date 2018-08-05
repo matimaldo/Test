@@ -26,7 +26,7 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection(@"data source=.; initial catalog=MALDONADO_DB; integrated security=sspi");
+            conexion = new SqlConnection(@"data source=.; initial catalog=PROYECTO_UTN; integrated security=sspi");
             comando = new SqlCommand();
             comando.Connection = conexion;
         }

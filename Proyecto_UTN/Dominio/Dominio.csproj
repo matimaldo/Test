@@ -43,15 +43,11 @@
     <Compile Include="Abono.cs" />
     <Compile Include="AbonoVendido.cs" />
     <Compile Include="Administrador.cs" />
-    <Compile Include="AplicacionAbono.cs" />
     <Compile Include="Barrera.cs" />
     <Compile Include="Caja.cs" />
-    <Compile Include="Estacionamiento.cs" />
     <Compile Include="IngresoEgreso.cs" />
     <Compile Include="MedioPago.cs" />
     <Compile Include="Pago.cs" />
-    <Compile Include="PagoAbono.cs" />
-    <Compile Include="PagoDia.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recepcionista.cs" />

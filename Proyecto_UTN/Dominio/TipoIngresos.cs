@@ -8,8 +8,8 @@ namespace Dominio
 {
     public class TipoIngresos
     {
-        public int IdTipoPersona { get; set; }
-        public string NMTipoPersona { get; set; }
+        public int IdIngreso { get; set; }
+        public string NMTipoIngreso { get; set; }
 
     }
 }

@@ -1,0 +1,176 @@
+
+
+CREATE DATABASE PROYECTO_UTN
+
+GO
+
+USE PROYECTO_UTN
+
+GO
+
+CREATE TABLE TipoPersona(
+ID_TipoPersona INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(30)
+)
+
+INSERT INTO TipoPersona VALUES ('ADMINISTADOR')
+INSERT INTO TipoPersona VALUES ('RECEPCIONISTA')
+INSERT INTO TipoPersona VALUES ('SUPERVISOR')
+INSERT INTO TipoPersona VALUES ('SEGURIDAD')
+INSERT INTO TipoPersona VALUES ('PROFESOR')
+INSERT INTO TipoPersona VALUES ('ALUMNO')
+
+GO
+
+CREATE TABLE Personas (
+ID_Persona INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(25) NOT NULL,
+Apellido VARCHAR(25) NOT NULL,
+DNI INT UNIQUE NOT NULL,
+Mail VARCHAR(50),
+Huella1 VARCHAR(50),
+Huella2 VARCHAR(50),
+Huella3 VARCHAR(50),
+ID_TipoPersona INT FOREIGN KEY REFERENCES TipoPersona(ID_TipoPersona)
+)
+
+INSERT INTO Personas VALUES ('MATIAS','MALDO', 123, 'maldo89.19@','','','',1)
+INSERT INTO Personas VALUES ('ALUMNO1','ALUMNO1', 1, 'maldo89.19@','','','',6)
+INSERT INTO Personas VALUES ('ALUMNO2','ALUMNO2', 2, 'maldo89.19@','','','',6)
+
+GO
+
+CREATE TABLE Usuarios(
+ID_Usuario INT IDENTITY(1,1) PRIMARY KEY,
+Usuario VARCHAR(30) UNIQUE NOT NULL,
+Contrasena VARCHAR(30) NOT NULL,
+Contrasena_GEN VARCHAR(30) NULL, -- Por si generamos una Clave en Caso de Olvido // Ver si sirve.
+)
+
+INSERT INTO Usuarios VALUES ('matiasma','1234', '')
+
+GO
+
+CREATE TABLE UsuarioxPersona(
+ID_Usuario INT FOREIGN KEY REFERENCES Usuarios(ID_Usuario),
+ID_Persona INT FOREIGN KEY REFERENCES Personas(ID_Persona),
+PRIMARY KEY (ID_Usuario, ID_Persona)
+)
+
+INSERT INTO UsuarioxPersona VALUES (1,1)
+
+GO
+
+CREATE TABLE Barreras(
+ID_Barrera INT IDENTITY(1,1) PRIMARY KEY,
+Codigo VARCHAR(30) NOT NULL,
+Ubicacion VARCHAR(30) 
+)
+
+INSERT INTO Barreras VALUES ('QWERTY','PUESTA1')
+INSERT INTO Barreras VALUES ('ASDFG','PUESTA2')
+
+GO
+
+CREATE TABLE Abonos(
+ID_Abono INT IDENTITY(1,1) PRIMARY KEY,
+Cantidad_Ingresos INT NOT NULL,
+Valor MONEY NOT NULL,
+Vigente BIT,
+Fecha_Alta DATETIME
+)
+
+INSERT INTO Abonos VALUES (1,30,1,GETDATE())
+INSERT INTO Abonos VALUES (3,50,1,GETDATE())
+INSERT INTO Abonos VALUES (5,75,1,GETDATE())
+
+
+GO
+
+CREATE TABLE IngresosPersonas(
+ID INT IDENTITY(1,1) PRIMARY KEY,
+FechaIngreso DATETIME,
+FechaEgreso DATETIME,
+ID_Persona INT FOREIGN KEY REFERENCES Personas(ID_Persona),
+ID_Barrera INT FOREIGN KEY REFERENCES Barreras(ID_Barrera),
+)
+
+INSERT INTO IngresosPersonas VALUES (GETDATE(),null,2,1)
+INSERT INTO IngresosPersonas VALUES (GETDATE(),null,3,1)
+
+GO
+
+CREATE TABLE IngresosVehiculos(
+ID INT IDENTITY(1,1) PRIMARY KEY,
+FechaIngreso DATETIME,
+FechaEgreso DATETIME,
+ID_Persona INT FOREIGN KEY REFERENCES Personas(ID_Persona),
+ID_Barrera INT FOREIGN KEY REFERENCES Barreras(ID_Barrera),
+)
+
+INSERT INTO IngresosVehiculos VALUES (GETDATE(),null,2,1)
+INSERT INTO IngresosVehiculos VALUES (GETDATE(),null,3,1)
+
+GO
+
+CREATE TABLE MediodePago(
+ID_MediodePago INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(30) NOT NULL
+)
+
+INSERT INTO MediodePago VALUES ('Efectivo')
+INSERT INTO MediodePago VALUES ('MercadoPago')
+
+GO
+
+CREATE TABLE AbonosVendidos(
+ID_AbonoVendido INT IDENTITY(1,1) PRIMARY KEY,
+FechaVenta DATETIME NOT NULL,
+ID_Abono INT FOREIGN KEY REFERENCES Abonos(ID_Abono),
+ID_Persona INT FOREIGN KEY REFERENCES Personas(ID_Persona),
+ID_MediodePago INT FOREIGN KEY REFERENCES MediodePago(ID_MediodePago) NOT NULL,
+NroComprobante BIGINT NOT NULL,
+)
+
+GO
+
+CREATE TABLE AplicacionAbonos (
+ID_IngresoVehiculo INT FOREIGN KEY REFERENCES IngresosVehiculos(ID),
+ID_AbonoVendido INT FOREIGN KEY REFERENCES AbonosVendidos(ID_AbonoVendido),
+PRIMARY KEY (ID_IngresoVehiculo,ID_AbonoVendido)
+)
+
+GO
+
+CREATE TABLE AbonosDisponibles(
+ID_AbonoVendido INT IDENTITY(1,1) PRIMARY KEY,
+CantidadDisponible INT NOT NULL
+)
+
+GO
+
+CREATE TABLE Caja(
+ID INT IDENTITY(1,1) PRIMARY KEY,
+FechaApertura DATETIME,
+FechaCierre DATETIME,
+MontoApertura MONEY,
+MontoCierre MONEY,
+ID_Usuario INT FOREIGN KEY REFERENCES Usuarios(ID_Usuario)
+)
+
+GO
+
+CREATE TABLE TiempoNoPago(
+Tiempo INT NOT NULL DEFAULT 0
+)
+
+GO
+
+CREATE TABLE TipoIngreso(
+ID_TipoIngreso INT,
+Nombre VARCHAR(30) NOT NULL
+)	
+
+
+
+

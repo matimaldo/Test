@@ -10,12 +10,13 @@ namespace Dominio
     {
         public Pago()
         {
+            Abono = new Abono();
             MedioPago = new MedioPago();
         }
 
         public DateTime FechaPago { get; set; }
         public int NroComprobante { get; set; }
-        public float Monto { get; set; }
+        Abono Abono { get; set; }
         MedioPago MedioPago { get; set; }
     }
 }

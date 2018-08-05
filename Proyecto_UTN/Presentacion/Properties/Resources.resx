@@ -136,14 +136,11 @@
   <data name="BotonVehiculo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonVehiculo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BotonSuperv" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BotonSuperv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BotonRecep" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonRecep.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PestañaAbajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PestañaAbajo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Descripcion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Descripcion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BotonAceptar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonAceptar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,14 +151,20 @@
   <data name="FondoInicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FondoInicio.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="PestañaArriba" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PestañaArriba.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FondoMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FondoMenu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Img_IdentificacionNO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Img_IdentificacionNO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BotonAdm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonAdm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PestañaArriba" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PestañaArriba.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BotonSuperv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BotonSuperv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BotonPersona" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonPersona.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,8 +178,8 @@
   <data name="BotonAjustes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonAjustes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Descripcion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Descripcion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PestañaAbajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PestañaAbajo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Img_Identificacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Img_Identificacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,7 +190,7 @@
   <data name="BotonSeg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonSeg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Img_IdentificacionNO" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Img_IdentificacionNO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="HuellaTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HuellaTest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

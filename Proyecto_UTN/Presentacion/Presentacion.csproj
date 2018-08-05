@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBuscarDNI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarDNI.Designer.cs">
+      <DependentUpon>frmBuscarDNI.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBuscarDNI.resx">
+      <DependentUpon>frmBuscarDNI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Img_IdentificacionNO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HuellaTest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

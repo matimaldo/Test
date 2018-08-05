@@ -11,14 +11,15 @@ namespace Dominio
         public AbonoVendido()
         {
             Persona = new Persona();
-            PagoAbono = new PagoAbono();
+            Abono = new Abono();
+            MedioPago = new MedioPago();
         }
 
-        public int idAbonoVendido { get; set; }
+        public int IdAbonoVendido { get; set; }
         public DateTime FechaVenta { get; set; }
         Persona Persona { get; set; }
-        PagoAbono PagoAbono { get; set; }
-        public int CantUtilizado { get; set; }
-        public bool Consumido { get; set; }
+        Abono Abono { get; set; }
+        MedioPago MedioPago { get; set; }
+        public int NroComprobante { get; set; }
     }
 }
