@@ -15,13 +15,13 @@ namespace Negocio
             Persona aux = new Persona();
             AccesoDatos conexion = new AccesoDatos();
 
-            string consulta = "SELECT ID_Persona,Nombre,Apellido,DNI,Mail,Huella1,Huella2,Huella3,ID_TipoPersona FROM Personas WHERE DNI = @dni ";
+            string consulta = "SP_Buscar_DNI";
             try
             {
                 conexion.borrarParametros();
-                conexion.agregarParametro("@dni", DNI);
+                conexion.agregarParametro("@DNI", DNI);
 
-                conexion.setearConsulta(consulta);
+                conexion.setearSP(consulta);
                 conexion.leerConsulta();
 
                 while (conexion.Lector.Read())

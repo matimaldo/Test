@@ -63,6 +63,26 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BotonAbonos {
+            get {
+                object obj = ResourceManager.GetObject("BotonAbonos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonAbonosSelec {
+            get {
+                object obj = ResourceManager.GetObject("BotonAbonosSelec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonAceptar {
             get {
                 object obj = ResourceManager.GetObject("BotonAceptar", resourceCulture);
@@ -106,6 +126,46 @@ namespace Presentacion.Properties {
         internal static System.Drawing.Bitmap BotonCaja {
             get {
                 object obj = ResourceManager.GetObject("BotonCaja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonConsultas {
+            get {
+                object obj = ResourceManager.GetObject("BotonConsultas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonConsultasSelec {
+            get {
+                object obj = ResourceManager.GetObject("BotonConsultasSelec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonPagoDiario {
+            get {
+                object obj = ResourceManager.GetObject("BotonPagoDiario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonPagoDiarioSelec {
+            get {
+                object obj = ResourceManager.GetObject("BotonPagoDiarioSelec", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +306,16 @@ namespace Presentacion.Properties {
         internal static System.Drawing.Bitmap FondoMenu {
             get {
                 object obj = ResourceManager.GetObject("FondoMenu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FondoVehiculos {
+            get {
+                object obj = ResourceManager.GetObject("FondoVehiculos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

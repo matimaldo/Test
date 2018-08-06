@@ -21,13 +21,15 @@ namespace Presentacion
 
         public Persona persona = new Persona();
         AbonoBusiness abonoBusiness = new AbonoBusiness();
+        Abono abono = new Abono();
 
         int opcion;
         public bool BusquedaOK;
 
         private void frmVehiculo_Load(object sender, EventArgs e)
         {
-            opcion = 0;
+            ocultar(true);
+            opcion = 1;
             BusquedaOK = false;
         }
 
@@ -69,7 +71,8 @@ namespace Presentacion
                         lblMonto.Visible = true;
                         btnPagar.Visible = true;
                         btnCancelar.Visible = true;
-                        lblMonto.Text = "$ "+abonoBusiness.ObtenerPercioDia();
+                        abono = abonoBusiness.ObtenerAbono(1);
+                        lblMonto.Text = "$ "+abonoBusiness.ObtenerPrecioDia();
                         break;
                     case 2:
                         btnPagar.Visible = true;
@@ -94,18 +97,30 @@ namespace Presentacion
 
         private void btnPagoDia_Click(object sender, EventArgs e)
         {
+            btnPagoDia.BackgroundImage = global::Presentacion.Properties.Resources.BotonPagoDiarioSelec;
+            btnPagoAbono.BackgroundImage = global::Presentacion.Properties.Resources.BotonAbonos;
+            btnConsulta.BackgroundImage = global::Presentacion.Properties.Resources.BotonConsultas;
+
             ocultar(true);
             opcion = 1;
         }
 
         private void btnPagoAbono_Click(object sender, EventArgs e)
         {
+            btnPagoDia.BackgroundImage = global::Presentacion.Properties.Resources.BotonPagoDiario;
+            btnPagoAbono.BackgroundImage = global::Presentacion.Properties.Resources.BotonAbonosSelec;
+            btnConsulta.BackgroundImage = global::Presentacion.Properties.Resources.BotonConsultas;
+
             ocultar(true);
             opcion = 2;
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)
         {
+            btnPagoDia.BackgroundImage = global::Presentacion.Properties.Resources.BotonPagoDiario;
+            btnPagoAbono.BackgroundImage = global::Presentacion.Properties.Resources.BotonAbonos;
+            btnConsulta.BackgroundImage = global::Presentacion.Properties.Resources.BotonConsultasSelec;
+
             ocultar(true);
             opcion = 3;
         }
@@ -113,6 +128,7 @@ namespace Presentacion
         private void btnPagar_Click(object sender, EventArgs e)
         {
             ocultar(true);
+            abonoBusiness.PagarDia(persona, abono);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

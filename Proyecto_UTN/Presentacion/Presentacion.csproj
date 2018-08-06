@@ -200,5 +200,26 @@
   <ItemGroup>
     <None Include="Resources\HuellaTest.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FondoVehiculos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonPagoDiarioSelec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonAbonosSelec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonConsultasSelec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonAbonos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonConsultas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonPagoDiario.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

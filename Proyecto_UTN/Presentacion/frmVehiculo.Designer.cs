@@ -31,7 +31,6 @@
             this.btnPagoAbono = new System.Windows.Forms.Button();
             this.btnPagoDia = new System.Windows.Forms.Button();
             this.btnConsulta = new System.Windows.Forms.Button();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.ImgHuella = new System.Windows.Forms.PictureBox();
             this.lblIngrese = new System.Windows.Forms.Label();
             this.btnIgresoDNI = new System.Windows.Forms.Button();
@@ -47,45 +46,57 @@
             // 
             // btnPagoAbono
             // 
-            this.btnPagoAbono.Location = new System.Drawing.Point(0, 252);
+            this.btnPagoAbono.BackColor = System.Drawing.Color.Transparent;
+            this.btnPagoAbono.BackgroundImage = global::Presentacion.Properties.Resources.BotonAbonos;
+            this.btnPagoAbono.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPagoAbono.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagoAbono.FlatAppearance.BorderSize = 0;
+            this.btnPagoAbono.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnPagoAbono.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPagoAbono.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPagoAbono.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagoAbono.Location = new System.Drawing.Point(-13, 255);
             this.btnPagoAbono.Name = "btnPagoAbono";
-            this.btnPagoAbono.Size = new System.Drawing.Size(197, 50);
+            this.btnPagoAbono.Size = new System.Drawing.Size(265, 70);
             this.btnPagoAbono.TabIndex = 0;
-            this.btnPagoAbono.Text = "Pago Abono";
-            this.btnPagoAbono.UseVisualStyleBackColor = true;
+            this.btnPagoAbono.UseVisualStyleBackColor = false;
             this.btnPagoAbono.Click += new System.EventHandler(this.btnPagoAbono_Click);
             // 
             // btnPagoDia
             // 
-            this.btnPagoDia.Location = new System.Drawing.Point(0, 171);
+            this.btnPagoDia.BackColor = System.Drawing.Color.Transparent;
+            this.btnPagoDia.BackgroundImage = global::Presentacion.Properties.Resources.BotonPagoDiarioSelec;
+            this.btnPagoDia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPagoDia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagoDia.FlatAppearance.BorderSize = 0;
+            this.btnPagoDia.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnPagoDia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPagoDia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPagoDia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagoDia.Location = new System.Drawing.Point(-13, 159);
             this.btnPagoDia.Name = "btnPagoDia";
-            this.btnPagoDia.Size = new System.Drawing.Size(197, 50);
+            this.btnPagoDia.Size = new System.Drawing.Size(265, 70);
             this.btnPagoDia.TabIndex = 1;
-            this.btnPagoDia.Text = "Pago Dia";
-            this.btnPagoDia.UseVisualStyleBackColor = true;
+            this.btnPagoDia.UseVisualStyleBackColor = false;
             this.btnPagoDia.Click += new System.EventHandler(this.btnPagoDia_Click);
             // 
             // btnConsulta
             // 
-            this.btnConsulta.Location = new System.Drawing.Point(0, 333);
+            this.btnConsulta.BackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.BackgroundImage = global::Presentacion.Properties.Resources.BotonConsultas;
+            this.btnConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConsulta.FlatAppearance.BorderSize = 0;
+            this.btnConsulta.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsulta.Location = new System.Drawing.Point(-13, 351);
             this.btnConsulta.Name = "btnConsulta";
-            this.btnConsulta.Size = new System.Drawing.Size(197, 50);
+            this.btnConsulta.Size = new System.Drawing.Size(265, 70);
             this.btnConsulta.TabIndex = 2;
-            this.btnConsulta.Text = "Consulta";
-            this.btnConsulta.UseVisualStyleBackColor = true;
+            this.btnConsulta.UseVisualStyleBackColor = false;
             this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(-7, 24);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(260, 42);
-            this.lblTitulo.TabIndex = 3;
-            this.lblTitulo.Text = "Estacionamiento";
             // 
             // ImgHuella
             // 
@@ -133,7 +144,7 @@
             this.btnVolver.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnVolver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolver.Location = new System.Drawing.Point(259, 24);
+            this.btnVolver.Location = new System.Drawing.Point(12, 24);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(56, 44);
             this.btnVolver.TabIndex = 7;
@@ -184,9 +195,9 @@
             this.btnPagar.BackColor = System.Drawing.Color.Red;
             this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPagar.ForeColor = System.Drawing.Color.White;
-            this.btnPagar.Location = new System.Drawing.Point(516, 352);
+            this.btnPagar.Location = new System.Drawing.Point(490, 347);
             this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(75, 23);
+            this.btnPagar.Size = new System.Drawing.Size(129, 28);
             this.btnPagar.TabIndex = 11;
             this.btnPagar.Text = "Pagar";
             this.btnPagar.UseVisualStyleBackColor = false;
@@ -222,7 +233,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = global::Presentacion.Properties.Resources.FondoMenu;
+            this.BackgroundImage = global::Presentacion.Properties.Resources.FondoVehiculos;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(875, 519);
             this.Controls.Add(this.btnCancelar);
@@ -235,10 +246,10 @@
             this.Controls.Add(this.btnIgresoDNI);
             this.Controls.Add(this.lblIngrese);
             this.Controls.Add(this.ImgHuella);
-            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnConsulta);
             this.Controls.Add(this.btnPagoDia);
             this.Controls.Add(this.btnPagoAbono);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -257,7 +268,6 @@
         private System.Windows.Forms.Button btnPagoAbono;
         private System.Windows.Forms.Button btnPagoDia;
         private System.Windows.Forms.Button btnConsulta;
-        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox ImgHuella;
         private System.Windows.Forms.Label lblIngrese;
         private System.Windows.Forms.Button btnIgresoDNI;

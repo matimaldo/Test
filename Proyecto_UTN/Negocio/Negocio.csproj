@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AbonoBusiness.cs" />
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="IngresoEgresoBusiness.cs" />
     <Compile Include="PersonaBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

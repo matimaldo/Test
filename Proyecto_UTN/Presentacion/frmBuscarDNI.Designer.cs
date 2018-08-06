@@ -85,7 +85,7 @@
             this.MinimizeBox = false;
             this.Name = "frmBuscarDNI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Buscar DNI";
+            this.Text = "Buscar por DNI";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBuscarDNI_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
